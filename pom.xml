@@ -1,0 +1,65 @@
+<!--
+  Copyright (c) 2017 OpenJAX
+  
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+  
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+  
+  You should have received a copy of The MIT License (MIT) along with this
+  program. If not, see <http://opensource.org/licenses/MIT/>.
+-->
+<project
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.openjax.jsonx</groupId>
+    <artifactId>jsonx</artifactId>
+    <version>0.9.8-SNAPSHOT</version>
+  </parent>
+  <artifactId>jsonx-schema</artifactId>
+  <name>${project.groupId}:${project.artifactId}</name>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <configuration>
+          <sourcepath>${project.build.directory}/generated-sources/xsb</sourcepath>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.openjax.xsb</groupId>
+        <artifactId>xsb-maven-plugin</artifactId>
+        <version>2.1.4-SNAPSHOT</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <destDir>${project.build.directory}/generated-sources/xsb</destDir>
+              <schemas>
+                <schema>src/main/resources/schema.xsd</schema>
+              </schemas>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+    <dependency>
+      <groupId>org.openjax.xsb</groupId>
+      <artifactId>xsb-runtime</artifactId>
+      <version>2.1.4-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+</project>
