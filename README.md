@@ -1,11 +1,14 @@
 # JSON Schema Definition Language (JSD)
 
+[![Build Status](https://travis-ci.org/jsonxorg/schema.svg?branch=master)](https://travis-ci.org/jsonxorg/schema)
 [![XSD](https://img.shields.io/badge/schema.xsd-v0.2.3-blue.svg)](http://jsonx.org/schema-0.2.3.xsd)
 [![JSDx](https://img.shields.io/badge/schema.jsdx-v0.2.3-blue.svg)](http://jsonx.org/schema-0.2.3.jsdx)
 [![JSD](https://img.shields.io/badge/schema.jsd-v0.2.3-blue.svg)](http://jsonx.org/schema-0.2.3.jsd)<br>
+[![Build Status](https://img.shields.io/badge/build-passing-orange.svg)](https://travis-ci.org/jsonxorg/schema)
 [![XSD](https://img.shields.io/badge/schema.xsd-v0.2.2-orange.svg)](http://jsonx.org/schema-0.2.2.xsd)
 [![JSDx](https://img.shields.io/badge/schema.jsdx-v0.2.2-orange.svg)](http://jsonx.org/schema-0.2.2.jsdx)
 [![JSD](https://img.shields.io/badge/schema.jsd-v0.2.2-orange.svg)](http://jsonx.org/schema-0.2.2.jsd)<br>
+[![Build Status](https://img.shields.io/badge/build-passing-yellow.svg)](https://travis-ci.org/jsonxorg/schema)
 [![XSD](https://img.shields.io/badge/schema.xsd-v0.1.0-yellow.svg)](http://jsonx.org/schema-0.1.0.xsd)
 [![JSDx](https://img.shields.io/badge/schema.jsdx-v0.1.0-inactive.svg)]()
 [![JSD](https://img.shields.io/badge/schema.jsd-v0.1.0-inactive.svg)]()
