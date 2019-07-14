@@ -1,14 +1,14 @@
 # JSON Schema Definition Language (JSD)
 
-[![Build Status](https://travis-ci.org/jsonxorg/schema.svg?branch=master)](https://travis-ci.org/jsonxorg/schema)
-[![XSD](https://img.shields.io/badge/schema.xsd-v0.2.3-blue.svg)](http://jsonx.org/schema-0.2.3.xsd)
-[![JSDx](https://img.shields.io/badge/schema.jsdx-v0.2.3-blue.svg)](http://jsonx.org/schema-0.2.3.jsdx)
-[![JSD](https://img.shields.io/badge/schema.jsd-v0.2.3-blue.svg)](http://jsonx.org/schema-0.2.3.jsd)<br>
-[![Build Status](https://img.shields.io/badge/build-passing-orange.svg)](https://travis-ci.org/jsonxorg/schema)
+[![Build Status](https://travis-ci.org/jsonx-org/schema.svg?branch=master)](https://travis-ci.org/jsonx-org/schema)
+[![XSD](https://img.shields.io/badge/schema.xsd-v0.3.1-blue.svg)](http://jsonx.org/schema-0.3.1.xsd)
+[![JSDx](https://img.shields.io/badge/schema.jsdx-v0.3.1-blue.svg)](http://jsonx.org/schema-0.3.1.jsdx)
+[![JSD](https://img.shields.io/badge/schema.jsd-v0.3.1-blue.svg)](http://jsonx.org/schema-0.3.1.jsd)<br>
+[![Build Status](https://img.shields.io/badge/build-passing-orange.svg)](https://travis-ci.org/jsonx-org/schema)
 [![XSD](https://img.shields.io/badge/schema.xsd-v0.2.2-orange.svg)](http://jsonx.org/schema-0.2.2.xsd)
 [![JSDx](https://img.shields.io/badge/schema.jsdx-v0.2.2-orange.svg)](http://jsonx.org/schema-0.2.2.jsdx)
 [![JSD](https://img.shields.io/badge/schema.jsd-v0.2.2-orange.svg)](http://jsonx.org/schema-0.2.2.jsd)<br>
-[![Build Status](https://img.shields.io/badge/build-passing-yellow.svg)](https://travis-ci.org/jsonxorg/schema)
+[![Build Status](https://img.shields.io/badge/build-passing-yellow.svg)](https://travis-ci.org/jsonx-org/schema)
 [![XSD](https://img.shields.io/badge/schema.xsd-v0.1.0-yellow.svg)](http://jsonx.org/schema-0.1.0.xsd)
 [![JSDx](https://img.shields.io/badge/schema.jsdx-v0.1.0-inactive.svg)]()
 [![JSD](https://img.shields.io/badge/schema.jsd-v0.1.0-inactive.svg)]()
@@ -127,8 +127,8 @@ The <samp>**schema**</samp> is the root object of the JSD, and contains [type][#
 1. <ins>Example</ins>: `jsd`
    ```json
    {
-     "jx:ns": "http://www.jsonx.org/schema-0.2.3.jsd",
-     "jx:schemaLocation": "http://www.jsonx.org/schema-0.2.3.jsd http://www.jsonx.org/schema-0.2.3.jsd",
+     "jx:ns": "http://www.jsonx.org/schema-0.3.1.jsd",
+     "jx:schemaLocation": "http://www.jsonx.org/schema-0.3.1.jsd http://www.jsonx.org/schema-0.3.1.jsd",
      ...
    }
    ```
@@ -136,8 +136,8 @@ The <samp>**schema**</samp> is the root object of the JSD, and contains [type][#
 1. <ins>Example</ins>: `jsdx`
    ```xml
    <schema
-      xmlns="http://www.jsonx.org/schema-0.2.3.xsd"
-      xsi:schemaLocation="http://www.jsonx.org/schema-0.2.3.xsd http://www.jsonx.org/schema-0.2.3.xsd">
+      xmlns="http://www.jsonx.org/schema-0.3.1.xsd"
+      xsi:schemaLocation="http://www.jsonx.org/schema-0.3.1.xsd http://www.jsonx.org/schema-0.3.1.xsd">
      ...
    </schema>
    ```
@@ -775,7 +775,7 @@ The declarative <samp>**type**</samp> objects are immediate children of the <sam
 
 1. <ins>Example</ins>: `jsd`
    ```json
-   { "jx:ns": "http://www.jsonx.org/schema-0.2.3.jsd",
+   { "jx:ns": "http://www.jsonx.org/schema-0.3.1.jsd",
      ...
      "rootArray": { "jx:type": "array",
        "elements": [...] },
@@ -790,7 +790,7 @@ The declarative <samp>**type**</samp> objects are immediate children of the <sam
 
 1. <ins>Example</ins>: `jsdx`
    ```xml
-   <schema xmlns="http://www.jsonx.org/schema-0.2.3.xsd">
+   <schema xmlns="http://www.jsonx.org/schema-0.3.1.xsd">
      ...
      <array name="rootArray">
        ...
@@ -815,7 +815,7 @@ The <samp>**property**</samp> objects define properties for the declarative obje
 
 1. <ins>Example</ins>: `jsd`
    ```json
-   { "jx:ns": "http://www.jsonx.org/schema-0.2.3.jsd",
+   { "jx:ns": "http://www.jsonx.org/schema-0.3.1.jsd",
      ...
      "rootObject": { "jx:type": "object",
        "properties": {
@@ -836,7 +836,7 @@ The <samp>**property**</samp> objects define properties for the declarative obje
 
 1. <ins>Example</ins>: `jsdx`
    ```xml
-   <schema xmlns="http://www.jsonx.org/schema-0.2.3.xsd">
+   <schema xmlns="http://www.jsonx.org/schema-0.3.1.xsd">
      ...
      <object name="rootObject">
        <property name="propArray" xsi:type="array" nullable="true" use="required">
@@ -865,7 +865,7 @@ The <samp>**element**</samp> objects define properties for the declarative objec
 
 1. <ins>Example</ins>: `jsd`
    ```json
-   { "jx:ns": "http://www.jsonx.org/schema-0.2.3.jsd",
+   { "jx:ns": "http://www.jsonx.org/schema-0.3.1.jsd",
      ...
      "rootArray": {
        "jx:type": "array",
@@ -885,7 +885,7 @@ The <samp>**element**</samp> objects define properties for the declarative objec
 
 1. <ins>Example</ins>: `jsdx`
    ```xml
-   <schema xmlns="http://www.jsonx.org/schema-0.2.3.xsd">
+   <schema xmlns="http://www.jsonx.org/schema-0.3.1.xsd">
      ...
      <array name="rootArray">
        <boolean minOccurs="1" maxOccurs="unbounded" nullable="true"/>
@@ -907,13 +907,13 @@ The <samp>**element**</samp> objects define properties for the declarative objec
 
 #### 5.1.1 Current
 
-* <ins>JSON Schema 0.2.3</ins> **[Current]**
+* <ins>JSON Schema 0.3.1</ins> **[Current]**
 
-  * A JSON Schema schema document XSD [schema-0.2.3.xsd](http://www.jsonx.org/schema-0.2.3.xsd) for JSON Schema documents. It incorporates an auxiliary XSD, [datatypes-0.9.2.xsd](http://www.openjax.org/xml/datatypes-0.9.2.xsd).
+  * A JSON Schema schema document XSD [schema-0.3.1.xsd](http://www.jsonx.org/schema-0.3.1.xsd) for JSON Schema documents. It incorporates an auxiliary XSD, [datatypes-0.9.2.xsd](http://www.openjax.org/xml/datatypes-0.9.2.xsd).
 
-  * A JSON Schema schema document JSDx [schema-0.2.3.jsdx](http://www.jsonx.org/schema-0.2.3.jsdx) for JSON Schema documents.
+  * A JSON Schema schema document JSDx [schema-0.3.1.jsdx](http://www.jsonx.org/schema-0.3.1.jsdx) for JSON Schema documents.
 
-  * A JSON Schema schema document JSD [schema-0.2.3.jsd](http://www.jsonx.org/schema-0.2.3.jsd) for JSON Schema documents.
+  * A JSON Schema schema document JSD [schema-0.3.1.jsd](http://www.jsonx.org/schema-0.3.1.jsd) for JSON Schema documents.
 
 #### 5.1.2 Obsolete
 
@@ -941,9 +941,9 @@ This section provides sample schemas in both `jsdx` and `jsd` representations.
 
 ```xml
 <schema
-  xmlns="http://www.jsonx.org/schema-0.2.3.xsd"
+  xmlns="http://www.jsonx.org/schema-0.3.1.xsd"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.jsonx.org/schema-0.2.3.xsd http://www.jsonx.org/schema-0.2.3.xsd">
+  xsi:schemaLocation="http://www.jsonx.org/schema-0.3.1.xsd http://www.jsonx.org/schema-0.3.1.xsd">
   <array name="array">
     <boolean nullable="true"/>
     <number range="[-1,1)" nullable="true"/>
@@ -1006,8 +1006,8 @@ This section provides sample schemas in both `jsdx` and `jsd` representations.
 
 ```json
 {
-  "jx:ns": "http://www.jsonx.org/schema-0.2.3.jsd",
-  "jx:schemaLocation": "http://www.jsonx.org/schema-0.2.3.jsd http://www.jsonx.org/schema-0.2.3.jsd",
+  "jx:ns": "http://www.jsonx.org/schema-0.3.1.jsd",
+  "jx:schemaLocation": "http://www.jsonx.org/schema-0.3.1.jsd http://www.jsonx.org/schema-0.3.1.jsd",
   "array": {
     "jx:type": "array",
     "elements": [{
@@ -1169,9 +1169,9 @@ This section provides sample schemas in both `jsdx` and `jsd` representations.
 
 ```xml
 <schema
-  xmlns="http://www.jsonx.org/schema-0.2.3.xsd"
+  xmlns="http://www.jsonx.org/schema-0.3.1.xsd"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.jsonx.org/schema-0.2.3.xsd http://www.jsonx.org/schema-0.2.3.xsd">
+  xsi:schemaLocation="http://www.jsonx.org/schema-0.3.1.xsd http://www.jsonx.org/schema-0.3.1.xsd">
   <array name="arrayArr">
     <reference type="arrayBool" maxOccurs="1"/>
     <reference type="arrayNum" maxOccurs="1"/>
@@ -1332,8 +1332,8 @@ This section provides sample schemas in both `jsdx` and `jsd` representations.
 
 ```json
 {
-  "jx:ns": "http://www.jsonx.org/schema-0.2.3.jsd",
-  "jx:schemaLocation": "http://www.jsonx.org/schema-0.2.3.jsd http://www.jsonx.org/schema-0.2.3.jsd",
+  "jx:ns": "http://www.jsonx.org/schema-0.3.1.jsd",
+  "jx:schemaLocation": "http://www.jsonx.org/schema-0.3.1.jsd http://www.jsonx.org/schema-0.3.1.jsd",
   "arrayArr": {
     "jx:type": "array",
     "elements": [{
