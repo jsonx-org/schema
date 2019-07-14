@@ -15,9 +15,9 @@
   program. If not, see <http://opensource.org/licenses/MIT/>.
 -->
 <schema
-  xmlns="http://www.jsonx.org/schema-0.2.3.xsd"
+  xmlns="http://www.jsonx.org/schema-0.3.1.xsd"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.jsonx.org/schema-0.2.3.xsd schema-0.2.3.xsd">
+  xsi:schemaLocation="http://www.jsonx.org/schema-0.3.1.xsd schema-0.3.1.xsd">
 
   <string name="min" pattern="[\d]+"/>
   <string name="max" pattern="([\d]+|unbounded)"/>
@@ -30,8 +30,8 @@
   <object name="member" abstract="true" extends="documented"/>
 
   <object name="schema" extends="documented">
-    <property name="jx:ns" xsi:type="string" pattern="http://www.jsonx.org/schema-0.2.3.jsd" nullable="false"/>
-    <property name="jx:schemaLocation" xsi:type="string" pattern="http://www.jsonx.org/schema-0.2.3.jsd [^ ]+" nullable="false" use="optional"/>
+    <property name="jx:ns" xsi:type="string" pattern="http://www.jsonx.org/schema-0.3.1.jsd" nullable="false"/>
+    <property name="jx:schemaLocation" xsi:type="string" pattern="http://www.jsonx.org/schema-0.3.1.jsd [^ ]+" nullable="false" use="optional"/>
     <property names="[a-zA-Z_][-a-zA-Z\d_]*" xsi:type="any" types="array boolean number objectType string" nullable="false"/>
   </object>
 

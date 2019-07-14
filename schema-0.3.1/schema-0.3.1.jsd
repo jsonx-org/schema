@@ -1,6 +1,6 @@
 {
-  "jx:ns": "http://www.jsonx.org/schema-0.2.3.jsd",
-  "jx:schemaLocation": "http://www.jsonx.org/schema-0.2.3.jsd http://www.jsonx.org/schema-0.2.3.jsd",
+  "jx:ns": "http://www.jsonx.org/schema-0.3.1.jsd",
+  "jx:schemaLocation": "http://www.jsonx.org/schema-0.3.1.jsd http://www.jsonx.org/schema-0.3.1.jsd",
   "min": {
     "jx:type": "string",
     "pattern": "[\\d]+"
@@ -34,12 +34,12 @@
     "properties": {
       "jx:ns": {
         "jx:type": "string",
-        "pattern": "http://www.jsonx.org/schema-0.2.3.jsd",
+        "pattern": "http://www.jsonx.org/schema-0.3.1.jsd",
         "nullable": false
       },
       "jx:schemaLocation": {
         "jx:type": "string",
-        "pattern": "http://www.jsonx.org/schema-0.2.3.jsd [^ ]+",
+        "pattern": "http://www.jsonx.org/schema-0.3.1.jsd [^ ]+",
         "use": "optional",
         "nullable": false
       },
