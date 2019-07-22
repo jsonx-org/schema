@@ -16,12 +16,12 @@
 -->
 <xs:schema
   elementFormDefault="qualified"
-  targetNamespace="http://www.jsonx.org/schema-0.3.1.xsd"
-  xmlns:js="http://www.jsonx.org/schema-0.3.1.xsd"
-  xmlns:dt="http://www.openjax.org/xml/datatypes-0.9.3.xsd"
+  targetNamespace="http://www.jsonx.org/schema-0.3.xsd"
+  xmlns:js="http://www.jsonx.org/schema-0.3.xsd"
+  xmlns:dt="http://www.openjax.org/xml/datatypes-0.9.xsd"
   xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-  <xs:import namespace="http://www.openjax.org/xml/datatypes-0.9.3.xsd" schemaLocation="http://www.openjax.org/xml/datatypes-0.9.3.xsd"/>
+  <xs:import namespace="http://www.openjax.org/xml/datatypes-0.9.xsd" schemaLocation="http://www.openjax.org/xml/datatypes-0.9.xsd"/>
 
   <xs:complexType name="documented" abstract="true">
     <xs:attribute name="doc" type="xs:string">
