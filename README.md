@@ -128,7 +128,7 @@ The <samp>**schema**</samp> is the root object of the JSD, and contains [type][#
    ```json
    {
      "jx:ns": "http://www.jsonx.org/schema-0.3.jsd",
-     "jx:schemaLocation": "http://www.jsonx.org/schema-0.3.jsd http://www.jsonx.org/schema-0.3.jsd",
+     "jx:schemaLocation": "http://www.jsonx.org/schema-0.3.jsd http://www.jsonx.org/schema.jsd",
      ...
    }
    ```
@@ -137,7 +137,7 @@ The <samp>**schema**</samp> is the root object of the JSD, and contains [type][#
    ```xml
    <schema
       xmlns="http://www.jsonx.org/schema-0.3.xsd"
-      xsi:schemaLocation="http://www.jsonx.org/schema-0.3.xsd http://www.jsonx.org/schema-0.3.xsd">
+      xsi:schemaLocation="http://www.jsonx.org/schema-0.3.xsd http://www.jsonx.org/schema.xsd">
      ...
    </schema>
    ```
@@ -943,7 +943,7 @@ This section provides sample schemas in both `jsdx` and `jsd` representations.
 <schema
   xmlns="http://www.jsonx.org/schema-0.3.xsd"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.jsonx.org/schema-0.3.xsd http://www.jsonx.org/schema-0.3.xsd">
+  xsi:schemaLocation="http://www.jsonx.org/schema-0.3.xsd http://www.jsonx.org/schema.xsd">
   <array name="array">
     <boolean nullable="true"/>
     <number range="[-1,1)" nullable="true"/>
@@ -1007,7 +1007,7 @@ This section provides sample schemas in both `jsdx` and `jsd` representations.
 ```json
 {
   "jx:ns": "http://www.jsonx.org/schema-0.3.jsd",
-  "jx:schemaLocation": "http://www.jsonx.org/schema-0.3.jsd http://www.jsonx.org/schema-0.3.jsd",
+  "jx:schemaLocation": "http://www.jsonx.org/schema-0.3.jsd http://www.jsonx.org/schema.jsd",
   "array": {
     "jx:type": "array",
     "elements": [{
@@ -1171,7 +1171,7 @@ This section provides sample schemas in both `jsdx` and `jsd` representations.
 <schema
   xmlns="http://www.jsonx.org/schema-0.3.xsd"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.jsonx.org/schema-0.3.xsd http://www.jsonx.org/schema-0.3.xsd">
+  xsi:schemaLocation="http://www.jsonx.org/schema-0.3.xsd http://www.jsonx.org/schema.xsd">
   <array name="arrayArr">
     <reference type="arrayBool" maxOccurs="1"/>
     <reference type="arrayNum" maxOccurs="1"/>
@@ -1333,7 +1333,7 @@ This section provides sample schemas in both `jsdx` and `jsd` representations.
 ```json
 {
   "jx:ns": "http://www.jsonx.org/schema-0.3.jsd",
-  "jx:schemaLocation": "http://www.jsonx.org/schema-0.3.jsd http://www.jsonx.org/schema-0.3.jsd",
+  "jx:schemaLocation": "http://www.jsonx.org/schema-0.3.jsd http://www.jsonx.org/schema.jsd",
   "arrayArr": {
     "jx:type": "array",
     "elements": [{
