@@ -909,7 +909,7 @@ The <samp>**element**</samp> objects define properties for the declarative objec
 
 * <ins>JSON Schema 0.3</ins> **[Current]**
 
-  * A JSON Schema schema document XSD [schema-0.3.xsd](http://www.jsonx.org/schema-0.3.xsd) for JSON Schema documents. It incorporates an auxiliary XSD, [datatypes-0.9.2.xsd](http://www.openjax.org/xml/datatypes-0.9.2.xsd).
+  * A JSON Schema schema document XSD [schema-0.3.xsd](http://www.jsonx.org/schema-0.3.xsd) for JSON Schema documents. It incorporates an auxiliary XSD, [datatypes-0.9.xsd](http://www.openjax.org/xml/datatypes-0.9.xsd).
 
   * A JSON Schema schema document JSDx [schema-0.3.jsdx](http://www.jsonx.org/schema-0.3.jsdx) for JSON Schema documents.
 
@@ -919,7 +919,7 @@ The <samp>**element**</samp> objects define properties for the declarative objec
 
 * <ins>JSON Schema 0.2</ins> **[Deprecated]**
 
-  * A JSON Schema schema document XSD [schema-0.2.xsd](http://www.jsonx.org/schema-0.2.xsd) for JSON Schema documents. It incorporates an auxiliary XSD, [datatypes-0.9.2.xsd]( http://www.openjax.org/xml/datatypes-0.9.2.xsd).
+  * A JSON Schema schema document XSD [schema-0.2.xsd](http://www.jsonx.org/schema-0.2.xsd) for JSON Schema documents. It incorporates an auxiliary XSD, [datatypes-0.8.xsd]( http://www.openjax.org/xml/datatypes-0.8.xsd).
 
   * A JSON Schema schema document JSDx [schema-0.2.jsdx](http://www.jsonx.org/schema-0.2.jsdx) for JSON Schema documents.
 
@@ -927,7 +927,7 @@ The <samp>**element**</samp> objects define properties for the declarative objec
 
 * <ins>JSON Schema 0.1</ins> **[Deprecated]**
 
-  * A JSON Schema schema document XSD [schema-0.1.xsd](http://www.jsonx.org/schema-0.1.xsd) for JSON Schema documents. It incorporates an auxiliary XSD, [datatypes-0.9.2.xsd](http://www.openjax.org/xml/datatypes-0.9.2.xsd).
+  * A JSON Schema schema document XSD [schema-0.1.xsd](http://www.jsonx.org/schema-0.1.xsd) for JSON Schema documents. It incorporates an auxiliary XSD, [datatypes-0.8.xsd](http://www.openjax.org/xml/datatypes-0.8.xsd).
 
   * A JSON Schema schema document JSDx ~~schema-0.1.jsdx~~ for JSON Schema documents.
 
