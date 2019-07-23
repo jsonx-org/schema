@@ -17,7 +17,7 @@
 
 ## Abstract
 
-This document specifies the <ins>JSON Schema Definition Language</ins>, which offers facilities for describing the structure and constraining the contents of JSON documents. The schema language, which is itself represented in an JSON vocabulary, extends the capabilities found in JSON documents.
+This document specifies the <ins>JSON Schema Definition Language</ins>, which offers allows for the description of the structure and to constrain the contents of JSON documents. The schema language is represented in two different but equally translatable vocabularies: a JSON vocabulary, and an XML vocabulary. The schema language extends the capabilities found in JSON documents.
 
 ## Table of Contents
 
@@ -94,6 +94,12 @@ Provide a <ins>schema language</ins> to describe normative contracts between pro
 ## 4 Specification
 
 The <ins>JSON Schema Definition Language</ins> (JSD) is normatively defined in an <ins>XML Schema Document</ins>, with translations expressed in the <ins>JSON/XML Schema Definition Language</ins> (JSDx), as well as the <ins>JSON Schema Definition Language</ins> (JSD) itself.
+
+The <ins>JSDx</ins> format offers XML validation, and using an XML IDE like [oXygen XML Editor][oxygenxml] offers edit-time XML validation, such as:
+
+<img src="https://user-images.githubusercontent.com/1258414/61751752-aae93800-ada9-11e9-88b1-65de08f125b5.png" width="75%">
+
+When using the <ins>JSDx</ins> format with the [oXygen XML Editor][oxygenxml], the auto-completion features of the editor will guide you in writing the schema. With the <ins>JSDx</ins> format, the XML editor will also validate keys and keyrefs to ensure that declared types are referenced correctly.
 
 The JSD is comprised of 5 structural abstractions:
 
@@ -2076,5 +2082,6 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 
 [ecma262]: http://www.ecma-international.org/publications/standards/Ecma-262.htm
 [interval-notation]: https://en.wikipedia.org/wiki/Interval_(mathematics)#Classification_of_intervals
+[oxygenxml]: https://www.oxygenxml.com/xml_editor/download_oxygenxml_editor.html
 [rfc4627]: https://www.ietf.org/rfc/rfc4627.txt
 [xmlschema]: http://www.w3.org/2001/XMLSchema
