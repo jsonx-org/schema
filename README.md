@@ -1,5 +1,7 @@
 # JSON Schema Definition Language (JSD)
 
+> **JSON Schema for the enterprise**
+
 [![Build Status](https://travis-ci.org/jsonx-org/schema.svg?branch=master)](https://travis-ci.org/jsonx-org/schema)
 [![XSD](https://img.shields.io/badge/schema.xsd-v0.3-blue.svg)](http://jsonx.org/schema-0.3.xsd)
 [![JSDx](https://img.shields.io/badge/schema.jsdx-v0.3-blue.svg)](http://jsonx.org/schema-0.3.jsdx)
