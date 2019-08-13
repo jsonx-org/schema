@@ -28,25 +28,34 @@ This document specifies the <ins>JSON Schema Definition Language</ins>, which of
 <samp>&nbsp;&nbsp;</samp>3 [Requirements](#3-requirements)<br>
 <samp>&nbsp;&nbsp;</samp>4 [Specification](#4-specification)<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.1 [Schema Document][#schema]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2 [Value Types][#model]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.1 [`boolean` Value Type][#boolean]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.1.1 [`boolean` Usage][#boolean-usage]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.2 [`number` Value Type][#number]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.2.1 [`number` Usage][#number-usage]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.3 [`string` Value Type][#string]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.3.1 [`string` Usage][#string-usage]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.4 [`object` Value Type][#object]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.4.1 [`object` Property Names][#property-names]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.4.2 [`object` Usage][#object-usage]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.5 [`array` Value Type][#array]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.5.1 [`array` Usage][#array-usage]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.6 [`reference` Value Type][#reference]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.6.1 [`reference` Usage][#reference-usage]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.7 [`any` Value Type][#any]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.7.1 [`any` Usage][#any-usage]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.3 [Type Declarations][#types]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.4 [Object Properties][#properties]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.5 [Array Elements][#elements]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2 [Constraint Types][#constraint-types]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.1 [<code>boolean</code>][#boolean]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.2 [<code>number</code>][#number]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.2.1 [<code>number.scale</code>][#number-scale]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.2.2 [<code>number.range</code>][#number-range]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.3 [<code>string</code>][#string]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.3.1 [<code>string.pattern</code>][#string-pattern]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.4 [<code>object</code>][#object]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.4.1 [<code>object.properties</code>][#object-properties]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.4.2 [Property Names][#property-names]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.4.3 [<code>object.abstract</code>][#object-abstract]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.4.4 [<code>object.extends</code>][#object-extends]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.4.4.1 [Type Declarations][#object-type-declarations]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.4.4.2 [Object Properties][#object-object-properties]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.5 [<code>array</code>][#array]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.5.1 [<code>array.elements</code>][#array-array-elements]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.5.2 [<code>array.minIterate</code> and <code>array.maxIterate</code>][#array-iterate]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.6 [<code>reference</code>][#reference]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.6.1 [<code>reference.type</code>][#reference-type]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.6.1.1 [Object Properties][#reference-object-properties]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.6.1.2 [Array Elements][#reference-array-elements]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.7 [<code>any</code>][#any]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.7.1 [<code>any.types</code>][#any-types]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.7.1.1 [Object Properties][#any-object-properties]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.7.1.2 [Array Elements][#any-array-elements]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.3 [Type Declarations][#type-declarations]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.4 [Object Properties][#object-properties]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.5 [Array Elements][#array-elements]<br>
 <samp>&nbsp;&nbsp;</samp>5 [Related Resources for JSON Schema](#5-related-resources-for-json-schema)<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>5.1 [Schemas for JSON Schema](#51-schemas-for-json-schema)<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>5.1.1 [Current](#511-current)<br>
@@ -59,7 +68,7 @@ This document specifies the <ins>JSON Schema Definition Language</ins>, which of
 <samp>&nbsp;&nbsp;</samp>7 [Contributing](#7-contributing)<br>
 <samp>&nbsp;&nbsp;</samp>8 [License](#8-license)
 
-## 1 Introduction
+## <b>1</b> Introduction
 
 This document sets out the structural part of the <ins>JSON Schema Definition Language</ins>. It also contains a directory of links to these related resources.
 
@@ -67,19 +76,19 @@ The <ins>JSON Schema Definition Language</ins> is designed to describe JSON docu
 
 Any application that consumes well-formed JSON can use the <ins>JSON Schema Definition Language</ins> formalism to express syntactic, structural and value constraints applicable to its document instances. The <ins>JSON Schema Definition Language</ins> formalism allows a useful level of constraint checking to be described and implemented for a wide spectrum of JSON applications. However, the language defined by this specification does not attempt to provide _all_ the facilities that might be needed by any application. Some applications may require constraint capabilities not expressible in this language, and so may need to perform their own additional validations.
 
-### 1.1 Dependencies on Other Specifications
+### <b>1.1</b> Dependencies on Other Specifications
 
 The definition of the <ins>JSON Schema Definition Language</ins> depends on the following specifications: [RFC4627][rfc4627] and [XMLSchema][xmlschema].
 
-### 1.2 Conventions Used in This Document
+### <b>1.2</b> Conventions Used in This Document
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC2119](https://www.ietf.org/rfc/rfc2119.txt).
 
-## 2 Purpose
+## <b>2</b> Purpose
 
 Provide a <ins>schema language</ins> to describe normative contracts between producer and consumer ends of a protocol exchanging JSON documents.
 
-## 3 Requirements
+## <b>3</b> Requirements
 
 1. The <ins>schema language</ins> MUST constrain and document the meaning, usage, constraints and relationships of the constituent parts of a JSON document.
 
@@ -91,7 +100,7 @@ Provide a <ins>schema language</ins> to describe normative contracts between pro
 
 1. The <ins>schema language</ins> MUST be able to describe itself.
 
-## 4 Specification
+## <b>4</b> Specification
 
 The <ins>JSON Schema Definition Language</ins> (JSD) is normatively defined in an <ins>XML Schema Document</ins>, with translations expressed in the <ins>JSON/XML Schema Definition Language</ins> (JSDx), as well as the <ins>JSON Schema Definition Language</ins> (JSD) itself.
 
@@ -104,33 +113,42 @@ When using the <ins>JSDx</ins> format with the [oXygen XML Editor][oxygenxml], t
 The JSD is comprised of 5 structural abstractions:
 
 <samp>&nbsp;&nbsp;</samp>4.1 [Schema Document][#schema]<br>
-<samp>&nbsp;&nbsp;</samp>4.2 [Value Types][#model]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.1 [`boolean` Value Type][#boolean]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.1.1 [`boolean` Usage][#boolean-usage]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.2 [`number` Value Type][#number]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.2.1 [`number` Usage][#number-usage]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.3 [`string` Value Type][#string]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.3.1 [`string` Usage][#string-usage]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.4 [`object` Value Type][#object]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.4.1 [`object` Property Names][#property-names]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.4.2 [`object` Usage][#object-usage]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.5 [`array` Value Type][#array]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.5.1 [`array` Usage][#array-usage]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.6 [`reference` Value Type][#reference]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.6.1 [`reference` Usage][#reference-usage]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.7 [`any` Value Type][#any]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.7.1 [`any` Usage][#any-usage]<br>
-<samp>&nbsp;&nbsp;</samp>4.3 [Type Declarations][#types]<br>
-<samp>&nbsp;&nbsp;</samp>4.4 [Object Properties][#properties]<br>
-<samp>&nbsp;&nbsp;</samp>4.5 [Array Elements][#elements]
+<samp>&nbsp;&nbsp;</samp>4.2 [Constraint Types][#constraint-types]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.1 [<code>boolean</code>][#boolean]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.2 [<code>number</code>][#number]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.2.1 [<code>number.scale</code>][#number-scale]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.2.2 [<code>number.range</code>][#number-range]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.3 [<code>string</code>][#string]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.3.1 [<code>string.pattern</code>][#string-pattern]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.4 [<code>object</code>][#object]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.4.1 [<code>object.properties</code>][#object-properties]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.4.2 [Property Names][#property-names]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.4.3 [<code>object.abstract</code>][#object-abstract]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.4.4 [<code>object.extends</code>][#object-extends]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.4.4.1 [Type Declarations][#object-type-declarations]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.4.4.2 [Object Properties][#object-object-properties]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.5 [<code>array</code>][#array]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.5.1 [<code>array.elements</code>][#array-array-elements]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.5.2 [<code>array.minIterate</code> and <code>array.maxIterate</code>][#array-iterate]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.6 [<code>reference</code>][#reference]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.6.1 [<code>reference.type</code>][#reference-type]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.6.1.1 [Object Properties][#reference-object-properties]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.6.1.2 [Array Elements][#reference-array-elements]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.7 [<code>any</code>][#any]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.7.1 [<code>any.types</code>][#any-types]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.7.1.1 [Object Properties][#any-object-properties]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.7.1.2 [Array Elements][#any-array-elements]<br>
+<samp>&nbsp;&nbsp;</samp>4.3 [Type Declarations][#type-declarations]<br>
+<samp>&nbsp;&nbsp;</samp>4.4 [Object Properties][#object-properties]<br>
+<samp>&nbsp;&nbsp;</samp>4.5 [Array Elements][#array-elements]
 
-### 4.1 Schema Document
+### <b>4.1</b> Schema Document
 
-The <samp>**schema**</samp> is the root object of the JSD, and contains [type][#types] definitions.
+The <samp>**schema**</samp> is the root object of the JSD, and contains [type][#type-declarations] definitions.
 
 | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Name**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Value**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
 |:-|:-|:-|
-| <samp>( **schema** )</samp><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp; | <samp>jx:ns</samp><br>&nbsp;<br>&nbsp;<br><samp>jx:schemaLocation</samp><br>&nbsp;<br>&nbsp;<br>&nbsp;<br><samp>doc</samp><br><samp>[a-zA-Z_$][-a-zA-Z\\d_$]*</samp><br>&nbsp;<br>&nbsp; | _Namespace of the JSON Schema._ Required.<br>&nbsp;&nbsp;Used by schema processors to determine to which<br>&nbsp;&nbsp;version of the JSON Schema the JSD is written.<br>_Location URL of namespace._ Optional.<br>&nbsp;&nbsp;Specified as: `"%NAMESPACE_URI% %LOCATION_URL%"`<br>&nbsp;&nbsp;Used by schema processors to determine location of<br>&nbsp;&nbsp;schema definition for a namespace.<br>Text comments. Optional.<br>_[Type Declaration][#types]_. Optional.<br>&nbsp;&nbsp;Root object definitions that are referenceable<br>&nbsp;&nbsp;throughout the schema. |
+| <samp>( **schema** )</samp><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp; | <samp>jx:ns</samp><br>&nbsp;<br>&nbsp;<br><samp>jx:schemaLocation</samp><br>&nbsp;<br>&nbsp;<br>&nbsp;<br><samp>doc</samp><br><samp>[a-zA-Z_$][-a-zA-Z\\d_$]*</samp><br>&nbsp;<br>&nbsp; | _Namespace of the JSON Schema._ Required.<br>&nbsp;&nbsp;Used by schema processors to determine to which<br>&nbsp;&nbsp;version of the JSON Schema the JSD is written.<br>_Location URL of namespace._ Optional.<br>&nbsp;&nbsp;Specified as: `"%NAMESPACE_URI% %LOCATION_URL%"`<br>&nbsp;&nbsp;Used by schema processors to determine location of<br>&nbsp;&nbsp;schema definition for a namespace.<br>Text comments. Optional.<br>_[Type Declaration][#type-declarations]_. Optional.<br>&nbsp;&nbsp;Root object definitions that are referenceable<br>&nbsp;&nbsp;throughout the schema. |
 
 1. <ins>Example</ins>: `jsd`
    ```json
@@ -150,677 +168,664 @@ The <samp>**schema**</samp> is the root object of the JSD, and contains [type][#
    </schema>
    ```
 
-### 4.2 Value Types
+### <b>4.2</b> Constraint Types
 
-The <ins>Value Types</ins> define the constraint properties for the five JSON value types: <samp>**boolean**</samp>, <samp>**number**</samp>, <samp>**string**</samp>, <samp>**object**</samp>, and <samp>**array**</samp>. Aditionally, the <ins>JSON Schema Definition Language</ins> defines two meta value types named <samp>**any**</samp> and <samp>**reference**</samp>.
+The <ins>Constraint Types</ins> define the constraint properties for the five JSON value types: <samp>**boolean**</samp>, <samp>**number**</samp>, <samp>**string**</samp>, <samp>**object**</samp>, and <samp>**array**</samp>. Aditionally, the <ins>JSON Schema Definition Language</ins> defines two meta <ins>Constraint Types</ins> named <samp>**any**</samp> and <samp>**reference**</samp>.
 
-The JSD has 3 different scopes where <ins>Value Types</ins> can be defined, which provide different sets of their own constraint properties that apply to all <ins>Value Types</ins>:
+The JSD has 3 different scopes where <ins>Constraint Types</ins> can be defined, which provide different sets of their own constraint properties that apply to all <ins>Constraint Types</ins>:
 
-1. [Type Declarations][#types].
-1. [Object Properties][#properties].
-1. [Array Elements][#elements].
+1. [Type Declarations][#type-declarations].
+1. [Object Properties][#object-properties].
+1. [Array Elements][#array-elements].
 
-Each <ins>Schema Value Type</ins> supports the `doc` attribute.
+Each <ins>Constraint Type</ins> supports the `doc` attribute.
 
 | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Name**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Value**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
 |:-|:-|:-|
 | <samp>( **boolean** \|&nbsp;</samp><br><samp>&nbsp;&nbsp;**number** \|</samp><br><samp>&nbsp;&nbsp;**string** \|</samp><br><samp>&nbsp;&nbsp;**object** \|</samp><br><samp>&nbsp;&nbsp;**array** \|</samp><br><samp>&nbsp;&nbsp;any \|</samp><br><samp>&nbsp;&nbsp;reference )</samp> | <samp>doc</samp><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp; | Text comments. Optional.<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp; |
 
-* <sub>**`JSD`** <samp>(usage for all scopes)</samp></sub>
+* <sub>**`JSD`** (usage for all scopes)</sub>
   ```json
   { "doc": "Comment for this element",
     ...
   }
   ```
 
-* <sub>**`JSDx`** <samp>(usage for all scopes)</samp></sub>
+* <sub>**`JSDx`** (usage for all scopes)</sub>
   ```xml
   <any doc="Comment for this element">
     ...
   </any>
   ```
 
-#### 4.2.1 `boolean` Value Type
+#### <b>4.2.1</b> `boolean`
 
-The <samp>**boolean**</samp> value type is the only value type that lacks validation constraints.
+The <samp>**boolean**</samp> type is used for the boolean values: `true` and `false`.
+
+The <samp>**boolean**</samp> type does not have validation constraints.
 
 | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Name**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Value**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
 |:-|:-|:-|
 | <samp>( **boolean** )</samp> | <samp>jx:type</samp> | <samp>boolean</samp> |
 
-##### 4.2.1.1 `boolean` Usage
+<sub>**`JSD`** (usage for [type declarations][#type-declarations], [object properties][#object-properties], and [array elements][#array-elements])</sub>
+```json
+{ "jx:type": "boolean" }
+```
+<sub>**`JSDx`** (usage for [type declarations][#type-declarations] and [array elements][#array-elements])</sub>
+```xml
+<boolean/>
+```
+<sub>**`JSDx`** (usage for [object properties][#object-properties])</sub>
+```xml
+<property xsi:type="boolean"/>
+```
+| <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
+|-:|-|-|
+| `true` | :white_check_mark: | The value `true`. |
+| `false` | :white_check_mark: | The value `false`. |
+| `TRUE` | :x: | `TRUE` is not a valid **boolean** type. |
+| `FALSE` | :x: | `FALSE` is not a valid **boolean** type. |
+| `0` | :x: | `0` is not a valid **boolean** type. |
+| `1` | :x: | `1` is not a valid **boolean** type. |
+| `"true"` | :x: | Boolean as string. |
 
-The **boolean** type is used for the boolean values: `true` and `false`.
+#### <b>4.2.2</b> `number`
 
-* <ins>Default Usage</ins>
+Used for any numeric type, either integers or floating point numbers.
 
-  * <sub>**`JSD`** <samp>(usage for [type declarations][#types], [object properties][#properties], and [array elements][#elements])</samp></sub>
-    ```json
-    { "jx:type": "boolean" }
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [type declarations][#types] and [array elements][#elements])</samp></sub>
-    ```xml
-    <boolean/>
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [object properties][#properties])</samp></sub>
-    ```xml
-    <property xsi:type="boolean"/>
-    ```
-    | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
-    |-:|-|-|
-    | `true` | :white_check_mark: | The value `true`. |
-    | `false` | :white_check_mark: | The value `false`. |
-    | `TRUE` | :x: | `TRUE` is not a valid **boolean** type. |
-    | `FALSE` | :x: | `FALSE` is not a valid **boolean** type. |
-    | `0` | :x: | `0` is not a valid **boolean** type. |
-    | `1` | :x: | `1` is not a valid **boolean** type. |
-    | `"true"` | :x: | Boolean as string. |
-
-#### 4.2.2 `number` Value Type
-
-The <samp>**number**</samp> value type defines two validation constraints for <samp>**number**</samp> JSON value types: <samp>scale</samp>, and <samp>range</samp>.
+The <samp>**number**</samp> type defines two constraint properties for <samp>**number**</samp> JSON value type: <samp>scale</samp>, and <samp>range</samp>.
 
 | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Name**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Value**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
 |:-|:-|:-|
 | <samp>( **number** )</samp><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp; | <samp>jx:type</samp><br><samp>scale</samp><br>&nbsp;<br>&nbsp;<br><samp>range</samp><br>&nbsp;<br>&nbsp; | <samp>number</samp><br><samp>(0\|1\|2\|...)</samp><br>&nbsp;&nbsp;The number of digits to the right of the decimal point.<br>&nbsp;&nbsp;**If a value is not specified, the scale is unbounded.**<br>_Numerical range_<br>&nbsp;&nbsp;Specifies the minimum and maximum limits in [interval<br>notation][interval-notation]. |
 
-##### 4.2.2.1 `number` Usage
+<sub>**`JSD`** (usage for [type declarations][#type-declarations], [object properties][#object-properties], and [array elements][#array-elements])</sub>
+```json
+{ "jx:type": "number" }
+```
+<sub>**`JSDx`** (usage for [type declarations][#type-declarations] and [array elements][#array-elements])</sub>
+```xml
+<number/>
+```
+<sub>**`JSDx`** (usage for [object properties][#object-properties])</sub>
+```xml
+<property xsi:type="number"/>
+```
+| <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
+|-:|-|-|
+| `5` | :white_check_mark: | Integer. |
+| `-7.12` | :white_check_mark: | Floating point number. |
+| `12.332794E-5` | :white_check_mark: | Exponential notation. |
+| `"7"` | :x: | Number as string. |
 
-The **number** type is used for any numeric type, either integers or floating point numbers.
+##### <b>4.2.2.1</b> `number.scale`
 
-* <ins>Default Usage</ins>
+The `scale` property specifies the maximum number of accepted digits after the decimal point.
 
-  * <sub>**`JSD`** <samp>(usage for [type declarations][#types], [object properties][#properties], and [array elements][#elements])</samp></sub>
-    ```json
-    { "jx:type": "number" }
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [type declarations][#types] and [array elements][#elements])</samp></sub>
-    ```xml
-    <number/>
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [object properties][#properties])</samp></sub>
-    ```xml
-    <property xsi:type="number"/>
-    ```
-    | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
-    |-:|-|-|
-    | `5` | :white_check_mark: | Integer. |
-    | `-7.12` | :white_check_mark: | Floating point number. |
-    | `12.332794E-5` | :white_check_mark: | Exponential notation. |
-    | `"7"` | :x: | Number as string. |
+A `scale` of `3` represents a number with a maximum of 3 digits after the decimal.<br>A `scale` of `0` represents an integer.
 
-* <ins>Constraint: `scale`</ins>
+<sub>**`JSD`** (usage for [type declarations][#type-declarations], [object properties][#object-properties], and [array elements][#array-elements])</sub>
+```json
+{ "jx:type": "number", "scale": 2 }
+```
+<sub>**`JSDx`** (usage for [type declarations][#type-declarations] and [array elements][#array-elements])</sub>
+```xml
+<number scale="2"/>
+```
+<sub>**`JSDx`** (usage for [object properties][#object-properties])</sub>
+```xml
+<property xsi:type="number" scale="2"/>
+```
 
-  The `scale` property specifies the maximum number of accepted digits after the decimal point.
+| <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
+|-:|-|-|
+| `5.12` | :white_check_mark: | Floating point number with 2 digits after the decimal point. |
+| `9.2E-1` | :white_check_mark: | Exponential notation representing a number with 2 digits after the decimal point. |
+| `-0.1` | :white_check_mark: | Floating point number with 1 digit after the decimal point. |
+| `8.123` | :x: | Floating point number with 3 digits after the decimal point. |
+| `8.3-2` | :x: | Exponential notation representing a number with 3 digits after the decimal point. |
+| `"7.65"` | :x: | Number as string. |
 
-  A `scale` of `3` represents a number with a maximum of 3 digits after the decimal.<br>A `scale` of `0` represents an integer.
-  * <sub>**`JSD`** <samp>(usage for [type declarations][#types], [object properties][#properties], and [array elements][#elements])</samp></sub>
-    ```json
-    { "jx:type": "number", "scale": 2 }
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [type declarations][#types] and [array elements][#elements])</samp></sub>
-    ```xml
-    <number scale="2"/>
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [object properties][#properties])</samp></sub>
-    ```xml
-    <property xsi:type="number" scale="2"/>
-    ```
-    | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
-    |-:|-|-|
-    | `5.12` | :white_check_mark: | Floating point number with 2 digits after the decimal point. |
-    | `9.2E-1` | :white_check_mark: | Exponential notation representing a number with 2 digits after the decimal point. |
-    | `-0.1` | :white_check_mark: | Floating point number with 1 digit after the decimal point. |
-    | `8.123` | :x: | Floating point number with 3 digits after the decimal point. |
-    | `8.3-2` | :x: | Exponential notation representing a number with 3 digits after the decimal point. |
-    | `"7.65"` | :x: | Number as string. |
+##### <b>4.2.2.2</b> `number.range`
 
-* <ins>Constraint: `range`</ins>
+The `range` property specifies the numerical range (min and max) of accepted values in [interval notation][interval-notation].
 
-  The `range` property specifies the numerical range (min and max) of accepted values in [interval notation][interval-notation].
+A `range` of `[0,10]` represents a number between `0` (inclusive) and `10` (inclusive).<br>A `range` of `(0,10)` represents a number between `0` (exclusive) and `10` (exclusive).<br>A `range` of `(1.2E1,)` represents a number greater than `1.2E1` (exclusive).<br>A `range` of `(,-9.8]` represents a number less than `9.8` (inclusive).
 
-  A `range` of `[0,10]` represents a number between `0` (inclusive) and `10` (inclusive).<br>A `range` of `(0,10)` represents a number between `0` (exclusive) and `10` (exclusive).<br>A `range` of `(1.2E1,)` represents a number greater than `1.2E1` (exclusive).<br>A `range` of `(,-9.8]` represents a number less than `9.8` (inclusive).
-  * <sub>**`JSD`** <samp>(usage for [type declarations][#types], [object properties][#properties], and [array elements][#elements])</samp></sub>
-    ```json
-    { "jx:type": "number", "range": "[-2,7.5)" }
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [type declarations][#types] and [array elements][#elements])</samp></sub>
-    ```xml
-    <number range="[-2,7.5)"/>
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [object properties][#properties])</samp></sub>
-    ```xml
-    <property xsi:type="number" range="[-2,7.5)"/>
-    ```
-    | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
-    |-:|-|-|
-    | `5.12` | :white_check_mark: | Floating point number between `-2` (inclusive) and `7.5` (exclusive). |
-    | `0.3E1` | :white_check_mark: | Exponential notation representing a number between `-2` (inclusive) and `7.5` (exclusive). |
-    | `-2` | :white_check_mark: | Integer between `-2` (inclusive) and `7.5` (exclusive). |
-    | `7.49999999999` | :white_check_mark: | Floating point number between `-2` (inclusive) and `7.5` (exclusive). |
-    | `-2.0000000001` | :x: | Floating point number less than `-2` (inclusive). |
-    | `7.5` | :x: | Floating point number greater than `7.5` (exclusive). |
-    | `"6.65"` | :x: | Number as string. |
+<sub>**`JSD`** (usage for [type declarations][#type-declarations], [object properties][#object-properties], and [array elements][#array-elements])</sub>
+```json
+{ "jx:type": "number", "range": "[-2,7.5)" }
+```
+<sub>**`JSDx`** (usage for [type declarations][#type-declarations] and [array elements][#array-elements])</sub>
+```xml
+<number range="[-2,7.5)"/>
+```
+<sub>**`JSDx`** (usage for [object properties][#object-properties])</sub>
+```xml
+<property xsi:type="number" range="[-2,7.5)"/>
+```
+| <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
+|-:|-|-|
+| `5.12` | :white_check_mark: | Floating point number between `-2` (inclusive) and `7.5` (exclusive). |
+| `0.3E1` | :white_check_mark: | Exponential notation representing a number between `-2` (inclusive) and `7.5` (exclusive). |
+| `-2` | :white_check_mark: | Integer between `-2` (inclusive) and `7.5` (exclusive). |
+| `7.49999999999` | :white_check_mark: | Floating point number between `-2` (inclusive) and `7.5` (exclusive). |
+| `-2.0000000001` | :x: | Floating point number less than `-2` (inclusive). |
+| `7.5` | :x: | Floating point number greater than `7.5` (exclusive). |
+| `"6.65"` | :x: | Number as string. |
 
-#### 4.2.3 `string` Value Type
+#### <b>4.2.3</b> `string`
 
-The <samp>**string**</samp> value type defines one validation constraint for <samp>**string**</samp> JSON value types: <samp>pattern</samp>.
+The <samp>**string**</samp> type is used for strings of text. It may contain Unicode characters.
+
+The <samp>**string**</samp> type defines one constraint property for <samp>**string**</samp> JSON value type: <samp>pattern</samp>.
 
 | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Name**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Value**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
 |:-|:-|:-|
 | <samp>( **string** )</samp><br>&nbsp;<br>&nbsp; | <samp>jx:type</samp><br><samp>pattern</samp><br>&nbsp; | <samp>string</samp><br>_Regular expression_<br>&nbsp;&nbsp;Specifies the regular expression. |
 
-##### 4.2.3.1 `string` Usage
+<sub>**`JSD`** (usage for [type declarations][#type-declarations], [object properties][#object-properties], and [array elements][#array-elements])</sub>
+```json
+{ "jx:type": "string" }
+```
+<sub>**`JSDx`** (usage for [type declarations][#type-declarations] and [array elements][#array-elements])</sub>
+```xml
+<string/>
+```
+<sub>**`JSDx`** (usage for [object properties][#object-properties])</sub>
+```xml
+<property xsi:type="string"/>
+```
+| <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
+|-:|-|-|
+| `"Déjà vu"` | :white_check_mark: | String with unicode. |
+| `"D\u00e9j\u00e0 vu"` | :white_check_mark: | String with escaped unicode. |
+| `""` | :white_check_mark: | Empty string. |
+| `"42"` | :white_check_mark: | String representing a number. |
+| `42` | :x: | A number. |
 
-The **string** type is used for strings of text. It may contain Unicode characters.
+##### <b>4.2.3.1</b> `string.pattern`
 
-* <ins>Default Usage</ins>
+The `pattern` property is used to restrict a string to a particular regular expression, as defined in JavaScript ([ECMA 262][ecma262]).
 
-  * <sub>**`JSD`** <samp>(usage for [type declarations][#types], [object properties][#properties], and [array elements][#elements])</samp></sub>
-    ```json
-    { "jx:type": "string" }
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [type declarations][#types] and [array elements][#elements])</samp></sub>
-    ```xml
-    <string/>
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [object properties][#properties])</samp></sub>
-    ```xml
-    <property xsi:type="string"/>
-    ```
-    | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
-    |-:|-|-|
-    | `"Déjà vu"` | :white_check_mark: | String with unicode. |
-    | `"D\u00e9j\u00e0 vu"` | :white_check_mark: | String with escaped unicode. |
-    | `""` | :white_check_mark: | Empty string. |
-    | `"42"` | :white_check_mark: | String representing a number. |
-    | `42` | :x: | A number. |
+A `pattern` of `^[a-z]+$` represents a string of one or more lowercase latin characters.<br>A `pattern` of `^.{12}$` represents a string of any 12 characters.<br>A `pattern` of `^(\(\d{3}\) )?\d{3}-\d{4}$` represents a string matching a US phone number.
 
-* <ins>Constraint: `pattern`</ins>
+<sub>**`JSD`** (usage for [type declarations][#type-declarations], [object properties][#object-properties], and [array elements][#array-elements])</sub>
+```json
+{ "jx:type": "string", "pattern": "^(\\(\\d{3}\\) )?\\d{3}-\\d{4}$" }
+```
+<sub>**`JSDx`** (usage for [type declarations][#type-declarations] and [array elements][#array-elements])</sub>
+```xml
+<string pattern="^(\\(\\d{3}\\) )?\\d{3}-\\d{4}$"/>
+```
+<sub>**`JSDx`** (usage for [object properties][#object-properties])</sub>
+```xml
+<property xsi:type="string" pattern="^(\\(\\d{3}\\) )?\\d{3}-\\d{4}$"/>
+```
+| <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
+|-:|-|-|
+| `"(800) 356-9377"` | :white_check_mark: | String with a 10 digit phone number. |
+| `"356-9377"` | :white_check_mark: | String with a 7 digit phone number. |
+| `"(888) 356-9377 ext. 111"` | :x: | Unmatched "ext. 111". |
+| `"(800) FLO-WERS"` | :x: | Phone number with letters. |
+| `""` | :x: | Empty string. |
 
-  The `pattern` property is used to restrict a string to a particular regular expression, as defined in JavaScript ([ECMA 262][ecma262]).
+#### <b>4.2.4</b> `object`
 
-  A `pattern` of `^[a-z]+$` represents a string of one or more lowercase latin characters.<br>A `pattern` of `^.{12}$` represents a string of any 12 characters.<br>A `pattern` of `^(\(\d{3}\) )?\d{3}-\d{4}$` represents a string matching a US phone number.
-  * <sub>**`JSD`** <samp>(usage for [type declarations][#types], [object properties][#properties], and [array elements][#elements])</samp></sub>
-    ```json
-    { "jx:type": "string", "pattern": "^(\\(\\d{3}\\) )?\\d{3}-\\d{4}$" }
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [type declarations][#types] and [array elements][#elements])</samp></sub>
-    ```xml
-    <string pattern="^(\\(\\d{3}\\) )?\\d{3}-\\d{4}$"/>
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [object properties][#properties])</samp></sub>
-    ```xml
-    <property xsi:type="string" pattern="^(\\(\\d{3}\\) )?\\d{3}-\\d{4}$"/>
-    ```
-    | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
-    |-:|-|-|
-    | `"(800) 356-9377"` | :white_check_mark: | String with a 10 digit phone number. |
-    | `"356-9377"` | :white_check_mark: | String with a 7 digit phone number. |
-    | `"(888) 356-9377 ext. 111"` | :x: | Unmatched "ext. 111". |
-    | `"(800) FLO-WERS"` | :x: | Phone number with letters. |
-    | `""` | :x: | Empty string. |
+The <samp>**object**</samp> type is used for mapping "keys" to "values".
 
-#### 4.2.4 `object` Value Type
-
-The <samp>**object**</samp> value type defines three validation constraints for <samp>**object**</samp> JSON value types: <samp>abstract</samp>, <samp>extends</samp>, and named <samp>properties</samp>.
+The <samp>**object**</samp> type defines three constraint properties for <samp>**object**</samp> JSON value type: <samp>abstract</samp>, <samp>extends</samp>, and named <samp>properties</samp>.
 
 | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Name**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Value**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
 |:-|:-|:-|
-| <a name="objecttype"><samp>( **object** )</samp></a><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp; | <samp>jx:type</samp><br><samp>properties</samp><br>&nbsp;<br><samp>abstract</samp><br>&nbsp;<br><samp>extends</samp><br>&nbsp;<br>&nbsp; | <samp>object</samp><br>_[Property declarations][#properties]_<br>&nbsp;&nbsp;Map of object properties.<br><samp>(true\|**false**)</samp><br>&nbsp;&nbsp;Whether the object is not allowed to be instantiated.<br>_Name [<samp>( **object** )</samp> type](#objecttype)_<br>&nbsp;&nbsp;Name of root-level object type declaration specifying<br>&nbsp;&nbsp;object inheritence. |
+| <samp>( **object** )</samp><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp; | <samp>jx:type</samp><br><samp>properties</samp><br>&nbsp;<br><samp>abstract</samp><br>&nbsp;<br><samp>extends</samp><br>&nbsp;<br>&nbsp; | <samp>object</samp><br>_[Property declarations][#object-properties]_<br>&nbsp;&nbsp;Map of object properties.<br><samp>(true\|**false**)</samp><br>&nbsp;&nbsp;Whether the object is not allowed to be instantiated.<br>_Name [<samp>( **object** )</samp> type][#object]_<br>&nbsp;&nbsp;Name of root-level object type declaration specifying<br>&nbsp;&nbsp;object inheritence. |
 
-##### 4.2.4.1 `object` Property Names
+_The default **object** is not very useful, because it has no property mappings._
+
+<sub>**`JSD`** (usage for [type declarations][#type-declarations], [object properties][#object-properties], and [array elements][#array-elements])</sub>
+```json
+{ "jx:type": "object" }
+```
+<sub>**`JSDx`** (usage for [type declarations][#type-declarations] and [array elements][#array-elements])</sub>
+```xml
+<object/>
+```
+<sub>**`JSDx`** (usage for [object properties][#object-properties])</sub>
+```xml
+<property xsi:type="object"/>
+```
+| <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
+|-:|-|-|
+| `{}` | :white_check_mark: | An object without properties. |
+| `{"foo":"bar"}` | :x: | An object with property "foo" mapping to value "bar". |
+
+##### <b>4.2.4.1</b> `object.properties`
+
+The `properties` property specifies a map of accepted properties for the object.
+
+Keys in the `properties` map are considered as regular expressions (for more info, see [Property Names][#property-names]).<br>Values in the `properties` map are objects specifying accepted [constraint types][#object-properties].
+
+<sub>**`JSD`** (usage for [type declarations][#type-declarations], [object properties][#object-properties], and [array elements][#array-elements])</sub>
+```json
+{ "jx:type": "object", "properties": {
+  "foo": { "jx:type": "string", "pattern": "^[a-z]{,3}$", "nullable": true, "use": "optional" } }
+}
+```
+<sub>**`JSDx`** (usage for [type declarations][#type-declarations] and [array elements][#array-elements])</sub>
+```xml
+<object>
+  <property name="foo" xsi:type="string" pattern="^[a-z]{,3}$" nullable="true" use="optional"/>
+</object>
+```
+<sub>**`JSDx`** (usage for [object properties][#object-properties])</sub>
+```xml
+<property xsi:type="object">
+  <property name="foo" xsi:type="string" pattern="^[a-z]{,3}$" nullable="true" use="optional"/>
+</property>
+```
+| <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
+|-:|-|-|
+| `{"foo":"bar"}` | :white_check_mark: | An object with property "foo" mapping to value "bar". |
+| `{"foo":""}` | :white_check_mark: | An object with property "foo" mapping to empty string. |
+| `{}` | :white_check_mark: | An object without properties is ok, because "foo" is optional. |
+| `{"foo":null}` | :white_check_mark: | An object with property "foo" mapping to `null` is ok, because "foo" is nullable. |
+| `{"foo":false}` | :x: | An object with property "foo" mapping to `false`. |
+| `{"other":""}` | :x: | An object with property "other" mapping to empty string. |
+
+##### <b>4.2.4.2</b> Property Names
 
 Names of object properties are considered as regular expressions. If an object declaration defines a property with the name <samp>"[a-z]+"</samp>, it means that this name matches any property whose name is one or more alpha characters. This also means that the name <samp>"foo"</samp> will only match "foo". If an object defines a property with a regular expression name that matches more than 1 string, the object will accept all the matching names (i.e. an object with multiple properties that match a single property definition with a regular expression name will be valid). If, however, there are multiple defined properties with regular expression name patterns that capture the same name, an associated value will be validated against the first matching property definition. The example below shows an <samp>**any**</samp> property that matches all names. Such a definition of an **object** type will match any object, except for `{}` (because at least one <samp>**any**</samp> property is required).
 
-* <sub>**`JSD`** <samp>(usage for [type declarations][#types], [object properties][#properties], and [array elements][#elements])</samp></sub>
-  ```json
-  { "jx:type": "object", "properties": {
-    ".*": { "jx:type": "any" } }
-  }
-  ```
-* <sub>**`JSDx`** <samp>(usage for [type declarations][#types] and [array elements][#elements])</samp></sub>
-  ```xml
-  <object>
-    <property name=".*" xsi:type="any"/>
-  </object>
-  ```
-* <sub>**`JSDx`** <samp>(usage for [object properties][#properties])</samp></sub>
-  ```xml
-  <property xsi:type="object">
-    <property name=".*" xsi:type="any"/>
-  </property>
-  ```
-  | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
-  |-:|-|-|
-  | `{"foo":"bar"}` | :white_check_mark: | Any property is valid. |
-  | `{"foo":"bar","wow":true}` | :white_check_mark: | Any property is valid. |
-  | `{"foo":"bar","wow":true,"cool":42}` | :white_check_mark: | Any property is valid. |
-  | `{}` | :x: | At least one <samp>**any**</samp> property is required. |
+<sub>**`JSD`** (usage for [type declarations][#type-declarations], [object properties][#object-properties], and [array elements][#array-elements])</sub>
+```json
+{ "jx:type": "object", "properties": {
+  ".*": { "jx:type": "any" } }
+}
+```
+<sub>**`JSDx`** (usage for [type declarations][#type-declarations] and [array elements][#array-elements])</sub>
+```xml
+<object>
+  <property name=".*" xsi:type="any"/>
+</object>
+```
+<sub>**`JSDx`** (usage for [object properties][#object-properties])</sub>
+```xml
+<property xsi:type="object">
+  <property name=".*" xsi:type="any"/>
+</property>
+```
+| <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
+|-:|-|-|
+| `{"foo":"bar"}` | :white_check_mark: | Any property is valid. |
+| `{"foo":"bar","wow":true}` | :white_check_mark: | Any property is valid. |
+| `{"foo":"bar","wow":true,"cool":42}` | :white_check_mark: | Any property is valid. |
+| `{}` | :x: | At least one <samp>**any**</samp> property is required. |
 
-##### 4.2.4.2 `object` Usage
+##### <b>4.2.4.3</b> `object.abstract`
 
-The **object** type is used for mapping "keys" to "values".
+The `abstract` property specifies whether the declared object is allowed to represent a value instance.
 
-* <ins>Default Usage</ins>
+If `abstract` is true, a value of the declared type is allowed to exits.<br>If `abstract` is false, the declared type can only be used as a super-type of another object type declaration specifying the `extends` property that links to the name of the abstract type.<br>_**The `abstract` property is only allowed to appear on [type declarations][#type-declarations].**_
 
-  _The default **object** is not very useful, because it has no property mappings._
+<sub>**`JSD`** (usage for [type declarations][#type-declarations])</sub>
+```json
+{ "myAbstractObject":
+    { "jx:type": "object", "abstract": true, "properties": {
+      "foo": { "jx:type": "string", "pattern": "^[a-z]{,3}$", "nullable": true, "use": "optional" } } }
+}
+```
+<sub>**`JSDx`** (usage for [type declarations][#type-declarations])</sub>
+```xml
+<object name="myAbstractObject" abstract="true">
+  <property name="foo" xsi:type="string" pattern="^[a-z]{,3}$" nullable="true" use="optional"/>
+</object>
+```
+| <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
+|-:|-|-|
+| `{"foo":"bar"}` | :x: | Instances of `myAbstractObject` are not allowed.<br>Refer to `extends` property below. |
 
-  * <sub>**`JSD`** <samp>(usage for [type declarations][#types], [object properties][#properties], and [array elements][#elements])</samp></sub>
-    ```json
-    { "jx:type": "object" }
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [type declarations][#types] and [array elements][#elements])</samp></sub>
-    ```xml
-    <object/>
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [object properties][#properties])</samp></sub>
-    ```xml
-    <property xsi:type="object"/>
-    ```
-    | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
-    |-:|-|-|
-    | `{}` | :white_check_mark: | An object without properties. |
-    | `{"foo":"bar"}` | :x: | An object with property "foo" mapping to value "bar". |
+##### <b>4.2.4.4</b> `object.extends`
 
-* <ins>Constraint: `properties`</ins>
+The `extends` property accepts a name of an **object** type declaration, which specifies object inheritence.
 
-  The `properties` property specifies a map of accepted properties for the object.
+The `extends` property can only specify names of **object** [type declarations][#type-declarations].<br>The `extends` property can specify names of **object** [type declarations][#type-declarations] that are `abstract`, or not.
 
-  Keys in the `properties` map are considered as regular expressions (for more info, see [Property Names][#property-names]).<br>Values in the `properties` map are objects specifying accepted [value types][#properties].
-  * <sub>**`JSD`** <samp>(usage for [type declarations][#types], [object properties][#properties], and [array elements][#elements])</samp></sub>
-    ```json
-    { "jx:type": "object", "properties": {
-      "foo": { "jx:type": "string", "pattern": "^[a-z]{,3}$", "nullable": true, "use": "optional" } }
-    }
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [type declarations][#types] and [array elements][#elements])</samp></sub>
-    ```xml
-    <object>
-      <property name="foo" xsi:type="string" pattern="^[a-z]{,3}$" nullable="true" use="optional"/>
-    </object>
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [object properties][#properties])</samp></sub>
-    ```xml
-    <property xsi:type="object">
-      <property name="foo" xsi:type="string" pattern="^[a-z]{,3}$" nullable="true" use="optional"/>
-    </property>
-    ```
-    | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
-    |-:|-|-|
-    | `{"foo":"bar"}` | :white_check_mark: | An object with property "foo" mapping to value "bar". |
-    | `{"foo":""}` | :white_check_mark: | An object with property "foo" mapping to empty string. |
-    | `{}` | :white_check_mark: | An object without properties is ok, because "foo" is optional. |
-    | `{"foo":null}` | :white_check_mark: | An object with property "foo" mapping to `null` is ok, because "foo" is nullable. |
-    | `{"foo":false}` | :x: | An object with property "foo" mapping to `false`. |
-    | `{"other":""}` | :x: | An object with property "other" mapping to empty string. |
+###### <b>4.2.4.4.1</b> Type declarations
 
-* <ins>Constraint: `abstract`</ins>
+<sub>**`JSD`** (usage for [type declarations][#type-declarations])</sub>
+```json
+{ "myAbstractObject":
+    { "jx:type": "object", "abstract": true, "properties": {
+      "foo": { "jx:type": "string", "pattern": "^[a-z]{,3}$", "nullable": true, "use": "optional" } } },
+  "myRealObject":
+    { "jx:type": "object", "extends": "myAbstractObject", "properties": {
+      "thisIsCool": { "jx:type": "boolean", "nullable": false } } }
+}
+```
+<sub>**`JSDx`** (usage for [type declarations][#type-declarations])</sub>
+```xml
+<object name="myAbstractObject" abstract="true">
+  <property name="foo" xsi:type="string" pattern="^[a-z]{,3}$" nullable="true" use="optional"/>
+</object>
+<object name="myRealObject" extends="myAbstractObject">
+  <property name="thisIsCool" xsi:type="boolean" nullable="false"/>
+</object>
+```
+| <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
+|-:|-|-|
+| `{"foo":"bar"}` | :white_check_mark: | An instance of `myRealObject` object with property "foo" mapping to value "bar". |
+| `{"foo":"bar","thisIsCool":true}` | :white_check_mark: | An instance of `myRealObject` object with property "foo" mapping to value "bar", and "thisIsCool" to true. |
+| `{"foo":""}` | :white_check_mark: | An instance of `myRealObject` object with property "foo" mapping to empty string. |
+| `{"thisIsCool":true}` | :white_check_mark: | An instance of `myRealObject` object with property "thisIsCool" mapping to true. |
+| `{"thisIsCool":null}` | :x: | The property "thisIsCool" is not nullable. |
 
-  The `abstract` property specifies whether the declared object is allowed to represent a value instance.
+###### <b>4.2.4.4.2</b> Object Properties
 
-  If `abstract` is true, a value of the declared type is allowed to exits.<br>If `abstract` is false, the declared type can only be used as a super-type of another object type declaration specifying the `extends` property that links to the name of the abstract type.<br>_**The `abstract` property is only allowed to appear on [type declarations][#types].**_
-  * <sub>**`JSD`** <samp>(usage for [type declarations][#types])</samp></sub>
-    ```json
-    { "myAbstractObject":
-        { "jx:type": "object", "abstract": true, "properties": {
-          "foo": { "jx:type": "string", "pattern": "^[a-z]{,3}$", "nullable": true, "use": "optional" } } }
-    }
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [type declarations][#types])</samp></sub>
-    ```xml
-    <object name="myAbstractObject" abstract="true">
-      <property name="foo" xsi:type="string" pattern="^[a-z]{,3}$" nullable="true" use="optional"/>
-    </object>
-    ```
-    | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
-    |-:|-|-|
-    | `{"foo":"bar"}` | :x: | Instances of `myAbstractObject` are not allowed.<br>Refer to `extends` property below. |
-
-* <ins>Constraint: `extends`</ins>
-
-  The `extends` property accepts a name of an **object** type declaration, which specifies object inheritence.
-
-  The `extends` property can only specify names of **object** [type declarations][#types].<br>The `extends` property can specify names of **object** [type declarations][#types] that are `abstract`, or not.
-
-  **Type declarations**
-
-  * <sub>**`JSD`** <samp>(usage for [type declarations][#types])</samp></sub>
-    ```json
-    { "myAbstractObject":
-        { "jx:type": "object", "abstract": true, "properties": {
-          "foo": { "jx:type": "string", "pattern": "^[a-z]{,3}$", "nullable": true, "use": "optional" } } },
+<sub>**`JSD`** <samp>([object properties][#object-properties])</samp></sub>
+```json
+{ "myAbstractObject":
+    { "jx:type": "object", "abstract": true, "properties": {
+      "foo": { "jx:type": "string", "pattern": "^[a-z]{,3}$", "nullable": true, "use": "optional" } } },
+  "rootObject":
+    { "jx:type": "object", "abstract": true, "properties": {
       "myRealObject":
         { "jx:type": "object", "extends": "myAbstractObject", "properties": {
           "thisIsCool": { "jx:type": "boolean", "nullable": false } } }
-    }
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [type declarations][#types])</samp></sub>
-    ```xml
-    <object name="myAbstractObject" abstract="true">
-      <property name="foo" xsi:type="string" pattern="^[a-z]{,3}$" nullable="true" use="optional"/>
-    </object>
-    <object name="myRealObject" extends="myAbstractObject">
-      <property name="thisIsCool" xsi:type="boolean" nullable="false"/>
-    </object>
-    ```
-    | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
-    |-:|-|-|
-    | `{"foo":"bar"}` | :white_check_mark: | An instance of `myRealObject` object with property "foo" mapping to value "bar". |
-    | `{"foo":"bar","thisIsCool":true}` | :white_check_mark: | An instance of `myRealObject` object with property "foo" mapping to value "bar", and "thisIsCool" to true. |
-    | `{"foo":""}` | :white_check_mark: | An instance of `myRealObject` object with property "foo" mapping to empty string. |
-    | `{"thisIsCool":true}` | :white_check_mark: | An instance of `myRealObject` object with property "thisIsCool" mapping to true. |
-    | `{"thisIsCool":null}` | :x: | The property "thisIsCool" is not nullable. |
+}
+```
+<sub>**`JSDx`** (usage for [object properties][#object-properties])</sub>
+```xml
+<object name="myAbstractObject" abstract="true">
+  <property name="foo" xsi:type="string" pattern="^[a-z]{,3}$" nullable="true" use="optional"/>
+</object>
+<object name="rootObject">
+  <property xsi:type="object" extends="myAbstractObject">
+    <property name="thisIsCool" xsi:type="boolean" nullable="false"/>
+  </property>
+</object>
+```
+| <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
+|-:|-|-|
+| `{"myRealObject": {"foo":"bar"}}` | :white_check_mark: | A `rootObject` object with an instance of `myRealObject` object with property "foo" mapping to value "bar". |
+| `{"myRealObject": {"foo":"bar","thisIsCool":true}}` | :white_check_mark: | A `rootObject` object with an instance of `myRealObject` object with property "foo" mapping to value "bar", and "thisIsCool" to true. |
+| `{"myRealObject": {"foo":""}}` | :white_check_mark: | A `rootObject` object with an instance of `myRealObject` object with property "foo" mapping to empty string. |
+| `{"myRealObject": {"thisIsCool":true}}` | :white_check_mark: | A `rootObject` object with an instance of `myRealObject` object with property "thisIsCool" mapping to true. |
+| `{"myRealObject": {"thisIsCool":null}}` | :x: | The property "thisIsCool" is not nullable. |
+| `{"thisIsCool":null}` | :x: | The `rootObject` does not declare the "thisIsCool" property. |
 
-  **Object Properties**
+#### <b>4.2.5</b> `array`
 
-  * <sub>**`JSD`** <samp>([object properties][#properties])</samp></sub>
-    ```json
-    { "myAbstractObject":
-        { "jx:type": "object", "abstract": true, "properties": {
-          "foo": { "jx:type": "string", "pattern": "^[a-z]{,3}$", "nullable": true, "use": "optional" } } },
-      "rootObject":
-        { "jx:type": "object", "abstract": true, "properties": {
-          "myRealObject":
-            { "jx:type": "object", "extends": "myAbstractObject", "properties": {
-              "thisIsCool": { "jx:type": "boolean", "nullable": false } } }
-    }
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [object properties][#properties])</samp></sub>
-    ```xml
-    <object name="myAbstractObject" abstract="true">
-      <property name="foo" xsi:type="string" pattern="^[a-z]{,3}$" nullable="true" use="optional"/>
-    </object>
-    <object name="rootObject">
-      <property xsi:type="object" extends="myAbstractObject">
-        <property name="thisIsCool" xsi:type="boolean" nullable="false"/>
-      </property>
-    </object>
-    ```
-    | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
-    |-:|-|-|
-    | `{"myRealObject": {"foo":"bar"}}` | :white_check_mark: | A `rootObject` object with an instance of `myRealObject` object with property "foo" mapping to value "bar". |
-    | `{"myRealObject": {"foo":"bar","thisIsCool":true}}` | :white_check_mark: | A `rootObject` object with an instance of `myRealObject` object with property "foo" mapping to value "bar", and "thisIsCool" to true. |
-    | `{"myRealObject": {"foo":""}}` | :white_check_mark: | A `rootObject` object with an instance of `myRealObject` object with property "foo" mapping to empty string. |
-    | `{"myRealObject": {"thisIsCool":true}}` | :white_check_mark: | A `rootObject` object with an instance of `myRealObject` object with property "thisIsCool" mapping to true. |
-    | `{"myRealObject": {"thisIsCool":null}}` | :x: | The property "thisIsCool" is not nullable. |
-    | `{"thisIsCool":null}` | :x: | The `rootObject` does not declare the "thisIsCool" property. |
+The <samp>**array**</samp> type is used for ordered member elements.
 
-#### 4.2.5 `array` Value Type
-
-The <samp>**array**</samp> value type defines three validation constraints for <samp>**array**</samp> JSON value types: <samp>minIterate</samp>, <samp>maxIterate</samp>, and member <samp>elements</samp>.
+The <samp>**array**</samp> type defines three constraint properties for <samp>**array**</samp> JSON value type: <samp>minIterate</samp>, <samp>maxIterate</samp>, and member <samp>elements</samp>.
 
 | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Name**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Value**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
 |:-|:-|:-|
-| <a name="arraytype"><samp>( **array** )</samp><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;  | <samp>jx:type</samp><br><samp>elements</samp><br>&nbsp;<br><samp>minIterate</samp><br>&nbsp;<br>&nbsp;<br><samp>maxIterate</samp><br>&nbsp;<br>&nbsp; | <samp>array</samp><br><samp>\[</samp> [Element declaration][#elements]<samp> , ...\]</samp><br>&nbsp;&nbsp;Array of member element declarations.<br><samp>(**1**\|2\|...)</samp><br>&nbsp;&nbsp;Specifies the minimum inclusive number of iterations of<br>&nbsp;&nbsp;child member elements.<br><samp>(**1**\|2\|...\|unbounded)</samp><br>&nbsp;&nbsp;Specifies the maximum inclusive number of iterations of<br>&nbsp;&nbsp;child member elements. |
+| <samp>( **array** )</samp><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;  | <samp>jx:type</samp><br><samp>elements</samp><br>&nbsp;<br><samp>minIterate</samp><br>&nbsp;<br>&nbsp;<br><samp>maxIterate</samp><br>&nbsp;<br>&nbsp; | <samp>array</samp><br><samp>\[</samp> [Element declaration][#array-elements]<samp> , ...\]</samp><br>&nbsp;&nbsp;Array of member element declarations.<br><samp>(**1**\|2\|...)</samp><br>&nbsp;&nbsp;Specifies the minimum inclusive number of iterations of<br>&nbsp;&nbsp;child member elements.<br><samp>(**1**\|2\|...\|unbounded)</samp><br>&nbsp;&nbsp;Specifies the maximum inclusive number of iterations of<br>&nbsp;&nbsp;child member elements. |
 
-##### 4.2.5.1 `array` Usage
+_The default **array** is not very useful, because it has no member elements._
 
-The **array** type is used for ordered member elements.
+<sub>**`JSD`** (usage for [type declarations][#type-declarations], [object properties][#object-properties], and [array elements][#array-elements])</sub>
+```json
+{ "jx:type": "array" }
+```
+<sub>**`JSDx`** (usage for [type declarations][#type-declarations] and [array elements][#array-elements])</sub>
+```xml
+<array/>
+```
+<sub>**`JSDx`** (usage for [object properties][#object-properties])</sub>
+```xml
+<property xsi:type="array"/>
+```
+| <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
+|-:|-|-|
+| `[]` | :white_check_mark: | An array without member elements. |
+| `[null]` | :x: | An array with one `null` element. |
 
-* <ins>Default Usage</ins>
+##### <b>4.2.5.1</b> `array.elements`
 
-  _The default **array** is not very useful, because it has no member elements._
+The `elements` property specifies a list of accepted member elements.
 
-  * <sub>**`JSD`** <samp>(usage for [type declarations][#types], [object properties][#properties], and [array elements][#elements])</samp></sub>
-    ```json
-    { "jx:type": "array" }
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [type declarations][#types] and [array elements][#elements])</samp></sub>
-    ```xml
-    <array/>
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [object properties][#properties])</samp></sub>
-    ```xml
-    <property xsi:type="array"/>
-    ```
-    | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
-    |-:|-|-|
-    | `[]` | :white_check_mark: | An array without member elements. |
-    | `[null]` | :x: | An array with one `null` element. |
+<sub>**`JSD`** (usage for [type declarations][#type-declarations], [object properties][#object-properties], and [array elements][#array-elements])</sub>
+```json
+{ "jx:type": "array", "elements": [
+    { "jx:type": "boolean", "minOccurs": "0", "maxOccurs": "1" },
+    { "jx:type": "string", "minOccurs": "1", "maxOccurs": "2" } ]
+}
+```
+<sub>**`JSDx`** (usage for [type declarations][#type-declarations] and [array elements][#array-elements])</sub>
+```xml
+<array>
+  <boolean minOccurs="0" maxOccurs="1"/>
+  <string minOccurs="1" maxOccurs="2"/>
+</array>
+```
+<sub>**`JSDx`** (usage for [object properties][#object-properties])</sub>
+```xml
+<property xsi:type="array">
+  <boolean minOccurs="0" maxOccurs="1"/>
+  <string minOccurs="1" maxOccurs="2"/>
+</property>
+```
 
-* <ins>Constraint: `elements`</ins>
+| <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
+|-:|-|-|
+| `[true, "hello"]` | :white_check_mark: | An array with one boolean element, and one string element. |
+| `["hello"]` | :white_check_mark: | An array with only one string element, since zero boolean elements is allowed. |
+| `["hello", "world"]` | :white_check_mark: | An array with only two string elements, since zero boolean elements is allowed. |
+| `["hello", "world", "again"]` | :x: | A maximum of 2 string elements is allowed. |
+| `[true, "hello", "world"]` | :white_check_mark: | An array with one boolean element and two string elements. |
+| `[true, false, "hello"]` | :x: | A maximum of 1 boolean elements is allowed. |
+| `[true]` | :x: | A minimum of 1 string elements are required. |
+| `["hello", true]` | :x: | The boolean element must precede the string element. |
+| `[]` | :x: | At least one string element is required. |
 
-  The `elements` property specifies a list of accepted member elements.
+##### <b>4.2.5.2</b> `array.minIterate` and `array.maxIterate`
 
-  * <sub>**`JSD`** <samp>(usage for [type declarations][#types], [object properties][#properties], and [array elements][#elements])</samp></sub>
-    ```json
-    { "jx:type": "array", "elements": [
-        { "jx:type": "boolean", "minOccurs": "0", "maxOccurs": "1" },
-        { "jx:type": "string", "minOccurs": "1", "maxOccurs": "2" } ]
-    }
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [type declarations][#types] and [array elements][#elements])</samp></sub>
-    ```xml
-    <array>
-      <boolean minOccurs="0" maxOccurs="1"/>
-      <string minOccurs="1" maxOccurs="2"/>
-    </array>
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [object properties][#properties])</samp></sub>
-    ```xml
-    <property xsi:type="array">
-      <boolean minOccurs="0" maxOccurs="1"/>
-      <string minOccurs="1" maxOccurs="2"/>
-    </property>
-    ```
-    | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
-    |-:|-|-|
-    | `[true, "hello"]` | :white_check_mark: | An array with one boolean element, and one string element. |
-    | `["hello"]` | :white_check_mark: | An array with only one string element, since zero boolean elements is allowed. |
-    | `["hello", "world"]` | :white_check_mark: | An array with only two string elements, since zero boolean elements is allowed. |
-    | `["hello", "world", "again"]` | :x: | A maximum of 2 string elements is allowed. |
-    | `[true, "hello", "world"]` | :white_check_mark: | An array with one boolean element and two string elements. |
-    | `[true, false, "hello"]` | :x: | A maximum of 1 boolean elements is allowed. |
-    | `[true]` | :x: | A minimum of 1 string elements are required. |
-    | `["hello", true]` | :x: | The boolean element must precede the string element. |
-    | `[]` | :x: | At least one string element is required. |
+The `minIterate` and `maxIterate` properties specify the cardinality of allowed iterations (repetitions) of the member elements.
 
-* <ins>Constraint: `minIterate` and `maxIterate`</ins>
+By default, both `minIterate` and `maxIterate` are `1`, which allows a single iteration of the specified member elements.<br>If `minIterate` is `0`, an empty array is valid regardless of the member elements specified.<br>If `maxIterate` is `n`, the sequence of member elements can repeat `n` times.
 
-  The `minIterate` and `maxIterate` properties specify the cardinality of allowed iterations (repetitions) of the member elements.
+<sub>**`JSD`** (usage for [type declarations][#type-declarations], [object properties][#object-properties], and [array elements][#array-elements])</sub>
+```json
+{ "jx:type": "array", "minIterate": "0", "maxIterate": "2", "elements": [
+    { "jx:type": "boolean", "minOccurs": "0", "maxOccurs": "1" },
+    { "jx:type": "string", "minOccurs": "1", "maxOccurs": "2" } ]
+}
+```
+<sub>**`JSDx`** (usage for [type declarations][#type-declarations] and [array elements][#array-elements])</sub>
+```xml
+<array minIterate="0" maxIterate="2">
+  <boolean minOccurs="0" maxOccurs="1"/>
+  <string minOccurs="1" maxOccurs="2"/>
+</array>
+```
+<sub>**`JSDx`** (usage for [object properties][#object-properties])</sub>
+```xml
+<property xsi:type="array" minIterate="0" maxIterate="2">
+  <boolean minOccurs="0" maxOccurs="1"/>
+  <string minOccurs="1" maxOccurs="2"/>
+</property>
+```
+| <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
+|-:|-|-|
+| `[true, "hello"]` | :white_check_mark: | An array with one boolean element, and one string element. |
+| `["hello"]` | :white_check_mark: | An array with only one string element, since zero boolean elements is allowed. |
+| `["hello", "world"]` | :white_check_mark: | An array with only two string elements, since zero boolean elements is allowed. |
+| `["hello", "world", "again"]` | :white_check_mark: | The 3rd string element satisfies the 2nd iteration. |
+| `["hello", "world", "again", "and", "again"]` | :x: | The 5th string element would require 3 iterations, but `maxIterate` is `2`. |
+| `[true, "hello", "world", true, "and", "again"]` | :white_check_mark: | An array with two full iterations. |
+| `[true, false, "hello"]` | :x: | A maximum of 1 boolean elements is allowed to appear before a required string element. |
+| `[true]` | :x: | A minimum of 1 string elements are required. |
+| `["hello", true, "world"]` | :white_check_mark: | The boolean element and "world" satisfy the 2nd iteration. |
+| `[]` | :white_check_mark: | An empty array is allowed due to `minIterate` set to `0`. |
 
-  By default, both `minIterate` and `maxIterate` are `1`, which allows a single iteration of the specified member elements.<br>If `minIterate` is `0`, an empty array is valid regardless of the member elements specified.<br>If `maxIterate` is `n`, the sequence of member elements can repeat `n` times.
-  * <sub>**`JSD`** <samp>(usage for [type declarations][#types], [object properties][#properties], and [array elements][#elements])</samp></sub>
-    ```json
-    { "jx:type": "array", "minIterate": "0", "maxIterate": "2", "elements": [
-        { "jx:type": "boolean", "minOccurs": "0", "maxOccurs": "1" },
-        { "jx:type": "string", "minOccurs": "1", "maxOccurs": "2" } ]
-    }
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [type declarations][#types] and [array elements][#elements])</samp></sub>
-    ```xml
-    <array minIterate="0" maxIterate="2">
-      <boolean minOccurs="0" maxOccurs="1"/>
-      <string minOccurs="1" maxOccurs="2"/>
-    </array>
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [object properties][#properties])</samp></sub>
-    ```xml
-    <property xsi:type="array" minIterate="0" maxIterate="2">
-      <boolean minOccurs="0" maxOccurs="1"/>
-      <string minOccurs="1" maxOccurs="2"/>
-    </property>
-    ```
-    | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
-    |-:|-|-|
-    | `[true, "hello"]` | :white_check_mark: | An array with one boolean element, and one string element. |
-    | `["hello"]` | :white_check_mark: | An array with only one string element, since zero boolean elements is allowed. |
-    | `["hello", "world"]` | :white_check_mark: | An array with only two string elements, since zero boolean elements is allowed. |
-    | `["hello", "world", "again"]` | :white_check_mark: | The 3rd string element satisfies the 2nd iteration. |
-    | `["hello", "world", "again", "and", "again"]` | :x: | The 5th string element would require 3 iterations, but `maxIterate` is `2`. |
-    | `[true, "hello", "world", true, "and", "again"]` | :white_check_mark: | An array with two full iterations. |
-    | `[true, false, "hello"]` | :x: | A maximum of 1 boolean elements is allowed to appear before a required string element. |
-    | `[true]` | :x: | A minimum of 1 string elements are required. |
-    | `["hello", true, "world"]` | :white_check_mark: | The boolean element and "world" satisfy the 2nd iteration. |
-    | `[]` | :white_check_mark: | An empty array is allowed due to `minIterate` set to `0`. |
+#### <b>4.2.6</b> `reference`
 
-#### 4.2.6 `reference` Value Type
-
-The <samp>**reference**</samp> value type defines one validation constraint: <samp>type</samp>.
+The <samp>**reference**</samp> type defines one validation constraint: <samp>type</samp>.
 
 | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Name**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Value**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
 |:-|:-|:-|
-| <samp>( **reference** )</samp><br>&nbsp;<br>&nbsp; | <samp>jx:type</samp><br><samp>type</samp><br>&nbsp; | <samp>reference</samp><br>_Name of [type declaration][#types]_<br>&nbsp;&nbsp;Name of root-level type declaration to reference. |
+| <samp>( **reference** )</samp><br>&nbsp;<br>&nbsp; | <samp>jx:type</samp><br><samp>type</samp><br>&nbsp; | <samp>reference</samp><br>_Name of [type declaration][#type-declarations]_<br>&nbsp;&nbsp;Name of root-level type declaration to reference. |
 
-##### 4.2.6.1 `reference` Usage
+##### <b>4.2.6.1</b> `reference.type`
 
-* <ins>Constraint: `type`</ins>
+The **reference** type is used to restrict content by specifying a single type declaration reference.<br>
+_The **reference** type is only allowed to appear as an object property or an array member._
 
-  The **reference** type is used to restrict content by specifying a single type declaration reference.<br>
-  _The **reference** type is only allowed to appear as an object property or an array member._
+The `type` property specifies the accepted type declaration.
 
-  The `type` property specifies the accepted type declaration.
+###### <b>4.2.6.1.1</b> Object Properties
 
-  **Object Properties**
+<sub>**`JSD`** (usage for [type declarations][#type-declarations], [object properties][#object-properties], and [array elements][#array-elements])</sub>
+```json
+{ "myNumber": { "jx:type": "number" },
+  "myObject": { "jx:type": "object", "properties": {
+    "numOrStr": { "jx:type": "reference", "type": "myNumber" } } }
+}
+```
+<sub>**`JSDx`** (usage for [object properties][#object-properties])</sub>
+```xml
+<schema>
+  <number name="myNumber"/>
+  <object name="myArray">
+    <property name="numOrStr" xsi:type="reference" type="myNumber"/>
+  </object>
+</schema>
+```
 
-  * <sub>**`JSD`** <samp>(usage for [type declarations][#types], [object properties][#properties], and [array elements][#elements])</samp></sub>
-    ```json
-    { "myNumber": { "jx:type": "number" },
-      "myObject": { "jx:type": "object", "properties": {
-        "numOrStr": { "jx:type": "reference", "type": "myNumber" } } }
-    }
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [object properties][#properties])</samp></sub>
-    ```xml
-    <schema>
-      <number name="myNumber"/>
-      <object name="myArray">
-        <property name="numOrStr" xsi:type="reference" type="myNumber"/>
-      </object>
-    </schema>
-    ```
-    | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
-    |-:|-|-|
-    | `{"numOrStr":5.2}` | :white_check_mark: | A number is allowed. |
-    | `{"numOrStr":"hello"}` | :x: | A string is not allowed. |
-    | `{"numOrStr":false}` | :x: | A boolean is not allowed. |
-    | `{}` | :x: | The `numOrStr` property is required (by default, all properties specify `use=required`). |
+| <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
+|-:|-|-|
+| `{"numOrStr":5.2}` | :white_check_mark: | A number is allowed. |
+| `{"numOrStr":"hello"}` | :x: | A string is not allowed. |
+| `{"numOrStr":false}` | :x: | A boolean is not allowed. |
+| `{}` | :x: | The `numOrStr` property is required (by default, all properties specify `use=required`). |
 
-  **Array Elements**
+###### <b>4.2.6.1.2</b> Array Elements
 
-  * <sub>**`JSD`** <samp>(usage for [type declarations][#types], [object properties][#properties], and [array elements][#elements])</samp></sub>
-    ```json
-    { "myNumber": { "jx:type": "number" },
-      "myString": { "jx:type": "string" },
-      "myArray": { "jx:type": "array", "elements": [
-        { "jx:type": "any", "types": "myNumber myString" } ] }
-    }
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [array elements][#elements])</samp></sub>
-    ```xml
-    <schema>
-      <number name="myNumber"/>
-      <array name="myArray">
-        <reference type="myNumber"/>
-      </string>
-    </schema>
-    ```
-    | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
-    |-:|-|-|
-    | `[5.2]` | :white_check_mark: | A number is allowed. |
-    | `["hello"]` | :x: | A string is not allowed. |
-    | `[false]` | :x: | A boolean is not allowed. |
-    | `[]` | :x: | The `any` element is required (by default, all [array elements][#elements] specify `minOccurs=1`). |
-    | `[5.2,6,4,2]` | :white_check_mark: | Repeating occurrences of **myNumber** are allowed (by default, all [array elements][#elements] specify `maxOccurs=unbounded)`. |
+<sub>**`JSD`** (usage for [type declarations][#type-declarations], [object properties][#object-properties], and [array elements][#array-elements])</sub>
+```json
+{ "myNumber": { "jx:type": "number" },
+  "myArray": { "jx:type": "array", "elements": [
+    { "jx:type": "reference", "type": "myNumber" } ] }
+}
+```
 
-#### 4.2.7 `any` Value Type
+<sub>**`JSDx`** (usage for [array elements][#array-elements])</sub>
+```xml
+<schema>
+  <number name="myNumber"/>
+  <array name="myArray">
+    <reference type="myNumber"/>
+  </string>
+</schema>
+```
 
-The <samp>**any**</samp> value type defines one validation constraint: <samp>types</samp>.
+| <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
+|-:|-|-|
+| `[5.2]` | :white_check_mark: | A number is allowed. |
+| `["hello"]` | :x: | A string is not allowed. |
+| `[false]` | :x: | A boolean is not allowed. |
+| `[]` | :x: | The `any` element is required (by default, all [array elements][#array-elements] specify `minOccurs=1`). |
+| `[5.2,6,4,2]` | :white_check_mark: | Repeating occurrences of **myNumber** are allowed (by default, all [array elements][#array-elements] specify `maxOccurs=unbounded)`. |
+
+#### <b>4.2.7</b> `any`
+
+The <samp>**any**</samp> type is used to restrict content by specifying a list of accepted [type declarations][#type-declarations], or an empty list for wildcard.<br>_The **any** type is only allowed to appear as an object property or an array member._
+
+The <samp>**any**</samp> type defines one validation constraint: <samp>types</samp>.
 
 | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Name**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Value**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
 |:-|:-|:-|
-| <samp>( **any** )</samp><br>&nbsp;<br>&nbsp; | <samp>jx:type</samp><br><samp>types</samp><br>&nbsp; | <samp>any</samp><br><samp>\[</samp> Name of [type declaration][#elements]<samp> , ...\]</samp><br>&nbsp;&nbsp;Array of [type declarations][#types]. |
+| <samp>( **any** )</samp><br>&nbsp;<br>&nbsp; | <samp>jx:type</samp><br><samp>types</samp><br>&nbsp; | <samp>any</samp><br><samp>\[</samp> Name of [type declaration][#array-elements]<samp> , ...\]</samp><br>&nbsp;&nbsp;Array of [type declarations][#type-declarations]. |
 
-##### 4.2.7.1 `any` Usage
+<sub>**`JSD`** (usage for [type declarations][#type-declarations], [object properties][#object-properties], and [array elements][#array-elements])</sub>
+```json
+{ "jx:type": "any" }
+```
+<sub>**`JSDx`** <samp>([array elements][#array-elements])</samp></sub>
+```xml
+<any/>
+```
+<sub>**`JSDx`** (usage for [object properties][#object-properties])</sub>
+```xml
+<property xsi:type="any"/>
+```
 
-The **any** type is used to restrict content by specifying a list of accepted [type declarations][#types], or an empty list for wildcard.<br>_The **any** type is only allowed to appear as an object property or an array member._
+| <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
+|-:|-|-|
+| `true` | :white_check_mark: | Any constraint type is allowed. |
+| `"hello"` | :white_check_mark: | Any constraint type is allowed. |
+| `4.53` | :white_check_mark: | Any constraint type is allowed. |
+| `{"foo":"bar"}` | :white_check_mark: | Any constraint type is allowed. |
+| `[true,"world"]` | :white_check_mark: | Any constraint type is allowed. |
+| `[]` | :white_check_mark: | Any constraint type is allowed. |
 
-* <ins>Default Usage</ins>
+##### <b>4.2.7.1</b> `any.types`
 
-  * <sub>**`JSD`** <samp>(usage for [type declarations][#types], [object properties][#properties], and [array elements][#elements])</samp></sub>
-    ```json
-    { "jx:type": "any" }
-    ```
-  * <sub>**`JSDx`** <samp>([array elements][#elements])</samp></sub>
-    ```xml
-    <any/>
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [object properties][#properties])</samp></sub>
-    ```xml
-    <property xsi:type="any"/>
-    ```
-    | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
-    |-:|-|-|
-    | `true` | :white_check_mark: | Any value type is allowed. |
-    | `"hello"` | :white_check_mark: | Any value type is allowed. |
-    | `4.53` | :white_check_mark: | Any value type is allowed. |
-    | `{"foo":"bar"}` | :white_check_mark: | Any value type is allowed. |
-    | `[true,"world"]` | :white_check_mark: | Any value type is allowed. |
-    | `[]` | :white_check_mark: | Any value type is allowed. |
+The `types` property specifies accepted [type declarations][#type-declarations].
 
-* <ins>Constraint: `types`</ins>
+###### <b>4.2.7.1.1</b> Object Properties
 
-  The `types` property specifies accepted [type declarations][#types].
+<sub>**`JSD`** (usage for [type declarations][#type-declarations], [object properties][#object-properties], and [array elements][#array-elements])</sub>
+```json
+{ "myNumber": { "jx:type": "number" },
+  "myString": { "jx:type": "string" },
+  "myObject": { "jx:type": "object", "properties": {
+    "numOrStr": { "jx:type": "any", "types": "myNumber myString" } } }
+}
+```
+<sub>**`JSDx`** (usage for [object properties][#object-properties])</sub>
+```xml
+<schema>
+  <number name="myNumber"/>
+  <string name="myString"/>
+  <object name="myArray">
+    <property name="numOrStr" xsi:type="any" types="myNumber myArray"/>
+  </object>
+</schema>
+```
+| <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
+|-:|-|-|
+| `{"numOrStr":5.2}` | :white_check_mark: | A number is allowed. |
+| `{"numOrStr":"hello"}` | :white_check_mark: | A string is allowed. |
+| `{"numOrStr":false}` | :x: | A boolean is not allowed. |
+| `{}` | :x: | The `numOrStr` property is required (by default, all properties specify `use=required`). |
 
-  **Object Properties**
+###### <b>4.2.7.1.2</b> Array Elements
 
-  * <sub>**`JSD`** <samp>(usage for [type declarations][#types], [object properties][#properties], and [array elements][#elements])</samp></sub>
-    ```json
-    { "myNumber": { "jx:type": "number" },
-      "myString": { "jx:type": "string" },
-      "myObject": { "jx:type": "object", "properties": {
-        "numOrStr": { "jx:type": "any", "types": "myNumber myString" } } }
-    }
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [object properties][#properties])</samp></sub>
-    ```xml
-    <schema>
-      <number name="myNumber"/>
-      <string name="myString"/>
-      <object name="myArray">
-        <property name="numOrStr" xsi:type="any" types="myNumber myArray"/>
-      </object>
-    </schema>
-    ```
-    | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
-    |-:|-|-|
-    | `{"numOrStr":5.2}` | :white_check_mark: | A number is allowed. |
-    | `{"numOrStr":"hello"}` | :white_check_mark: | A string is allowed. |
-    | `{"numOrStr":false}` | :x: | A boolean is not allowed. |
-    | `{}` | :x: | The `numOrStr` property is required (by default, all properties specify `use=required`). |
+<sub>**`JSD`** (usage for [type declarations][#type-declarations], [object properties][#object-properties], and [array elements][#array-elements])</sub>
+```json
+{ "myNumber": { "jx:type": "number" },
+  "myString": { "jx:type": "string" },
+  "myArray": { "jx:type": "array", "elements": [
+    { "jx:type": "any", "types": "myNumber myString" } ] }
+}
+```
 
-  **Array Elements**
+<sub>**`JSDx`** (usage for [array elements][#array-elements])</sub>
+```xml
+<schema>
+  <number name="myNumber"/>
+  <string name="myString"/>
+  <array name="myArray">
+    <any types="myNumber myArray"/>
+  </string>
+</schema>
+```
 
-  * <sub>**`JSD`** <samp>(usage for [type declarations][#types], [object properties][#properties], and [array elements][#elements])</samp></sub>
-    ```json
-    { "myNumber": { "jx:type": "number" },
-      "myString": { "jx:type": "string" },
-      "myArray": { "jx:type": "array", "elements": [
-        { "jx:type": "any", "types": "myNumber myString" } ] }
-    }
-    ```
-  * <sub>**`JSDx`** <samp>(usage for [array elements][#elements])</samp></sub>
-    ```xml
-    <schema>
-      <number name="myNumber"/>
-      <string name="myString"/>
-      <array name="myArray">
-        <any types="myNumber myArray"/>
-      </string>
-    </schema>
-    ```
-    | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
-    |-:|-|-|
-    | `[5.2]` | :white_check_mark: | A number is allowed. |
-    | `["hello"]` | :white_check_mark: | A string is allowed. |
-    | `[false]` | :x: | A boolean is not allowed. |
-    | `[]` | :x: | The `any` element is required (by default, all [array elements][#elements] specify `minOccurs=1`). |
-    | `["hello",5.2,"world","foo","bar",6,4,2]` | :white_check_mark: | Repeating occurrences of **myNumber** or **myString** are allowed (by default, all [array elements][#elements] specify `maxOccurs=unbounded)`. |
+| <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>Value | Pass | Description<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
+|-:|-|-|
+| `[5.2]` | :white_check_mark: | A number is allowed. |
+| `["hello"]` | :white_check_mark: | A string is allowed. |
+| `[false]` | :x: | A boolean is not allowed. |
+| `[]` | :x: | The `any` element is required (by default, all [array elements][#array-elements] specify `minOccurs=1`). |
+| `["hello",5.2,"world","foo","bar",6,4,2]` | :white_check_mark: | Repeating occurrences of **myNumber** or **myString** are allowed (by default, all [array elements][#array-elements] specify `maxOccurs=unbounded)`. |
 
-### 4.3 Type Declarations
+### <b>4.3</b> Type Declarations
 
-The declarative <samp>**type**</samp> objects are immediate children of the <samp>[**schema**][#schema]</samp> object, and represent type definitions that are referenceable throughout the schema, via `any.types`, `object.extends`, `array.elements.reference`, and `object.properties.reference`. The <samp>**type**</samp> objects inherit constraint properties from <samp>[**model**][#model]</samp> definitions with the following extensions: (Note that the <samp>**any**</samp> and <samp>**reference**</samp> value types are not available as a declarative <samp>**type**s</samp>).
+The declarative <samp>**type**</samp> objects are immediate children of the <samp>[**schema**][#schema]</samp> object, and represent type definitions that are referenceable throughout the schema, via [`any.types`](#4271-anytypes), [`object.extends`](#4244-objectextends), [`array.elements.reference`](#42612-array-elements), and [`object.properties.reference`](#42611-object-properties). The <samp>**type**</samp> objects inherit constraint properties from <samp>[**model**][#constraint-types]</samp> definitions with the following extensions: (Note that the <samp>**any**</samp> and <samp>**reference**</samp> <ins>Constraint Types</ins> are not available as a declarative <samp>**type**s</samp>).
 
 | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Name**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Value**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
 |:-|:-|:-|
@@ -858,9 +863,9 @@ The declarative <samp>**type**</samp> objects are immediate children of the <sam
    </schema>
    ```
 
-### 4.4 Object Properties
+### <b>4.4</b> Object Properties
 
-The <samp>**property**</samp> objects define properties for the declarative objects that belong to an <samp>**[object](#objecttype)**</samp>. The <samp>**property**</samp> objects inherit constraint properties from <samp>[**model**][#model]</samp> definitions with the following extensions:
+The <samp>**property**</samp> objects define properties for the declarative objects that belong to an <samp>**[object][#object]**</samp>. The <samp>**property**</samp> objects inherit constraint properties from <samp>[**model**][#constraint-types]</samp> definitions with the following extensions:
 
 | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Name**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Value**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
 |:-|:-|:-|
@@ -908,9 +913,9 @@ The <samp>**property**</samp> objects define properties for the declarative obje
    </schema>
    ```
 
-### 4.5 Array Elements
+### <b>4.5</b> Array Elements
 
-The <samp>**element**</samp> objects define properties for the declarative objects that belong to an <samp>**[array](#arraytype)**</samp>. The <samp>**element**</samp> objects inherit constraint properties from [value type][#model] definitions with the following extensions:
+The <samp>**element**</samp> objects define properties for the declarative objects that belong to an <samp>**[array][#array]**</samp>. The <samp>**element**</samp> objects inherit constraint properties from [constraint type][#constraint-types] definitions with the following extensions:
 
 | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Name**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Value**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
 |:-|:-|:-|
@@ -954,11 +959,11 @@ The <samp>**element**</samp> objects define properties for the declarative objec
    </schema>
    ```
 
-## 5 Related Resources for JSON Schema
+## <b>5</b> Related Resources for JSON Schema
 
-### 5.1 Schemas for JSON Schema
+### <b>5.1</b> Schemas for JSON Schema
 
-#### 5.1.1 Current
+#### <b>5.1.1</b> Current
 
 * <ins>JSON Schema 0.3</ins> **[Current]**
 
@@ -968,7 +973,7 @@ The <samp>**element**</samp> objects define properties for the declarative objec
 
   * A JSON Schema schema document JSD [schema-0.3.jsd](http://www.jsonx.org/schema-0.3.jsd) for JSON Schema documents.
 
-#### 5.1.2 Obsolete
+#### <b>5.1.2</b> Obsolete
 
 * <ins>JSON Schema 0.2</ins> **[Deprecated]**
 
@@ -986,11 +991,11 @@ The <samp>**element**</samp> objects define properties for the declarative objec
 
   * A JSON Schema schema document JSD ~~schema-0.1.jsd~~ for JSON Schema documents.
 
-### 6 Sample Schemas
+### <b>6</b> Sample Schemas
 
 This section provides sample schemas in both `jsdx` and `jsd` representations.
 
-#### 6.1 `structure.jsdx`
+#### <b>6.1</b> `structure.jsdx`
 
 ```xml
 <schema
@@ -1055,7 +1060,7 @@ This section provides sample schemas in both `jsdx` and `jsd` representations.
 </schema>
 ```
 
-#### 6.2 `structure.jsd`
+#### <b>6.2</b> `structure.jsd`
 
 ```json
 {
@@ -1218,7 +1223,7 @@ This section provides sample schemas in both `jsdx` and `jsd` representations.
 }
 ```
 
-#### 6.3 `datatypes.jsdx`
+#### <b>6.3</b> `datatypes.jsdx`
 
 ```xml
 <schema
@@ -1381,7 +1386,7 @@ This section provides sample schemas in both `jsdx` and `jsd` representations.
 </schema>
 ```
 
-#### 6.4 `datatypes.jsd`
+#### <b>6.4</b> `datatypes.jsd`
 
 ```json
 {
@@ -2049,36 +2054,45 @@ This section provides sample schemas in both `jsdx` and `jsd` representations.
 }
 ```
 
-## 7 Contributing
+## <b>7</b> Contributing
 
 Pull requests are welcome. For major changes, please [open an issue](../../../issues) first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
 
-## 8 License
+## <b>8</b> License
 
 This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details.
 
 [#schema]: #41-schema-document
-[#model]: #42-value-types
-[#boolean]: #421-boolean-value-type
-[#boolean-usage]: #4211-boolean-usage
-[#number]: #422-number-value-type
-[#number-usage]: #4221-number-usage
-[#string]: #423-string-value-type
-[#string-usage]: #4231-string-usage
-[#object]: #424-object-value-type
-[#property-names]: #4241-object-property-names
-[#object-usage]: #4242-object-usage
-[#array]: #425-array-value-type
-[#array-usage]: #4251-array-usage
-[#reference]: #426-reference-value-type
-[#reference-usage]: #4261-reference-usage
-[#any]: #427-any-value-type
-[#any-usage]: #4271-any-usage
-[#types]: #43-type-declarations
-[#properties]: #44-object-properties
-[#elements]: #45-array-elements
+[#constraint-types]: #42-constraint-types
+[#boolean]: #421-boolean
+[#number]: #422-number
+[#number-scale]: #4221-numberscale
+[#number-range]: #4222-numberrange
+[#string]: #423-string
+[#string-pattern]: #4231-stringpattern
+[#object]: #424-object
+[#object-properties]: #4241-objectproperties
+[#property-names]: #4242-property-names
+[#object-abstract]: #4243-objectabstract
+[#object-extends]: #4244-objectextends
+[#object-type-declarations]: #42441-type-declarations
+[#object-object-properties]: #42442-object-properties
+[#array]: #425-array
+[#array-array-elements]: #4251-arrayelements
+[#array-iterate]: #4252-arrayminiterate-and-arraymaxiterate
+[#reference]: #426-reference
+[#reference-type]: #4261-referencetype
+[#reference-object-properties]: #42611-object-properties
+[#reference-array-elements]: #42612-array-elements
+[#any]: #427-any
+[#any-types]: #4271-anytypes
+[#any-object-properties]: #42711-object-properties
+[#any-array-elements]: #42712-array-elements
+[#type-declarations]: #43-type-declarations
+[#object-properties]: #44-object-properties
+[#array-elements]: #45-array-elements
 
 [ecma262]: http://www.ecma-international.org/publications/standards/Ecma-262.htm
 [interval-notation]: https://en.wikipedia.org/wiki/Interval_(mathematics)#Classification_of_intervals
