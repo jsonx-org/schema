@@ -39,8 +39,15 @@ var h = href;
             if (href.endsWith("issues"))
               return '<a href="https://github.com/jsonx-org' + path + '/issues">' + text + '</a>';
 
-            if (href.endsWith("LICENSE.txt"))
-              return '<a href="https://github.com/jsonx-org' + path + '/blob/master/LICENSE.txt">' + text + '</a>';
+            if (href.endsWith("LICENSE.txt")) {
+              var s = path.indexOf('/', 1);
+              if (s !== -1)
+                path = path.substring(0, s) + "/blob/master" + path.substring(s);
+              else
+                path = path + "/blob/master";
+
+              return '<a href="https://github.com/jsonx-org' + path + '/LICENSE.txt">' + text + '</a>';
+            }
 
 var x = i;
 
