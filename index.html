@@ -66,13 +66,17 @@ var x = i;
 
 console.log("[" + x + "] href: \"" + h + "\" -> \"" + href + "\", path: \"" + p + "\" -> \"" + path + "\"");
 
-            if (href.charAt(0) === '#')
-              return '<a href="' + path + '#/?id=_' + href.substring(1) + '">' + text + '</a>';
-
-            if (path === "")
-              path = "/";
+            var s = path.indexOf('/', 1);
+            if (s !== -1)
+              path = path.substring(0, s) + "/#" + path.substring(s);
             else
-              path = path + "#/";
+              path = path + "/#";
+
+            if (href.charAt(0) === '#')
+              return '<a href="' + path + '?id=_' + href.substring(1) + '">' + text + '</a>';
+
+            if (href.charAt(0) !== '/' && !path.endsWith('/'))
+              path += "/";
 
             return '<a href="' + path + href + '">' + text + '</a>';;
           }
