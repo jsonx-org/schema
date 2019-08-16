@@ -17,7 +17,7 @@
 
 ## Abstract
 
-This document specifies the <ins>JSON Schema Definition Language</ins>, which offers allows for the description of the structure and to constrain the contents of JSON documents. The schema language is represented in two different but equally translatable vocabularies: a JSON vocabulary, and an XML vocabulary. The schema language extends the capabilities found in JSON documents.
+This document specifies the <ins>JSON Schema Definition Language</ins>, which allows for the description of the structure and to constrain the contents of JSON documents. The <ins>schema language</ins> is represented in two different but equally translatable vocabularies: a JSON vocabulary, and an XML vocabulary. The <ins>schema language</ins> extends the capabilities found in JSON documents.
 
 ## Table of Contents
 
@@ -153,6 +153,7 @@ The <samp>**schema**</samp> is the root object of the JSD, and contains [type][#
 <!-- tabs:start -->
 
 ###### **JSD**
+
 ```json
 {
   "jx:ns": "http://www.jsonx.org/schema-0.3.jsd",
@@ -162,6 +163,7 @@ The <samp>**schema**</samp> is the root object of the JSD, and contains [type][#
 ```
 
 ###### **JSDx**
+
 ```xml
 <schema
    xmlns="http://www.jsonx.org/schema-0.3.xsd"
