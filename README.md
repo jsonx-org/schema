@@ -1,4 +1,4 @@
-# JSON Schema Definition Language (JSD)
+# JSON Schema Definition Language
 
 > **JSON Schema for the enterprise**
 
@@ -21,12 +21,12 @@ This document specifies the <ins>JSON Schema Definition Language</ins>, which al
 
 ## Table of Contents
 
-<samp>&nbsp;&nbsp;</samp>1 [Introduction](#1-introduction)<br>
+<samp>&nbsp;&nbsp;</samp>1 [<ins>Introduction</ins>](#1-introduction)<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>1.1 [Dependencies on Other Specifications](#11-dependencies-on-other-specifications)<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>1.2 [Conventions Used in This Document](#12-conventions-used-in-this-document)<br>
-<samp>&nbsp;&nbsp;</samp>2 [Purpose](#2-purpose)<br>
-<samp>&nbsp;&nbsp;</samp>3 [Requirements](#3-requirements)<br>
-<samp>&nbsp;&nbsp;</samp>4 [Specification](#4-specification)<br>
+<samp>&nbsp;&nbsp;</samp>2 [<ins>Purpose</ins>](#2-purpose)<br>
+<samp>&nbsp;&nbsp;</samp>3 [<ins>Requirements</ins>](#3-requirements)<br>
+<samp>&nbsp;&nbsp;</samp>4 [<ins>Specification</ins>](#4-specification)<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.1 [Schema Document][#schema]<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2 [Constraint Types][#constraint-types]<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.1 [<code>boolean</code>][#boolean]<br>
@@ -56,19 +56,19 @@ This document specifies the <ins>JSON Schema Definition Language</ins>, which al
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.3 [Type Declarations][#type-declarations]<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.4 [Object Properties][#object-properties]<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.5 [Array Elements][#array-elements]<br>
-<samp>&nbsp;&nbsp;</samp>5 [Related Resources for JSON Schema](#5-related-resources-for-json-schema)<br>
+<samp>&nbsp;&nbsp;</samp>5 [<ins>Related Resources for JSON Schema</ins>](#5-related-resources-for-json-schema)<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>5.1 [Schemas for JSON Schema](#51-schemas-for-json-schema)<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>5.1.1 [Current](#511-current)<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>5.1.2 [Obsolete](#512-obsolete)<br>
-<samp>&nbsp;&nbsp;</samp>6 [Sample Schemas](#6-sample-schemas)<br>
+<samp>&nbsp;&nbsp;</samp>6 [<ins>Sample Schemas</ins>](#6-sample-schemas)<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>6.1 [`structure.jsdx`](#61-structurejsdx)<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>6.2 [`structure.jsd`](#62-structurejsd)<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>6.3 [`datatype.jsdx`](#63-datatypesjsdx)<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>6.4 [`datatype.jsd`](#64-datatypesjsd)<br>
-<samp>&nbsp;&nbsp;</samp>7 [Contributing](#7-contributing)<br>
-<samp>&nbsp;&nbsp;</samp>8 [License](#8-license)
+<samp>&nbsp;&nbsp;</samp>7 [<ins>Contributing</ins>](#7-contributing)<br>
+<samp>&nbsp;&nbsp;</samp>8 [<ins>License</ins>](#8-license)
 
-## <b>1</b> Introduction
+## <b>1</b> <ins>Introduction</ins>
 
 This document sets out the structural part of the <ins>JSON Schema Definition Language</ins>. It also contains a directory of links to these related resources.
 
@@ -84,11 +84,11 @@ The definition of the <ins>JSON Schema Definition Language</ins> depends on the 
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC2119](https://www.ietf.org/rfc/rfc2119.txt).
 
-## <b>2</b> Purpose
+## <b>2</b> <ins>Purpose</ins>
 
 Provide a <ins>schema language</ins> to describe normative contracts between producer and consumer ends of a protocol exchanging JSON documents.
 
-## <b>3</b> Requirements
+## <b>3</b> <ins>Requirements</ins>
 
 1. The <ins>schema language</ins> MUST constrain and document the meaning, usage, constraints and relationships of the constituent parts of a JSON document.
 
@@ -100,7 +100,7 @@ Provide a <ins>schema language</ins> to describe normative contracts between pro
 
 1. The <ins>schema language</ins> MUST be able to describe itself.
 
-## <b>4</b> Specification
+## <b>4</b> <ins>Specification</ins>
 
 The <ins>JSON Schema Definition Language</ins> (JSD) is normatively defined in an <ins>XML Schema Document</ins>, with translations expressed in the <ins>JSON/XML Schema Definition Language</ins> (JSDx), as well as the <ins>JSON Schema Definition Language</ins> (JSD) itself.
 
@@ -193,18 +193,20 @@ Each <ins>Constraint Type</ins> supports the `doc` attribute.
 <!-- tabs:start -->
 
 ###### **JSD**
-  ```json
-  { "doc": "Comment for this element",
-    ...
-  }
-  ```
+
+```json
+{ "doc": "Comment for this element",
+  ...
+}
+```
 
 ###### **JSDx**
-  ```xml
-  <any doc="Comment for this element">
-    ...
-  </any>
-  ```
+
+```xml
+<any doc="Comment for this element">
+  ...
+</any>
+```
 
 <!-- tabs:end -->
 
@@ -316,6 +318,7 @@ Usage for [type declarations][#type-declarations], [object properties][#object-p
 ```json
 { "jx:type": "number", "scale": 2 }
 ```
+
 ###### **JSDx**
 
 Usage for [type declarations][#type-declarations] and [array elements][#array-elements]:
@@ -358,6 +361,7 @@ Usage for [type declarations][#type-declarations], [object properties][#object-p
 ```json
 { "jx:type": "number", "range": "[-2,7.5)" }
 ```
+
 ###### **JSDx**
 
 Usage for [type declarations][#type-declarations] and [array elements][#array-elements]:
@@ -405,6 +409,7 @@ Usage for [type declarations][#type-declarations], [object properties][#object-p
 ```json
 { "jx:type": "string" }
 ```
+
 ###### **JSDx**
 
 Usage for [type declarations][#type-declarations] and [array elements][#array-elements]:
@@ -807,6 +812,7 @@ Usage for [type declarations][#type-declarations], [object properties][#object-p
     { "jx:type": "string", "minOccurs": "1", "maxOccurs": "2" } ]
 }
 ```
+
 ###### **JSDx**
 
 Usage for [type declarations][#type-declarations] and [array elements][#array-elements]:
@@ -861,6 +867,7 @@ Usage for [type declarations][#type-declarations], [object properties][#object-p
     { "jx:type": "string", "minOccurs": "1", "maxOccurs": "2" } ]
 }
 ```
+
 ###### **JSDx**
 
 Usage for [type declarations][#type-declarations] and [array elements][#array-elements]:
@@ -1013,6 +1020,7 @@ Usage for [type declarations][#type-declarations], [object properties][#object-p
 ```json
 { "jx:type": "any" }
 ```
+
 ###### **JSDx**
 
 Usage for [array elements][#array-elements]:
@@ -1060,6 +1068,7 @@ Usage for [type declarations][#type-declarations], [object properties][#object-p
     "numOrStr": { "jx:type": "any", "types": "myNumber myString" } } }
 }
 ```
+
 ###### **JSDx**
 
 Usage for [object properties][#object-properties]:
@@ -1282,7 +1291,7 @@ The <samp>**element**</samp> objects define properties for the declarative objec
 
 <!-- tabs:end -->
 
-## <b>5</b> Related Resources for JSON Schema
+## <b>5</b> <ins>Related Resources for JSON Schema</ins>
 
 ### <b>5.1</b> Schemas for JSON Schema
 
@@ -1314,7 +1323,7 @@ The <samp>**element**</samp> objects define properties for the declarative objec
 
   * A JSON Schema schema document JSD ~~schema-0.1.jsd~~ for JSON Schema documents.
 
-### <b>6</b> Sample Schemas
+### <b>6</b> <ins>Sample Schemas</ins>
 
 This section provides sample schemas in both `jsdx` and `jsd` representations.
 
@@ -2377,13 +2386,13 @@ This section provides sample schemas in both `jsdx` and `jsd` representations.
 }
 ```
 
-## <b>7</b> Contributing
+## <b>7</b> <ins>Contributing</ins>
 
 Pull requests are welcome. For major changes, please [open an issue](../../../issues) first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
 
-## <b>8</b> License
+## <b>8</b> <ins>License</ins>
 
 This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details.
 
