@@ -78,7 +78,7 @@ Any application that consumes well-formed JSON can use the <ins>JSON Schema Defi
 
 ### <b>1.1</b> Dependencies on Other Specifications
 
-The definition of the <ins>JSON Schema Definition Language</ins> depends on the following specifications: [RFC4627][rfc4627] and [XMLSchema][xmlschema].
+The definition of the <ins>JSON Schema Definition Language</ins> depends on the following specifications: [RFC4627<sup>❐</sup>][rfc4627] and [XMLSchema<sup>❐</sup>][xmlschema].
 
 ### <b>1.2</b> Conventions Used in This Document
 
@@ -104,11 +104,11 @@ Provide a <ins>schema language</ins> to describe normative contracts between pro
 
 The <ins>JSON Schema Definition Language</ins> (JSD) is normatively defined in an <ins>XML Schema Document</ins>, with translations expressed in the <ins>JSON/XML Schema Definition Language</ins> (JSDx), as well as the <ins>JSON Schema Definition Language</ins> (JSD) itself.
 
-The <ins>JSDx</ins> format offers XML validation, and using an XML IDE like [oXygen XML Editor][oxygenxml] offers edit-time XML validation, such as:
+The <ins>JSDx</ins> format offers XML validation, and using an XML IDE like [oXygen XML Editor<sup>❐</sup>][oxygenxml] offers edit-time XML validation, such as:
 
 <img src="https://user-images.githubusercontent.com/1258414/61751752-aae93800-ada9-11e9-88b1-65de08f125b5.png" width="75%">
 
-When using the <ins>JSDx</ins> format with the [oXygen XML Editor][oxygenxml], the auto-completion features of the editor will guide you in writing the schema. With the <ins>JSDx</ins> format, the XML editor will also validate keys and keyrefs to ensure that declared types are referenced correctly.
+When using the <ins>JSDx</ins> format with the [oXygen XML Editor<sup>❐</sup>][oxygenxml], the auto-completion features of the editor will guide you in writing the schema. With the <ins>JSDx</ins> format, the XML editor will also validate keys and keyrefs to ensure that declared types are referenced correctly.
 
 The JSD is comprised of 5 structural abstractions:
 
@@ -266,7 +266,7 @@ The <samp>**number**</samp> type defines two constraint properties for <samp>**n
 
 | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Name**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Value**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
 |:-|:-|:-|
-| <samp>( **number** )</samp><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp; | <samp>jx:type</samp><br><samp>scale</samp><br>&nbsp;<br>&nbsp;<br><samp>range</samp><br>&nbsp;<br>&nbsp; | <samp>number</samp><br><samp>(0\|1\|2\|...)</samp><br>&nbsp;&nbsp;The number of digits to the right of the decimal point.<br>&nbsp;&nbsp;**If a value is not specified, the scale is unbounded.**<br>_Numerical range_<br>&nbsp;&nbsp;Specifies the minimum and maximum limits in [interval<br>notation][interval-notation]. |
+| <samp>( **number** )</samp><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp; | <samp>jx:type</samp><br><samp>scale</samp><br>&nbsp;<br>&nbsp;<br><samp>range</samp><br>&nbsp;<br>&nbsp; | <samp>number</samp><br><samp>(0\|1\|2\|...)</samp><br>&nbsp;&nbsp;The number of digits to the right of the decimal point.<br>&nbsp;&nbsp;**If a value is not specified, the scale is unbounded.**<br>_Numerical range_<br>&nbsp;&nbsp;Specifies the minimum and maximum limits in [interval<br>notation<sup>❐</sup>][interval-notation]. |
 
 <!-- tabs:start -->
 
@@ -348,7 +348,7 @@ Usage for [object properties][#object-properties]:
 
 ##### <b>4.2.2.2</b> `number.range`
 
-The `range` property specifies the numerical range (min and max) of accepted values in [interval notation][interval-notation].
+The `range` property specifies the numerical range (min and max) of accepted values in [interval notation<sup>❐</sup>][interval-notation].
 
 A `range` of `[0,10]` represents a number between `0` (inclusive) and `10` (inclusive).<br>A `range` of `(0,10)` represents a number between `0` (exclusive) and `10` (exclusive).<br>A `range` of `(1.2E1,)` represents a number greater than `1.2E1` (exclusive).<br>A `range` of `(,-9.8]` represents a number less than `9.8` (inclusive).
 
@@ -438,7 +438,7 @@ Usage for [object properties][#object-properties]:
 
 ##### <b>4.2.3.1</b> `string.pattern`
 
-The `pattern` property is used to restrict a string to a particular regular expression, as defined in JavaScript ([ECMA 262][ecma262]).
+The `pattern` property is used to restrict a string to a particular regular expression, as defined in JavaScript ([ECMA 262<sup>❐</sup>][ecma262]).
 
 A `pattern` of `^[a-z]+$` represents a string of one or more lowercase latin characters.<br>A `pattern` of `^.{12}$` represents a string of any 12 characters.<br>A `pattern` of `^(\(\d{3}\) )?\d{3}-\d{4}$` represents a string matching a US phone number.
 
