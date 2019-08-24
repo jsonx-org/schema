@@ -13,6 +13,7 @@
 # You should have received a copy of The MIT License (MIT) along with this
 # program. If not, see <http://opensource.org/licenses/MIT/>.
 
+dist: trusty
 language: bash
 before_script:
 - 'wget "https://archive.apache.org/dist/xerces/j/Xerces-J-bin.2.12.0.tar.gz" && tar zxpf Xerces-J-bin.2.12.0.tar.gz'
