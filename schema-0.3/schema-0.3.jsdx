@@ -61,7 +61,7 @@
     <property name="range" xsi:type="string" pattern="[\(\[](-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?([1-9]\d*))?)?,(-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?([1-9]\d*))?)?[\)\]]" nullable="false" use="optional" doc="
       Specifies the value range in interval notation:
       Open (exclusive) interval: (min,max)
-      Closed (inclusive) interal: [min,max]
+      Closed (inclusive) interval: [min,max]
       Half-open or half-closed interval: [min,max)
       Degenerate interval: [val]"/>
     <property name="scale" xsi:type="number" scale="0" nullable="false" use="optional" doc="The number of digits to the right of the decimal point. If a value is not specified, the scale is unbounded."/>

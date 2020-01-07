@@ -83,7 +83,7 @@
       </xs:annotation>
       <xs:simpleType>
         <xs:restriction base="xs:ID">
-          <xs:pattern value="([a-zA-Z]+\d*)+([\.-]?[a-zA-Z]+\d*)*"/>
+          <xs:pattern value="([a-zA-Z]+\d*)+([.-]?[a-zA-Z]+\d*)*"/>
         </xs:restriction>
       </xs:simpleType>
     </xs:attribute>
@@ -171,14 +171,14 @@
             <xs:documentation>
               Specifies the value range in interval notation:
               Open (exclusive) interval: (min,max)
-              Closed (inclusive) interal: [min,max]
+              Closed (inclusive) interval: [min,max]
               Half-open or half-closed interval: [min,max)
               Degenerate interval: [val]
             </xs:documentation>
           </xs:annotation>
           <xs:simpleType>
             <xs:restriction base="xs:string">
-              <xs:pattern value="[\(\[](-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?([1-9]\d*))?)?,(-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?([1-9]\d*))?)?[\)\]]"/>
+              <xs:pattern value="[(\[](-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?([1-9]\d*))?)?,(-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?([1-9]\d*))?)?[)\]]"/>
             </xs:restriction>
           </xs:simpleType>
         </xs:attribute>
