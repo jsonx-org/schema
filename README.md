@@ -3,13 +3,17 @@
 > **JSON Schema for the enterprise**
 
 [![Build Status](https://travis-ci.org/jsonx-org/schema.svg?branch=master)](https://travis-ci.org/jsonx-org/schema)
-[![XSD](https://img.shields.io/badge/schema.xsd-v0.3-blue.svg)](http://jsonx.org/schema-0.3.xsd)
-[![JSDx](https://img.shields.io/badge/schema.jsdx-v0.3-blue.svg)](http://jsonx.org/schema-0.3.jsdx)
-[![JSD](https://img.shields.io/badge/schema.jsd-v0.3-blue.svg)](http://jsonx.org/schema-0.3.jsd)<br>
+[![XSD](https://img.shields.io/badge/schema.xsd-v0.4-blue.svg)](http://jsonx.org/schema-0.4.xsd)
+[![JSDx](https://img.shields.io/badge/schema.jsdx-v0.4-blue.svg)](http://jsonx.org/schema-0.4.jsdx)
+[![JSD](https://img.shields.io/badge/schema.jsd-v0.4-blue.svg)](http://jsonx.org/schema-0.4.jsd)<br>
 [![Build Status](https://img.shields.io/badge/build-passing-orange.svg)](https://travis-ci.org/jsonx-org/schema)
-[![XSD](https://img.shields.io/badge/schema.xsd-v0.2-orange.svg)](http://jsonx.org/schema-0.2.xsd)
-[![JSDx](https://img.shields.io/badge/schema.jsdx-v0.2-orange.svg)](http://jsonx.org/schema-0.2.jsdx)
-[![JSD](https://img.shields.io/badge/schema.jsd-v0.2-orange.svg)](http://jsonx.org/schema-0.2.jsd)<br>
+[![XSD](https://img.shields.io/badge/schema.xsd-v0.3-orange.svg)](http://jsonx.org/schema-0.3.xsd)
+[![JSDx](https://img.shields.io/badge/schema.jsdx-v0.3-orange.svg)](http://jsonx.org/schema-0.3.jsdx)
+[![JSD](https://img.shields.io/badge/schema.jsd-v0.3-orange.svg)](http://jsonx.org/schema-0.3.jsd)<br>
+[![Build Status](https://img.shields.io/badge/build-passing-yellow.svg)](https://travis-ci.org/jsonx-org/schema)
+[![XSD](https://img.shields.io/badge/schema.xsd-v0.2-yellow.svg)](http://jsonx.org/schema-0.2.xsd)
+[![JSDx](https://img.shields.io/badge/schema.jsdx-v0.2-yellow.svg)](http://jsonx.org/schema-0.2.jsdx)
+[![JSD](https://img.shields.io/badge/schema.jsd-v0.2-yellow.svg)](http://jsonx.org/schema-0.2.jsd)<br>
 [![Build Status](https://img.shields.io/badge/build-passing-yellow.svg)](https://travis-ci.org/jsonx-org/schema)
 [![XSD](https://img.shields.io/badge/schema.xsd-v0.1-yellow.svg)](http://jsonx.org/schema-0.1.xsd)
 [![JSDx](https://img.shields.io/badge/schema.jsdx-v0.1-inactive.svg)]()
@@ -56,6 +60,11 @@ This document specifies the <ins>JSON Schema Definition Language</ins>, which al
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.3 [Type Declarations][#type-declarations]<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.4 [Object Properties][#object-properties]<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.5 [Array Elements][#array-elements]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.6 [Language specific bindings][#bindings]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.6.1 [Type Bindings][#type-bindings]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.6.2 [Field Bindings][#field-bindings]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.6.3 [Type/Field Bindings][#type-field-bindings]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.6.4 [Examples](#464-examples)<br>
 <samp>&nbsp;&nbsp;</samp>5 [<ins>Related Resources for JSON Schema</ins>](#5-related-resources-for-json-schema)<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>5.1 [Schemas for JSON Schema](#51-schemas-for-json-schema)<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>5.1.1 [Current](#511-current)<br>
@@ -65,6 +74,8 @@ This document specifies the <ins>JSON Schema Definition Language</ins>, which al
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>6.2 [`structure.jsd`](#62-structurejsd)<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>6.3 [`datatype.jsdx`](#63-datatypesjsdx)<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>6.4 [`datatype.jsd`](#64-datatypesjsd)<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>6.5 [`bindings.jsdx`](#65-bindingsjsdx)<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>6.6 [`bindings.jsd`](#65-bindingsjsd)<br>
 <samp>&nbsp;&nbsp;</samp>7 [<ins>Contributing</ins>](#7-contributing)<br>
 <samp>&nbsp;&nbsp;</samp>8 [<ins>License</ins>](#8-license)
 
@@ -140,7 +151,12 @@ The JSD is comprised of 5 structural abstractions:
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.2.7.1.2 [Array Elements][#any-array-elements]<br>
 <samp>&nbsp;&nbsp;</samp>4.3 [Type Declarations][#type-declarations]<br>
 <samp>&nbsp;&nbsp;</samp>4.4 [Object Properties][#object-properties]<br>
-<samp>&nbsp;&nbsp;</samp>4.5 [Array Elements][#array-elements]
+<samp>&nbsp;&nbsp;</samp>4.5 [Array Elements][#array-elements]<br>
+<samp>&nbsp;&nbsp;</samp>4.6 [Language specific bindings][#bindings]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.6.1 [Type Bindings][#type-bindings]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.6.2 [Field Bindings][#field-bindings]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.6.3 [Type/Field Bindings][#type-field-bindings]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.6.4 [Examples](#464-examples)
 
 ### <b>4.1</b> Schema Document
 
@@ -218,7 +234,7 @@ The <samp>**boolean**</samp> type does not have validation constraints.
 
 | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Name**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Value**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
 |:-|:-|:-|
-| <samp>( **boolean** )</samp> | <samp>jx:type</samp> | <samp>boolean</samp> |
+| <samp>( **boolean** )</samp><br>&nbsp;<br>&nbsp; | <samp>jx:type</samp><br><samp>bindings</samp><br>&nbsp; | <samp>boolean</samp><br>[Bindings declaration][#bindings]<br>&nbsp;&nbsp;Specifies the language specific bindings. |
 
 <!-- tabs:start -->
 
@@ -266,7 +282,7 @@ The <samp>**number**</samp> type defines two constraint properties for <samp>**n
 
 | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Name**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Value**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
 |:-|:-|:-|
-| <samp>( **number** )</samp><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp; | <samp>jx:type</samp><br><samp>scale</samp><br>&nbsp;<br>&nbsp;<br><samp>range</samp><br>&nbsp;<br>&nbsp; | <samp>number</samp><br><samp>(0\|1\|2\|...)</samp><br>&nbsp;&nbsp;The number of digits to the right of the decimal point.<br>&nbsp;&nbsp;**If a value is not specified, the scale is unbounded.**<br>_Numerical range_<br>&nbsp;&nbsp;Specifies the minimum and maximum limits in [interval<br>notation<sup>❐</sup>][interval-notation]. |
+| <samp>( **number** )</samp><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp; | <samp>jx:type</samp><br><samp>scale</samp><br>&nbsp;<br>&nbsp;<br><samp>range</samp><br>&nbsp;<br>&nbsp;<br><samp>bindings</samp><br>&nbsp; | <samp>number</samp><br><samp>(0\|1\|2\|...)</samp><br>&nbsp;&nbsp;The number of digits to the right of the decimal point.<br>&nbsp;&nbsp;**If a value is not specified, the scale is unbounded.**<br>_Numerical range_<br>&nbsp;&nbsp;Specifies the minimum and maximum limits in [interval<br>notation<sup>❐</sup>][interval-notation].<br>[Bindings declaration][#bindings]<br>&nbsp;&nbsp;Specifies the language specific bindings. |
 
 <!-- tabs:start -->
 
@@ -398,7 +414,7 @@ The <samp>**string**</samp> type defines one constraint property for <samp>**str
 
 | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Name**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Value**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
 |:-|:-|:-|
-| <samp>( **string** )</samp><br>&nbsp;<br>&nbsp; | <samp>jx:type</samp><br><samp>pattern</samp><br>&nbsp; | <samp>string</samp><br>_Regular expression_<br>&nbsp;&nbsp;Specifies the regular expression. |
+| <samp>( **string** )</samp><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp; | <samp>jx:type</samp><br><samp>pattern</samp><br>&nbsp;<br><samp>bindings</samp><br>&nbsp; | <samp>string</samp><br>_Regular expression_<br>&nbsp;&nbsp;Specifies the regular expression.<br>[Bindings declaration][#bindings]<br>&nbsp;&nbsp;Specifies the language specific bindings. |
 
 <!-- tabs:start -->
 
@@ -911,7 +927,7 @@ The <samp>**reference**</samp> type defines one validation constraint: <samp>typ
 
 | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Name**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Value**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
 |:-|:-|:-|
-| <samp>( **reference** )</samp><br>&nbsp;<br>&nbsp; | <samp>jx:type</samp><br><samp>type</samp><br>&nbsp; | <samp>reference</samp><br>_Name of [type declaration][#type-declarations]_<br>&nbsp;&nbsp;Name of root-level type declaration to reference. |
+| <samp>( **reference** )</samp><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp; | <samp>jx:type</samp><br><samp>type</samp><br>&nbsp;<br><samp>bindings</samp><br>&nbsp; | <samp>reference</samp><br>_Name of [type declaration][#type-declarations]_<br>&nbsp;&nbsp;Name of root-level type declaration to reference.<br>[Bindings declaration][#bindings]<br>&nbsp;&nbsp;Specifies the language specific bindings. |
 
 ##### <b>4.2.6.1</b> `reference.type`
 
@@ -1291,21 +1307,70 @@ The <samp>**element**</samp> objects define properties for the declarative objec
 
 <!-- tabs:end -->
 
+### <b>4.6</b> Language specific bindings
+
+As of <ins>JSON Schema 0.4</ins>, language specific bindings allow schema document declarations to bind information pertainig to zero or many target languages.
+
+Bindings enable a schema to provide schema processors with information to bridge between JSON and the application layer in a custom way.
+
+The binding information is comprised of five identifiers that belong to a single `binding` element:
+
+| <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Name**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Value**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
+|:-|:-|:-|
+| <samp>( **binding** )</samp><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp; | <samp>**lang**</samp><br>&nbsp;<br><samp>type</samp><br>&nbsp;<br><samp>decode</samp><br>&nbsp;<br>&nbsp;<br><samp>encode</samp><br>&nbsp;<br>&nbsp;<br><samp>field</samp><br>&nbsp; | The language for which the binding is directed.<br>&nbsp;&nbsp;&nbsp;&nbsp;(i.e. "java", "python", "ruby", "custom").<br>The language specific "type" to which the declaration<br>&nbsp;&nbsp;&nbsp;&nbsp;is to be bound.<br>The method, constructor, or executable that consumes JSON<br>&nbsp;&nbsp;&nbsp;&nbsp;and produces an instance of **type** (if **type** is specified),<br>&nbsp;&nbsp;&nbsp;&nbsp;or of the default native type if **type** is not specified).<br>The method, constructor, or executable that consumes an<br>&nbsp;&nbsp;&nbsp;&nbsp;instance of **type** (if **type** is specified), or of the default<br>&nbsp;&nbsp;&nbsp;&nbsp;native type (if **type** is not specified), and produces JSON.<br>The language specific "field" to which the particular<br>&nbsp;&nbsp;&nbsp;&nbsp;declaration is to be bound. |
+
+<sup>_Note: **lang** has been marked in bold to indicate that it is required property._</sup>
+
+There are three types of `binding` objects:
+
+#### <b>4.6.1</b> <ins>Type Bindings</ins>
+
+<ins>Type Bindings</ins> only allow for the specification of **type**, **decode**, and **encode** properties.
+
+These bindings are allowed on [Type Declarations](#43-type-declarations) and [Array Elements](#45-array-elements)
+
+#### <b>4.6.2</b> <ins>Field Bindings</ins>
+
+<ins>Field Bindings</ins> only allow for the specification of a **field** property.
+
+These bindings are allowed on [`reference` Types](#426-reference), and [Object Properties of type `object`, `array`, or `any`](#4241-objectproperties).
+
+#### <b>4.6.3</b> <ins>Type/Field Bindings</ins>
+
+<ins>Type/Field Bindings</ins> only allow for the specification of all properties: **type**, **decode**, **encode**, and **field**.
+
+These bindings are allowed on [Object Properties of type `boolean`, `number`, or `string`](#4241-objectproperties).
+
+#### <b>4.6.4</b> Examples
+
+1. [`datatypes.jsdx`](#63-datatypesjsdx)
+1. [`datatypes.jsd`](#64-datatypesjsd)
+1. [`bindings.jsdx`](#65-bindingsjsdx)
+1. [`bindings.jsd`](#66-bindingsjsd)
+
 ## <b>5</b> <ins>Related Resources for JSON Schema</ins>
 
 ### <b>5.1</b> Schemas for JSON Schema
 
 #### <b>5.1.1</b> Current
 
-* <ins>JSON Schema 0.3</ins> **[Current]**
+* <ins>JSON Schema 0.4</ins> **[Current]**
+
+  * A JSON Schema schema document XSD [schema-0.4.xsd](http://www.jsonx.org/schema-0.4.xsd) for JSON Schema documents. It incorporates an auxiliary XSD, [datatypes-0.9.xsd](http://www.openjax.org/xml/datatypes-0.9.xsd).
+
+  * A JSON Schema schema document JSDx [schema-0.4.jsdx](http://www.jsonx.org/schema-0.4.jsdx) for JSON Schema documents.
+
+  * A JSON Schema schema document JSD [schema-0.4.jsd](http://www.jsonx.org/schema-0.4.jsd) for JSON Schema documents.
+
+#### <b>5.1.2</b> Obsolete
+
+* <ins>JSON Schema 0.3</ins> **[Deprecated]**
 
   * A JSON Schema schema document XSD [schema-0.3.xsd](http://www.jsonx.org/schema-0.3.xsd) for JSON Schema documents. It incorporates an auxiliary XSD, [datatypes-0.9.xsd](http://www.openjax.org/xml/datatypes-0.9.xsd).
 
   * A JSON Schema schema document JSDx [schema-0.3.jsdx](http://www.jsonx.org/schema-0.3.jsdx) for JSON Schema documents.
 
   * A JSON Schema schema document JSD [schema-0.3.jsd](http://www.jsonx.org/schema-0.3.jsd) for JSON Schema documents.
-
-#### <b>5.1.2</b> Obsolete
 
 * <ins>JSON Schema 0.2</ins> **[Deprecated]**
 
@@ -1559,161 +1624,234 @@ This section provides sample schemas in both `jsdx` and `jsd` representations.
 
 ```xml
 <schema
-  xmlns="http://www.jsonx.org/schema-0.3.xsd"
+  doc="Schema intended to express full variability of type declarations"
+  xmlns="http://www.jsonx.org/schema-0.4.xsd"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.jsonx.org/schema-0.3.xsd http://www.jsonx.org/schema.xsd">
-  <array name="arrayArr">
-    <reference type="arrayBool" maxOccurs="1"/>
-    <reference type="arrayNum" maxOccurs="1"/>
-    <reference type="arrayObj" maxOccurs="1"/>
-    <reference type="arrayObj" maxOccurs="1"/>
-    <reference type="arrayStr" maxOccurs="1"/>
-    <reference type="arrayStr" maxOccurs="1"/>
-    <any types="bool num" minOccurs="0" maxOccurs="1"/>
-    <any maxOccurs="1"/>
+  xsi:schemaLocation="http://www.jsonx.org/schema-0.4.xsd http://www.jsonx.org/schema.xsd">
+  <array name="arrayArr" doc="Array of arrays">
+    <reference type="arrayBool" maxOccurs="1" doc="Reference to array of booleans"/>
+    <reference type="arrayNum" maxOccurs="1" doc="Reference to array of numbers"/>
+    <reference type="arrayObj" maxOccurs="1" doc="Reference to array of objects"/>
+    <reference type="arrayObj" maxOccurs="1" doc="Another reference to array of objects"/>
+    <reference type="arrayStr" maxOccurs="1" doc="Reference to array of strings"/>
+    <reference type="arrayStr" maxOccurs="1" doc="Another reference to array of strings"/>
+    <any types="defaultDecimal StringDecimal defaultBoolean StringBoolean" minOccurs="0" maxOccurs="1" nullable="false" doc="Any of defaultDecimal, StringDecimal, defaultBoolean, or StringBoolean type"/>
   </array>
-  <array name="arrayBool">
-    <reference type="bool" minOccurs="1" maxOccurs="1"/>
-    <reference type="bool" minOccurs="0" maxOccurs="1" nullable="false"/>
+  <array name="arrayBool" doc="Array of booleans">
+    <any maxOccurs="1" nullable="false" doc="Any type"/>
+    <reference type="primitiveBoolean" minOccurs="1" maxOccurs="1" nullable="false" doc="Not-nullable reference to primitiveBoolean"/>
+    <reference type="defaultBoolean" minOccurs="1" maxOccurs="1" doc="Reference to defaultBoolean"/>
   </array>
-  <array name="arrayNum">
-    <reference type="num" minOccurs="1" maxOccurs="1"/>
-    <reference type="num" minOccurs="0" maxOccurs="1" nullable="false"/>
-    <reference type="numInt" minOccurs="1" maxOccurs="1"/>
-    <reference type="numInt" minOccurs="0" maxOccurs="1" nullable="false"/>
-    <reference type="numIntRange1" minOccurs="1" maxOccurs="1"/>
-    <reference type="numIntRange1" minOccurs="0" maxOccurs="1" nullable="false"/>
-    <reference type="numIntRange2" minOccurs="1" maxOccurs="1"/>
-    <reference type="numIntRange2" minOccurs="0" maxOccurs="1" nullable="false"/>
-    <reference type="numRange1" minOccurs="1" maxOccurs="1"/>
-    <reference type="numRange1" minOccurs="0" maxOccurs="1" nullable="false"/>
-    <reference type="numRange2" minOccurs="1" maxOccurs="1"/>
-    <reference type="numRange2" minOccurs="0" maxOccurs="1" nullable="false"/>
+  <array name="arrayNum" doc="Array of numbers">
+    <any minOccurs="1" maxOccurs="1" nullable="false" doc="Any type"/>
+    <reference type="defaultDecimal" minOccurs="1" maxOccurs="1" doc="Reference to defaultDecimal"/>
+    <reference type="byte" minOccurs="1" maxOccurs="1" nullable="false" doc="Reference to byte"/>
+    <reference type="StringDecimal" minOccurs="1" maxOccurs="1" doc="Reference to StringDecimal"/>
+    <reference type="numRange" minOccurs="1" maxOccurs="1" nullable="false" doc="Reference to numRange"/>
+    <reference type="cachedInteger" minOccurs="1" maxOccurs="1" doc="Reference to num"/>
+    <reference type="plainDecimal" minOccurs="1" maxOccurs="1" nullable="false" doc="Reference to plainDecimal"/>
+    <reference type="cachedPlainDecimal" minOccurs="1" maxOccurs="1" doc="Reference to plainDecimalRange"/>
+    <reference type="byte" minOccurs="1" maxOccurs="1" nullable="false" doc="Reference to byte"/>
+    <reference type="numRange" minOccurs="1" maxOccurs="1" nullable="false" doc="Reference to numRange"/>
+    <reference type="cachedInteger" minOccurs="1" maxOccurs="1" doc="Reference to cachedInteger"/>
+    <reference type="defaultDecimalRange2" minOccurs="0" maxOccurs="1" doc="Reference to plainDecimalRange"/>
   </array>
-  <array name="arrayObj">
-    <reference type="objArr" maxOccurs="1"/>
-    <reference type="objBool" maxOccurs="1"/>
-    <reference type="objNum" maxOccurs="1"/>
-    <reference type="objObj" maxOccurs="1"/>
-    <reference type="objStr" maxOccurs="1"/>
+  <array name="arrayObj" doc="Array of object references">
+    <reference type="objArr" maxOccurs="1" doc="Reference to objArr"/>
+    <reference type="objBool" maxOccurs="1" doc="Reference to objBool"/>
+    <reference type="objNum" maxOccurs="1" doc="Reference to objNum"/>
+    <reference type="objObj" maxOccurs="1" doc="Reference to objObj"/>
+    <reference type="objStr" maxOccurs="1" doc="Reference to objStr"/>
   </array>
-  <array name="arrayStr">
-    <reference type="str" minOccurs="1" maxOccurs="1"/>
-    <reference type="str" minOccurs="0" maxOccurs="1" nullable="false"/>
-    <reference type="strDec" minOccurs="1" maxOccurs="1"/>
-    <reference type="strDec" minOccurs="0" maxOccurs="1" nullable="false"/>
-    <reference type="strDecEnc" minOccurs="1" maxOccurs="1"/>
-    <reference type="strDecEnc" minOccurs="0" maxOccurs="1" nullable="false"/>
-    <reference type="strEnc" minOccurs="1" maxOccurs="1"/>
-    <reference type="strEnc" minOccurs="0" maxOccurs="1" nullable="false"/>
-    <reference type="strPattern" minOccurs="1" maxOccurs="1"/>
-    <reference type="strPattern" minOccurs="0" maxOccurs="1" nullable="false"/>
-    <reference type="strPatternDec" minOccurs="1" maxOccurs="1"/>
-    <reference type="strPatternDec" minOccurs="0" maxOccurs="1" nullable="false"/>
-    <reference type="strPatternDecEnc" minOccurs="1" maxOccurs="1"/>
-    <reference type="strPatternDecEnc" minOccurs="0" maxOccurs="1" nullable="false"/>
-    <reference type="strPatternEnc" minOccurs="1" maxOccurs="1"/>
-    <reference type="strPatternEnc" minOccurs="0" maxOccurs="1" nullable="false"/>
+  <array name="arrayStr" doc="Array of string references">
+    <any types="byte primitiveBoolean" maxOccurs="1" nullable="false" doc="Any type with primitive byte and boolean"/>
+    <reference type="defaultString" maxOccurs="1" doc="Reference to defaultString"/>
+    <reference type="charArray" maxOccurs="1" nullable="false" doc="Not-nullable reference to charArray"/>
+    <reference type="uuid" maxOccurs="1" doc="Reference to uuid"/>
+    <reference type="uuid" maxOccurs="1" nullable="false" doc="Not-nullable to uuid"/>
+    <reference type="url" maxOccurs="1" doc="Reference to url"/>
+    <reference type="url" maxOccurs="1" nullable="false" doc="Not-nullable to url"/>
+    <reference type="StringBigDecimal" maxOccurs="1" doc="Reference to StringBigDecimal"/>
+    <reference type="StringBigDecimal" maxOccurs="1" nullable="false" doc="Not-nullable to StringBigDecimal"/>
+    <reference type="nonEmptyString" maxOccurs="1" doc="Reference to nonEmptyString"/>
+    <reference type="nonEmptyString" minOccurs="2" maxOccurs="3" nullable="false" doc="Not-nullable to nonEmptyString"/>
   </array>
-  <boolean name="bool"/>
-  <number name="num"/>
-  <number name="numInt" scale="0"/>
-  <number name="numIntRange1" scale="0" range="[1,]"/>
-  <number name="numIntRange2" scale="0" range="[,4]"/>
-  <number name="numRange1" range="[1,]"/>
-  <number name="numRange2" range="[,4]"/>
-  <string name="str"/>
-  <string name="strDec"/>
-  <string name="strDecEnc"/>
-  <string name="strEnc"/>
-  <string name="strPattern" pattern="[a-z]+"/>
-  <string name="strPatternDec" pattern="[%0-9a-z]+"/>
-  <string name="strPatternDecEnc" pattern="[%0-9a-z]+"/>
-  <string name="strPatternEnc" pattern="[%0-9a-z]+"/>
-  <object name="objArr">
-    <property names=".*" xsi:type="any" nullable="false"/>
-    <property name="arrayBool" xsi:type="reference" type="arrayBool"/>
-    <property name="arrayBoolOptional" xsi:type="reference" type="arrayBool" use="optional"/>
-    <property name="arrayBoolOptionalNotNullable" xsi:type="reference" type="arrayBool" use="optional" nullable="false"/>
-    <property name="arrayNum" xsi:type="reference" type="arrayNum"/>
-    <property name="arrayNumOptional" xsi:type="reference" type="arrayNum" use="optional"/>
-    <property name="arrayNumOptionalNotNullable" xsi:type="reference" type="arrayNum" use="optional" nullable="false"/>
-    <property name="arrayStr" xsi:type="reference" type="arrayStr"/>
-    <property name="arrayStrOptional" xsi:type="reference" type="arrayStr" use="optional"/>
-    <property name="arrayStrOptionalNotNullable" xsi:type="reference" type="arrayStr" use="optional" nullable="false"/>
-    <property names="anyNumStr" types="num str" xsi:type="any" use="optional"/>
+  <boolean name="defaultBoolean" doc="Default boolean"/>
+  <boolean name="primitiveBoolean" doc="Primitive boolean">
+    <binding lang="java" type="boolean" encode="java.lang.String.valueOf"/>
+  </boolean>
+  <boolean name="StringBoolean">
+    <binding lang="java" type="java.lang.String" decode="java.lang.String.valueOf"/>
+  </boolean>
+  <number name="defaultDecimal" doc="Default decimal type"/>
+  <number name="defaultInteger" scale="0" doc="Default integer type"/>
+  <number name="byte" scale="0" range="[-64,63]" doc="Primitive byte type">
+    <binding lang="java" type="byte"/>
+  </number>
+  <number name="Short" scale="0" range="[-16384,16383]" doc="Short number type">
+    <binding lang="java" type="java.lang.Short"/>
+  </number>
+  <number name="StringDecimal">
+    <binding lang="java" type="java.lang.CharSequence"/>
+  </number>
+  <number name="numRange" range="[1e10,]" doc="Template for number type with range"/>
+  <number name="cachedInteger" scale="0" range="[1,]" doc="Template for integer number type with range">
+    <binding lang="java" decode="org.libj.math.BigIntegers.of"/>
+  </number>
+  <number name="plainDecimal" scale="2" doc="Template cached BigDecimal">
+    <binding lang="java" encode="this.toPlainString"/>
+  </number>
+  <number name="cachedPlainDecimal" scale="3" range="[-2.222e-12,]" doc="First template for real number type with range">
+    <binding lang="java" decode="org.libj.math.BigDecimals.of" encode="this.toPlainString"/>
+  </number>
+  <number name="defaultDecimalRange2" scale="3" range="[-2.222e-12,]" doc="Second template for real number type with range"/>
+
+  <string name="defaultString" doc="Default string type"/>
+  <string name="charArray" doc="char[] type">
+    <binding lang="java" type="char[]" decode="org.libj.lang.Characters.valueOf" encode="java.lang.String.&lt;init&gt;"/>
+  </string>
+  <string name="uuid" pattern="[0-9]{8}-[a-f]{4}-[0-9]{4}-[a-f]{4}-[0-9]{12}" doc="UUID pattern with UUID type">
+    <binding lang="java" type="java.util.UUID" decode="org.libj.lang.Strings.toUuidOrNull"/>
+  </string>
+  <string name="url" pattern="((https?|ftp)://jsonx.org/[\w\d:#@%/;$()~_?'\+-=\\\.&amp;]+)" doc="URL pattern with URL type">
+    <binding lang="java" type="java.net.URL" decode="java.net.URL.&lt;init&gt;"/>
+  </string>
+  <string name="StringBigDecimal" pattern="\d+(\.\d+)?([eE][+-]?\d{1,5})?" doc="An integer with BigDecimal type represented as a string">
+    <binding lang="java" type="java.math.BigDecimal" decode="java.math.BigDecimal.&lt;init&gt;"/>
+  </string>
+  <string name="nonEmptyString" pattern="(\S)|(\S.*\S)" doc="Non-empty string"/>
+  <object name="objTest" doc="Object with array references">
+    <property names="anyNumStr" xsi:type="any" types="defaultDecimal charArray" use="optional" doc="Optional property named anyNumStr of type 'defaultDecimal' or 'charArray'"/>
   </object>
-  <object name="objBool">
-    <property name="bo+l" xsi:type="reference" type="bool" nullable="false"/>
-    <property names=".*" xsi:type="any" types="bool num"/>
-    <property name="bo+lOptional" xsi:type="reference" type="bool" use="optional"/>
-    <property name="boolOptionalNotNullable" xsi:type="reference" type="bool" use="optional" nullable="false"/>
+  <object name="objArr" doc="Object with array references">
+    <property names=".*" xsi:type="any" nullable="false" doc="Property accepting any name and any type">
+      <binding lang="java" field="any1"/>
+    </property>
+    <property name="arrayBool" xsi:type="reference" type="arrayBool" doc="Property with bool array">
+      <binding lang="java" field="ab"/>
+    </property>
+    <property name="arrayBoolOptional" xsi:type="reference" type="arrayBool" use="optional" doc="Optional property with bool array">
+      <binding lang="java" field="abO"/>
+    </property>
+    <property name="arrayBoolOptionalNotNullable" xsi:type="reference" type="arrayBool" use="optional" nullable="false" doc="Optional, not-nullable property with bool array">
+      <binding lang="java" field="abONN"/>
+    </property>
+    <property name="arrayNum" xsi:type="reference" type="arrayNum" doc="Property with num array">
+      <binding lang="java" field="an"/>
+    </property>
+    <property name="arrayNumOptional" xsi:type="reference" type="arrayNum" use="optional" doc="Optional property with num array">
+      <binding lang="java" field="anO"/>
+    </property>
+    <property name="arrayNumOptionalNotNullable" xsi:type="reference" type="arrayNum" use="optional" nullable="false" doc="Optional, not-nullable property with num array">
+      <binding lang="java" field="anONN"/>
+    </property>
+    <property name="arrayStr" xsi:type="reference" type="arrayStr" doc="Property with str array">
+      <binding lang="java" field="as"/>
+    </property>
+    <property name="arrayStrOptional" xsi:type="reference" type="arrayStr" use="optional" doc="Optional property with str array">
+      <binding lang="java" field="asO"/>
+    </property>
+    <property name="arrayStrOptionalNotNullable" xsi:type="reference" type="arrayStr" use="optional" nullable="false" doc="Optional, not-nullable property with str array">
+      <binding lang="java" field="asONN"/>
+    </property>
+    <property names="anyNumStr" xsi:type="any" types="defaultDecimal charArray" use="optional" doc="Optional property named anyNumStr of type 'defaultDecimal' or 'charArray'">
+      <binding lang="java" field="any2"/>
+    </property>
   </object>
-  <object name="objNum">
-    <property name="num.+" xsi:type="reference" type="num"/>
-    <property name="numOptional" xsi:type="reference" type="num" use="optional"/>
-    <property name="numOptionalNotNullable" xsi:type="reference" type="num" use="optional" nullable="false"/>
-    <property name="numInt" xsi:type="reference" type="numInt"/>
-    <property names="any" xsi:type="any" types="num str" nullable="false"/>
-    <property name="numIntOptional" xsi:type="reference" type="numInt" use="optional"/>
-    <property name="numIntOptionalNotNullable" xsi:type="reference" type="numInt" use="optional" nullable="false"/>
-    <property name="numIntRange1" xsi:type="reference" type="numIntRange1"/>
-    <property name="numIntRange1Optional" xsi:type="reference" type="numIntRange1" use="optional"/>
-    <property name="numIntRange1OptionalNotNullable" xsi:type="reference" type="numIntRange1" use="optional" nullable="false"/>
-    <property name="numIntRange2" xsi:type="reference" type="numIntRange2"/>
-    <property name="numIntRange2Optional" xsi:type="reference" type="numIntRange2" use="optional"/>
-    <property name="numIntRange2OptionalNotNullable" xsi:type="reference" type="numIntRange2" use="optional" nullable="false"/>
-    <property name="numRange1" xsi:type="reference" type="numRange1"/>
-    <property name="numRange1Optional" xsi:type="reference" type="numRange1" use="optional"/>
-    <property name="numRange1OptionalNotNullable" xsi:type="reference" type="numRange1" use="optional" nullable="false"/>
-    <property name="numRange2" xsi:type="reference" type="numRange2"/>
-    <property name="numRange2Optional" xsi:type="reference" type="numRange2" use="optional"/>
-    <property name="numRange2OptionalNotNullable" xsi:type="reference" type="numRange2" use="optional" nullable="false"/>
+  <object name="objBool" doc="Object with boolean properties">
+    <property name="bo+l" xsi:type="reference" type="primitiveBoolean" nullable="false" doc="Not-nullable property with name matching a regex of type primitiveBoolean">
+      <binding lang="java" field="bool1"/>
+    </property>
+    <property names=".*" xsi:type="any" types="primitiveBoolean defaultDecimal" nullable="false" doc="Not-nullable property of any name and of type 'primitiveBoolean' or 'defaultDecimal'">
+      <binding lang="java" field="any"/>
+    </property>
+    <property name="bo+lOptional" xsi:type="reference" type="StringBoolean" use="optional" doc="Optional property with name matching a regex of type StringBoolean">
+      <binding lang="java" field="bool2"/>
+    </property>
+    <property name="boolOptionalNotNullable" xsi:type="reference" type="defaultBoolean" use="optional" nullable="false" doc="Not-nullable, optional property with name matching a regex of type defaultBoolean">
+      <binding lang="java" field="bool3"/>
+    </property>
   </object>
-  <object name="objObj">
-    <property name="objOptional" xsi:type="reference" type="objBool" use="optional"/>
-    <property name="objOptionalNotNullable" xsi:type="reference" type="objNum" use="optional" nullable="false"/>
-    <property name="objExtends1" xsi:type="object" extends="objObj" use="optional">
-      <property name="objExtends2" xsi:type="object" extends="objObj" use="optional">
-        <property name="objExtends3" xsi:type="object" extends="objObj" use="optional">
-          <property name="objExtends4" xsi:type="object" extends="objObj" use="optional">
-            <property name="num" xsi:type="reference" type="num" use="optional"/>
+  <object name="objNum" doc="Object with number properties">
+    <property name="num.+" xsi:type="reference" type="defaultDecimal" doc="Property with name matching a regex of type defaultDecimal">
+      <binding lang="java" field="regexNum"/>
+    </property>
+    <property name="numRequired" xsi:type="reference" type="defaultDecimal" doc="Required property for defaultDecimal type"/>
+    <property name="numOptional" xsi:type="reference" type="defaultDecimal" use="optional" doc="Optional property for defaultDecimal type"/>
+    <property name="numRequiredNotNullable" xsi:type="reference" type="defaultDecimal" nullable="false" doc="Required and not-nullable property for defaultDecimal type"/>
+    <property name="numOptionalNotNullable" xsi:type="reference" type="defaultDecimal" use="optional" nullable="false" doc="Optional and not-nullable property for defaultDecimal type"/>
+    <property names="any" xsi:type="any" types="defaultDecimal charArray" nullable="false" doc="Property named 'any' of type 'defaultDecimal or 'charArray'"/>
+    <property name="numIntRequired" xsi:type="reference" type="Short" doc="Required property referencing type byte"/>
+    <property name="numIntOptional" xsi:type="reference" type="StringDecimal" use="optional" doc="Optional property referencing type StringDecimal"/>
+    <property name="numIntRequiredNotNullable" xsi:type="reference" type="byte" nullable="false" doc="Required, not-nullable property referencing type byte"/>
+    <property name="numIntOptionalNotNullable" xsi:type="reference" type="defaultInteger" use="optional" nullable="false" doc="Optional, not-nullable property referencing type defaultInteger"/>
+    <property name="numRangeRequired" xsi:type="reference" type="numRange" doc="Required property referencing type numRange"/>
+    <property name="numRangeOptional" xsi:type="reference" type="numRange" use="optional" doc="Optional property referencing type numRange"/>
+    <property name="numRangeRequiredNotNullable" xsi:type="reference" type="numRange" nullable="false" doc="Required, not-nullable property referencing type numRange"/>
+    <property name="numRangeOptionalNotNullable" xsi:type="reference" type="numRange" use="optional" nullable="false" doc="Optional, not-nullable property referencing type numRange"/>
+    <property name="cachedIntegerRequired" xsi:type="reference" type="cachedInteger" doc="Required property referencing type cachedInteger"/>
+    <property name="cachedIntegerOptional" xsi:type="reference" type="cachedInteger" use="optional" doc="Optional property referencing type cachedInteger"/>
+    <property name="cachedIntegerRequiredNotNullable" xsi:type="reference" type="cachedInteger" nullable="false" doc="Required, not-nullable property referencing type cachedInteger"/>
+    <property name="cachedIntegerOptionalNotNullable" xsi:type="reference" type="cachedInteger" use="optional" nullable="false" doc="Optional, not-nullable property referencing type cachedInteger"/>
+    <property name="plainDecimalRequired" xsi:type="reference" type="plainDecimal" doc="Required property referencing type plainDecimal"/>
+    <property name="plainDecimalOptional" xsi:type="reference" type="plainDecimal" use="optional" doc="Optional property referencing type plainDecimal"/>
+    <property name="plainDecimalRequiredNotNullable" xsi:type="reference" type="plainDecimal" nullable="false" doc="Required, not-nullable property referencing type plainDecimal"/>
+    <property name="plainDecimalOptionalNotNullable" xsi:type="reference" type="plainDecimal" use="optional" nullable="false" doc="Optional, not-nullable property referencing type plainDecimal"/>
+    <property name="plainDecimalRangeRequired" xsi:type="reference" type="cachedPlainDecimal" doc="Required property referencing type cachedPlainDecimal"/>
+    <property name="plainDecimalRangeOptional" xsi:type="reference" type="defaultDecimalRange2" use="optional" doc="Optional property referencing type defaultDecimalRange2"/>
+    <property name="plainDecimalRangeRequiredNotNullable" xsi:type="reference" type="defaultDecimalRange2" nullable="false" doc="Required, not-nullable property referencing type defaultDecimalRange2"/>
+    <property name="plainDecimalRangeOptionalNotNullable" xsi:type="reference" type="cachedPlainDecimal" use="optional" nullable="false" doc="Optional, not-nullable property referencing type cachedPlainDecimal"/>
+  </object>
+  <object name="objObj" doc="Object of objects">
+    <property name="objOptional" xsi:type="reference" type="objBool" use="optional" doc="Optional reference to objBool">
+      <binding lang="java" field="obj1"/>
+    </property>
+    <property name="objOptionalNotNullable" xsi:type="reference" type="objNum" use="optional" nullable="false" doc="Optional, not-nullable reference to objNum">
+      <binding lang="java" field="obj2"/>
+    </property>
+    <property name="objExtends1" xsi:type="object" extends="objObj" use="optional" doc="Nested definition of optional object extending objObj">
+      <property name="objExtends2" xsi:type="object" extends="objObj" use="optional" doc="Further nested definition of optional object extending objObj">
+        <property name="objExtends3" xsi:type="object" extends="objObj" use="optional" doc="Further more nested definition of optional object extending objObj">
+          <property name="objExtends4" xsi:type="object" extends="objObj" use="optional" doc="And yet further more nested definition of optional object extending objObj">
+            <property name="defaultDecimal" xsi:type="reference" type="defaultDecimal" use="optional" doc="Optional property named 'defaultDecimal' of type 'defaultDecimal'">
+              <binding lang="java" field="objX"/>
+            </property>
+            <binding lang="java" field="objX"/>
           </property>
         </property>
+        <binding lang="java" field="objX"/>
       </property>
+      <binding lang="java" field="obj3"/>
     </property>
-    <property name="objExtendsOptional" xsi:type="object" extends="objBool" use="optional">
-      <property name="num" xsi:type="reference" type="num"/>
+    <property name="objExtendsOptional" xsi:type="object" extends="objBool" use="optional" doc="Optional property of nested object definition extending objBool">
+      <property name="defaultString" xsi:type="reference" type="defaultString" doc="Optional property named 'defaultString' of type 'defaultString'"/>
+      <property name="charArray" xsi:type="reference" type="charArray" doc="Optional property named 'charArray' of type 'charArray'"/>
+      <binding lang="java" field="obj4"/>
     </property>
     <property name="objExtendsOptionalNotNullable" xsi:type="object" extends="objBool" use="optional" nullable="false">
-      <property name="num" xsi:type="reference" type="num"/>
+      <property name="arrayBool" xsi:type="reference" type="arrayBool" doc="Optional property named 'arrayBool' of type 'arrayBool'"/>
+      <binding lang="java" field="obj5"/>
     </property>
   </object>
-  <object name="objStr">
-    <property name="str" xsi:type="reference" type="str"/>
-    <property name="strOptional" xsi:type="reference" type="str" use="optional"/>
-    <property name="strOptionalNotNullable" xsi:type="reference" type="str" use="optional" nullable="false"/>
-    <property name="strDec" xsi:type="reference" type="strDec"/>
-    <property name="strDecOptional" xsi:type="reference" type="strDec" use="optional"/>
-    <property name="strDecOptionalNotNullable" xsi:type="reference" type="strDec" use="optional" nullable="false"/>
-    <property name="strDecEnc" xsi:type="reference" type="strDecEnc"/>
-    <property name="strDecEncOptional" xsi:type="reference" type="strDecEnc" use="optional"/>
-    <property name="strDecEncOptionalNotNullable" xsi:type="reference" type="strDecEnc" use="optional" nullable="false"/>
-    <property name="strEnc" xsi:type="reference" type="strEnc"/>
-    <property name="strEncOptional" xsi:type="reference" type="strEnc" use="optional"/>
-    <property name="strEncOptionalNotNullable" xsi:type="reference" type="strEnc" use="optional" nullable="false"/>
-    <property name="strPattern" xsi:type="reference" type="strPattern"/>
-    <property name="strPatternOptional" xsi:type="reference" type="strPattern" use="optional"/>
-    <property name="strPatternOptionalNotNullable" xsi:type="reference" type="strPattern" use="optional" nullable="false"/>
-    <property name="strPatternDec" xsi:type="reference" type="strPatternDec"/>
-    <property name="strPatternDecOptional" xsi:type="reference" type="strPatternDec" use="optional"/>
-    <property name="strPatternDecOptionalNotNullable" xsi:type="reference" type="strPatternDec" use="optional" nullable="false"/>
-    <property name="strPatternDecEnc" xsi:type="reference" type="strPatternDecEnc"/>
-    <property name="strPatternDecEncOptional" xsi:type="reference" type="strPatternDecEnc" use="optional"/>
-    <property name="strPatternDecEncOptionalNotNullable" xsi:type="reference" type="strPatternDecEnc" use="optional" nullable="false"/>
-    <property name="strPatternEnc" xsi:type="reference" type="strPatternEnc"/>
-    <property name="strPatternEncOptional" xsi:type="reference" type="strPatternEnc" use="optional"/>
-    <property name="strPatternEncOptionalNotNullable" xsi:type="reference" type="strPatternEnc" use="optional" nullable="false"/>
+  <object name="objStr" doc="Object definition with properties of string types">
+    <property name="defaultString" xsi:type="reference" type="defaultString" doc="Property referencing 'defaultString' type"/>
+    <property name="defaultStringOptional" xsi:type="reference" type="defaultString" use="optional" doc="Optional property referencing 'defaultString' type"/>
+    <property name="defaultStringOptionalNotNullable" xsi:type="reference" type="defaultString" use="optional" nullable="false" doc="Optional, not-nullable property referencing 'defaultString' type"/>
+    <property name="charArray" xsi:type="reference" type="charArray" doc="Property referencing 'charArray' type"/>
+    <property name="charArrayOptional" xsi:type="reference" type="charArray" use="optional" doc="Optional property referencing 'charArray' type"/>
+    <property name="charArrayOptionalNotNullable" xsi:type="reference" type="charArray" use="optional" nullable="false" doc="Optional, not-nullable property referencing 'charArray' type"/>
+    <property name="uuid" xsi:type="reference" type="uuid" doc="Property referencing 'uuid' type"/>
+    <property name="uuidOptional" xsi:type="reference" type="uuid" use="optional" doc="Optional property referencing 'uuid' type"/>
+    <property name="uuidOptionalNotNullable" xsi:type="reference" type="uuid" use="optional" nullable="false" doc="Optional, not-nullable property referencing 'uuid' type"/>
+    <property name="url" xsi:type="reference" type="url" doc="Property referencing 'url' type"/>
+    <property name="urlOptional" xsi:type="reference" type="url" use="optional" doc="Optional property referencing 'url' type"/>
+    <property name="urlOptionalNotNullable" xsi:type="reference" type="url" use="optional" nullable="false" doc="Optional, not-nullable property referencing 'url' type"/>
+    <property name="StringBigDecimal" xsi:type="reference" type="StringBigDecimal" doc="Property referencing 'StringBigDecimal' type"/>
+    <property name="StringBigDecimalOptional" xsi:type="reference" type="StringBigDecimal" use="optional" doc="Optional property referencing 'StringBigDecimal' type"/>
+    <property name="StringBigDecimalOptionalNotNullable" xsi:type="reference" type="StringBigDecimal" use="optional" nullable="false" doc="Optional, not-nullable property referencing 'StringBigDecimal' type"/>
+    <property name="nonEmptyString" xsi:type="reference" type="nonEmptyString" doc="Property referencing 'nonEmptyString' type"/>
+    <property name="nonEmptyStringOptional" xsi:type="reference" type="nonEmptyString" use="optional" doc="Optional property referencing 'nonEmptyString' type"/>
+    <property name="nonEmptyStringOptionalNotNullable" xsi:type="reference" type="nonEmptyString" use="optional" nullable="false" doc="Optional, not-nullable property referencing 'nonEmptyString' type"/>
   </object>
 </schema>
 ```
@@ -1722,508 +1860,796 @@ This section provides sample schemas in both `jsdx` and `jsd` representations.
 
 ```json
 {
-  "jx:ns": "http://www.jsonx.org/schema-0.3.jsd",
-  "jx:schemaLocation": "http://www.jsonx.org/schema-0.3.jsd http://www.jsonx.org/schema.jsd",
+  "doc": "Schema intended to express full variability of type declarations",
+  "jx:ns": "http://www.jsonx.org/schema-0.4.jsd",
+  "jx:schemaLocation": "http://www.jsonx.org/schema-0.4.jsd http://www.jsonx.org/schema-0.4.jsd",
   "arrayArr": {
     "jx:type": "array",
+    "doc": "Array of arrays",
     "elements": [{
       "jx:type": "reference",
+      "type": "arrayBool",
       "maxOccurs": "1",
-      "type": "arrayBool"
+      "doc": "Reference to array of booleans"
     }, {
       "jx:type": "reference",
+      "type": "arrayNum",
       "maxOccurs": "1",
-      "type": "arrayNum"
+      "doc": "Reference to array of numbers"
     }, {
       "jx:type": "reference",
+      "type": "arrayObj",
       "maxOccurs": "1",
-      "type": "arrayObj"
+      "doc": "Reference to array of objects"
     }, {
       "jx:type": "reference",
+      "type": "arrayObj",
       "maxOccurs": "1",
-      "type": "arrayObj"
+      "doc": "Another reference to array of objects"
     }, {
       "jx:type": "reference",
+      "type": "arrayStr",
       "maxOccurs": "1",
-      "type": "arrayStr"
+      "doc": "Reference to array of strings"
     }, {
       "jx:type": "reference",
+      "type": "arrayStr",
       "maxOccurs": "1",
-      "type": "arrayStr"
+      "doc": "Another reference to array of strings"
     }, {
       "jx:type": "any",
-      "maxOccurs": "1",
+      "types": "defaultDecimal StringDecimal defaultBoolean StringBoolean",
       "minOccurs": "0",
-      "types": "bool num"
-    }, {
-      "jx:type": "any",
-      "maxOccurs": "1"
+      "maxOccurs": "1",
+      "nullable": false,
+      "doc": "Any of defaultDecimal, StringDecimal, defaultBoolean, or StringBoolean type"
     }]
   },
   "arrayBool": {
     "jx:type": "array",
+    "doc": "Array of booleans",
     "elements": [{
-      "jx:type": "reference",
-      "maxOccurs": "1",
-      "type": "bool"
-    }, {
-      "jx:type": "reference",
-      "minOccurs": "0",
+      "jx:type": "any",
       "maxOccurs": "1",
       "nullable": false,
-      "type": "bool"
+      "doc": "Any type"
+    }, {
+      "jx:type": "reference",
+      "type": "primitiveBoolean",
+      "maxOccurs": "1",
+      "nullable": false,
+      "doc": "Not-nullable reference to primitiveBoolean"
+    }, {
+      "jx:type": "reference",
+      "type": "defaultBoolean",
+      "maxOccurs": "1",
+      "doc": "Reference to defaultBoolean"
     }]
   },
   "arrayNum": {
     "jx:type": "array",
+    "doc": "Array of numbers",
     "elements": [{
-      "jx:type": "reference",
-      "maxOccurs": "1",
-      "type": "num"
-    }, {
-      "jx:type": "reference",
-      "minOccurs": "0",
+      "jx:type": "any",
       "maxOccurs": "1",
       "nullable": false,
-      "type": "num"
+      "doc": "Any type"
     }, {
       "jx:type": "reference",
+      "type": "defaultDecimal",
       "maxOccurs": "1",
-      "type": "numInt"
+      "doc": "Reference to defaultDecimal"
     }, {
       "jx:type": "reference",
-      "minOccurs": "0",
-      "maxOccurs": "1",
-      "nullable": false,
-      "type": "numInt"
-    }, {
-      "jx:type": "reference",
-      "maxOccurs": "1",
-      "type": "numIntRange1"
-    }, {
-      "jx:type": "reference",
-      "minOccurs": "0",
+      "type": "byte",
       "maxOccurs": "1",
       "nullable": false,
-      "type": "numIntRange1"
+      "doc": "Reference to byte"
     }, {
       "jx:type": "reference",
+      "type": "StringDecimal",
       "maxOccurs": "1",
-      "type": "numIntRange2"
+      "doc": "Reference to StringDecimal"
     }, {
       "jx:type": "reference",
-      "minOccurs": "0",
-      "maxOccurs": "1",
-      "nullable": false,
-      "type": "numIntRange2"
-    }, {
-      "jx:type": "reference",
-      "maxOccurs": "1",
-      "type": "numRange1"
-    }, {
-      "jx:type": "reference",
-      "minOccurs": "0",
+      "type": "numRange",
       "maxOccurs": "1",
       "nullable": false,
-      "type": "numRange1"
+      "doc": "Reference to numRange"
     }, {
       "jx:type": "reference",
+      "type": "cachedInteger",
       "maxOccurs": "1",
-      "type": "numRange2"
+      "doc": "Reference to num"
     }, {
       "jx:type": "reference",
-      "minOccurs": "0",
+      "type": "plainDecimal",
       "maxOccurs": "1",
       "nullable": false,
-      "type": "numRange2"
+      "doc": "Reference to plainDecimal"
+    }, {
+      "jx:type": "reference",
+      "type": "cachedPlainDecimal",
+      "maxOccurs": "1",
+      "doc": "Reference to plainDecimalRange"
+    }, {
+      "jx:type": "reference",
+      "type": "byte",
+      "maxOccurs": "1",
+      "nullable": false,
+      "doc": "Reference to byte"
+    }, {
+      "jx:type": "reference",
+      "type": "numRange",
+      "maxOccurs": "1",
+      "nullable": false,
+      "doc": "Reference to numRange"
+    }, {
+      "jx:type": "reference",
+      "type": "cachedInteger",
+      "maxOccurs": "1",
+      "doc": "Reference to cachedInteger"
+    }, {
+      "jx:type": "reference",
+      "type": "defaultDecimalRange2",
+      "minOccurs": "0",
+      "maxOccurs": "1",
+      "doc": "Reference to plainDecimalRange"
     }]
   },
   "arrayObj": {
     "jx:type": "array",
+    "doc": "Array of object references",
     "elements": [{
       "jx:type": "reference",
+      "type": "objArr",
       "maxOccurs": "1",
-      "type": "objArr"
+      "doc": "Reference to objArr"
     }, {
       "jx:type": "reference",
+      "type": "objBool",
       "maxOccurs": "1",
-      "type": "objBool"
+      "doc": "Reference to objBool"
     }, {
       "jx:type": "reference",
+      "type": "objNum",
       "maxOccurs": "1",
-      "type": "objNum"
+      "doc": "Reference to objNum"
     }, {
       "jx:type": "reference",
+      "type": "objObj",
       "maxOccurs": "1",
-      "type": "objObj"
+      "doc": "Reference to objObj"
     }, {
       "jx:type": "reference",
+      "type": "objStr",
       "maxOccurs": "1",
-      "type": "objStr"
+      "doc": "Reference to objStr"
     }]
   },
   "arrayStr": {
     "jx:type": "array",
+    "doc": "Array of string references",
     "elements": [{
-      "jx:type": "reference",
-      "maxOccurs": "1",
-      "type": "str"
-    }, {
-      "jx:type": "reference",
-      "minOccurs": "0",
+      "jx:type": "any",
+      "types": "byte primitiveBoolean",
       "maxOccurs": "1",
       "nullable": false,
-      "type": "str"
+      "doc": "Any type with primitive byte and boolean"
     }, {
       "jx:type": "reference",
+      "type": "defaultString",
       "maxOccurs": "1",
-      "type": "strDec"
+      "doc": "Reference to defaultString"
     }, {
       "jx:type": "reference",
-      "minOccurs": "0",
-      "maxOccurs": "1",
-      "nullable": false,
-      "type": "strDec"
-    }, {
-      "jx:type": "reference",
-      "maxOccurs": "1",
-      "type": "strDecEnc"
-    }, {
-      "jx:type": "reference",
-      "minOccurs": "0",
+      "type": "charArray",
       "maxOccurs": "1",
       "nullable": false,
-      "type": "strDecEnc"
+      "doc": "Not-nullable reference to charArray"
     }, {
       "jx:type": "reference",
+      "type": "uuid",
       "maxOccurs": "1",
-      "type": "strEnc"
+      "doc": "Reference to uuid"
     }, {
       "jx:type": "reference",
-      "minOccurs": "0",
-      "maxOccurs": "1",
-      "nullable": false,
-      "type": "strEnc"
-    }, {
-      "jx:type": "reference",
-      "maxOccurs": "1",
-      "type": "strPattern"
-    }, {
-      "jx:type": "reference",
-      "minOccurs": "0",
+      "type": "uuid",
       "maxOccurs": "1",
       "nullable": false,
-      "type": "strPattern"
+      "doc": "Not-nullable to uuid"
     }, {
       "jx:type": "reference",
+      "type": "url",
       "maxOccurs": "1",
-      "type": "strPatternDec"
+      "doc": "Reference to url"
     }, {
       "jx:type": "reference",
-      "minOccurs": "0",
-      "maxOccurs": "1",
-      "nullable": false,
-      "type": "strPatternDec"
-    }, {
-      "jx:type": "reference",
-      "maxOccurs": "1",
-      "type": "strPatternDecEnc"
-    }, {
-      "jx:type": "reference",
-      "minOccurs": "0",
+      "type": "url",
       "maxOccurs": "1",
       "nullable": false,
-      "type": "strPatternDecEnc"
+      "doc": "Not-nullable to url"
     }, {
       "jx:type": "reference",
+      "type": "StringBigDecimal",
       "maxOccurs": "1",
-      "type": "strPatternEnc"
+      "doc": "Reference to StringBigDecimal"
     }, {
       "jx:type": "reference",
-      "minOccurs": "0",
+      "type": "StringBigDecimal",
       "maxOccurs": "1",
       "nullable": false,
-      "type": "strPatternEnc"
+      "doc": "Not-nullable to StringBigDecimal"
+    }, {
+      "jx:type": "reference",
+      "type": "nonEmptyString",
+      "maxOccurs": "1",
+      "doc": "Reference to nonEmptyString"
+    }, {
+      "jx:type": "reference",
+      "type": "nonEmptyString",
+      "minOccurs": "2",
+      "maxOccurs": "3",
+      "nullable": false,
+      "doc": "Not-nullable to nonEmptyString"
     }]
   },
-  "bool": {
-    "jx:type": "boolean"
+  "defaultBoolean": {
+    "jx:type": "boolean",
+    "doc": "Default boolean"
   },
-  "num": {
-    "jx:type": "number"
+  "primitiveBoolean": {
+    "jx:type": "boolean",
+    "doc": "Primitive boolean",
+    "bindings": [{
+      "lang": "java",
+      "type": "boolean",
+      "encode": "java.lang.String.valueOf"
+    }]
   },
-  "numInt": {
+  "StringBoolean": {
+    "jx:type": "boolean",
+    "bindings": [{
+      "lang": "java",
+      "type": "java.lang.String",
+      "decode": "java.lang.String.valueOf"
+    }]
+  },
+  "defaultDecimal": {
     "jx:type": "number",
-    "scale": 0
+    "doc": "Default decimal type"
   },
-  "numIntRange1": {
+  "defaultInteger": {
     "jx:type": "number",
     "scale": 0,
-    "range": "[1,]"
+    "doc": "Default integer type"
   },
-  "numIntRange2": {
+  "byte": {
     "jx:type": "number",
     "scale": 0,
-    "range": "[,4]"
+    "range": "[-64,63]",
+    "doc": "Primitive byte type",
+    "bindings": [{
+      "lang": "java",
+      "type": "byte"
+    }]
   },
-  "numRange1": {
+  "Short": {
     "jx:type": "number",
-    "range": "[1,]"
+    "scale": 0,
+    "range": "[-16384,16383]",
+    "doc": "Short number type",
+    "bindings": [{
+      "lang": "java",
+      "type": "java.lang.Short"
+    }]
   },
-  "numRange2": {
+  "StringDecimal": {
     "jx:type": "number",
-    "range": "[,4]"
+    "bindings": [{
+      "lang": "java",
+      "type": "java.lang.CharSequence"
+    }]
   },
-  "str": {
-    "jx:type": "string"
+  "numRange": {
+    "jx:type": "number",
+    "range": "[1E+10,]",
+    "doc": "Template for number type with range"
   },
-  "strDec": {
-    "jx:type": "string"
+  "cachedInteger": {
+    "jx:type": "number",
+    "scale": 0,
+    "range": "[1,]",
+    "doc": "Template for integer number type with range",
+    "bindings": [{
+      "lang": "java",
+      "decode": "org.libj.math.BigIntegers.of"
+    }]
   },
-  "strDecEnc": {
-    "jx:type": "string"
+  "plainDecimal": {
+    "jx:type": "number",
+    "scale": 2,
+    "doc": "Template cached BigDecimal",
+    "bindings": [{
+      "lang": "java",
+      "encode": "this.toPlainString"
+    }]
   },
-  "strEnc": {
-    "jx:type": "string"
+  "cachedPlainDecimal": {
+    "jx:type": "number",
+    "scale": 3,
+    "range": "[-2.222E-12,]",
+    "doc": "First template for real number type with range",
+    "bindings": [{
+      "lang": "java",
+      "decode": "org.libj.math.BigDecimals.of",
+      "encode": "this.toPlainString"
+    }]
   },
-  "strPattern": {
+  "defaultDecimalRange2": {
+    "jx:type": "number",
+    "scale": 3,
+    "range": "[-2.222E-12,]",
+    "doc": "Second template for real number type with range"
+  },
+  "defaultString": {
     "jx:type": "string",
-    "pattern": "[a-z]+"
+    "doc": "Default string type"
   },
-  "strPatternDec": {
+  "charArray": {
     "jx:type": "string",
-    "pattern": "[%0-9a-z]+"
+    "doc": "char[] type",
+    "bindings": [{
+      "lang": "java",
+      "type": "char[]",
+      "decode": "org.libj.lang.Characters.valueOf",
+      "encode": "java.lang.String.<init>"
+    }]
   },
-  "strPatternDecEnc": {
+  "uuid": {
     "jx:type": "string",
-    "pattern": "[%0-9a-z]+"
+    "pattern": "[0-9]{8}-[a-f]{4}-[0-9]{4}-[a-f]{4}-[0-9]{12}",
+    "doc": "UUID pattern with UUID type",
+    "bindings": [{
+      "lang": "java",
+      "type": "java.util.UUID",
+      "decode": "org.libj.lang.Strings.toUuidOrNull"
+    }]
   },
-  "strPatternEnc": {
+  "url": {
     "jx:type": "string",
-    "pattern": "[%0-9a-z]+"
+    "pattern": "((https?|ftp)://jsonx.org/[\\w\\d:#@%/;$()~_?'\\+-=\\\\\\.&]+)",
+    "doc": "URL pattern with URL type",
+    "bindings": [{
+      "lang": "java",
+      "type": "java.net.URL",
+      "decode": "java.net.URL.<init>"
+    }]
+  },
+  "StringBigDecimal": {
+    "jx:type": "string",
+    "pattern": "\\d+(\\.\\d+)?([eE][+-]?\\d{1,5})?",
+    "doc": "An integer with BigDecimal type represented as a string",
+    "bindings": [{
+      "lang": "java",
+      "type": "java.math.BigDecimal",
+      "decode": "java.math.BigDecimal.<init>"
+    }]
+  },
+  "nonEmptyString": {
+    "jx:type": "string",
+    "pattern": "(\\S)|(\\S.*\\S)",
+    "doc": "Non-empty string"
+  },
+  "objTest": {
+    "jx:type": "object",
+    "doc": "Object with array references",
+    "properties": {
+      "anyNumStr": {
+        "jx:type": "any",
+        "types": "defaultDecimal charArray",
+        "use": "optional",
+        "doc": "Optional property named anyNumStr of type 'defaultDecimal' or 'charArray'"
+      }
+    }
   },
   "objArr": {
     "jx:type": "object",
+    "doc": "Object with array references",
     "properties": {
       ".*": {
         "jx:type": "any",
-        "nullable": false
+        "nullable": false,
+        "doc": "Property accepting any name and any type",
+        "bindings": [{
+          "lang": "java",
+          "field": "any1"
+        }]
       },
       "arrayBool": {
         "jx:type": "reference",
-        "type": "arrayBool"
+        "type": "arrayBool",
+        "doc": "Property with bool array",
+        "bindings": [{
+          "lang": "java",
+          "field": "ab"
+        }]
       },
       "arrayBoolOptional": {
         "jx:type": "reference",
+        "type": "arrayBool",
         "use": "optional",
-        "type": "arrayBool"
+        "doc": "Optional property with bool array",
+        "bindings": [{
+          "lang": "java",
+          "field": "abO"
+        }]
       },
       "arrayBoolOptionalNotNullable": {
         "jx:type": "reference",
+        "type": "arrayBool",
         "use": "optional",
         "nullable": false,
-        "type": "arrayBool"
+        "doc": "Optional, not-nullable property with bool array",
+        "bindings": [{
+          "lang": "java",
+          "field": "abONN"
+        }]
       },
       "arrayNum": {
         "jx:type": "reference",
-        "type": "arrayNum"
+        "type": "arrayNum",
+        "doc": "Property with num array",
+        "bindings": [{
+          "lang": "java",
+          "field": "an"
+        }]
       },
       "arrayNumOptional": {
         "jx:type": "reference",
+        "type": "arrayNum",
         "use": "optional",
-        "type": "arrayNum"
+        "doc": "Optional property with num array",
+        "bindings": [{
+          "lang": "java",
+          "field": "anO"
+        }]
       },
       "arrayNumOptionalNotNullable": {
         "jx:type": "reference",
+        "type": "arrayNum",
         "use": "optional",
         "nullable": false,
-        "type": "arrayNum"
+        "doc": "Optional, not-nullable property with num array",
+        "bindings": [{
+          "lang": "java",
+          "field": "anONN"
+        }]
       },
       "arrayStr": {
         "jx:type": "reference",
-        "type": "arrayStr"
+        "type": "arrayStr",
+        "doc": "Property with str array",
+        "bindings": [{
+          "lang": "java",
+          "field": "as"
+        }]
       },
       "arrayStrOptional": {
         "jx:type": "reference",
+        "type": "arrayStr",
         "use": "optional",
-        "type": "arrayStr"
+        "doc": "Optional property with str array",
+        "bindings": [{
+          "lang": "java",
+          "field": "asO"
+        }]
       },
       "arrayStrOptionalNotNullable": {
         "jx:type": "reference",
+        "type": "arrayStr",
         "use": "optional",
         "nullable": false,
-        "type": "arrayStr"
+        "doc": "Optional, not-nullable property with str array",
+        "bindings": [{
+          "lang": "java",
+          "field": "asONN"
+        }]
       },
       "anyNumStr": {
         "jx:type": "any",
-        "types": "num str",
-        "use": "optional"
+        "types": "defaultDecimal charArray",
+        "use": "optional",
+        "doc": "Optional property named anyNumStr of type 'defaultDecimal' or 'charArray'",
+        "bindings": [{
+          "lang": "java",
+          "field": "any2"
+        }]
       }
     }
   },
   "objBool": {
     "jx:type": "object",
+    "doc": "Object with boolean properties",
     "properties": {
       "bo+l": {
         "jx:type": "reference",
+        "type": "primitiveBoolean",
         "nullable": false,
-        "type": "bool"
+        "doc": "Not-nullable property with name matching a regex of type primitiveBoolean",
+        "bindings": [{
+          "lang": "java",
+          "field": "bool1"
+        }]
       },
       ".*": {
         "jx:type": "any",
-        "types": "bool num"
+        "types": "primitiveBoolean defaultDecimal",
+        "nullable": false,
+        "doc": "Not-nullable property of any name and of type 'primitiveBoolean' or 'defaultDecimal'",
+        "bindings": [{
+          "lang": "java",
+          "field": "any"
+        }]
       },
       "bo+lOptional": {
         "jx:type": "reference",
+        "type": "StringBoolean",
         "use": "optional",
-        "type": "bool"
+        "doc": "Optional property with name matching a regex of type StringBoolean",
+        "bindings": [{
+          "lang": "java",
+          "field": "bool2"
+        }]
       },
       "boolOptionalNotNullable": {
         "jx:type": "reference",
+        "type": "defaultBoolean",
         "use": "optional",
         "nullable": false,
-        "type": "bool"
+        "doc": "Not-nullable, optional property with name matching a regex of type defaultBoolean",
+        "bindings": [{
+          "lang": "java",
+          "field": "bool3"
+        }]
       }
     }
   },
   "objNum": {
     "jx:type": "object",
+    "doc": "Object with number properties",
     "properties": {
       "num.+": {
         "jx:type": "reference",
-        "type": "num"
+        "type": "defaultDecimal",
+        "doc": "Property with name matching a regex of type defaultDecimal",
+        "bindings": [{
+          "lang": "java",
+          "field": "regexNum"
+        }]
+      },
+      "numRequired": {
+        "jx:type": "reference",
+        "type": "defaultDecimal",
+        "doc": "Required property for defaultDecimal type"
       },
       "numOptional": {
         "jx:type": "reference",
+        "type": "defaultDecimal",
         "use": "optional",
-        "type": "num"
+        "doc": "Optional property for defaultDecimal type"
+      },
+      "numRequiredNotNullable": {
+        "jx:type": "reference",
+        "type": "defaultDecimal",
+        "nullable": false,
+        "doc": "Required and not-nullable property for defaultDecimal type"
       },
       "numOptionalNotNullable": {
         "jx:type": "reference",
+        "type": "defaultDecimal",
         "use": "optional",
         "nullable": false,
-        "type": "num"
-      },
-      "numInt": {
-        "jx:type": "reference",
-        "type": "numInt"
+        "doc": "Optional and not-nullable property for defaultDecimal type"
       },
       "any": {
         "jx:type": "any",
+        "types": "defaultDecimal charArray",
         "nullable": false,
-        "types": "num str"
+        "doc": "Property named 'any' of type 'defaultDecimal or 'charArray'"
+      },
+      "numIntRequired": {
+        "jx:type": "reference",
+        "type": "Short",
+        "doc": "Required property referencing type byte"
       },
       "numIntOptional": {
         "jx:type": "reference",
+        "type": "StringDecimal",
         "use": "optional",
-        "type": "numInt"
+        "doc": "Optional property referencing type StringDecimal"
+      },
+      "numIntRequiredNotNullable": {
+        "jx:type": "reference",
+        "type": "byte",
+        "nullable": false,
+        "doc": "Required, not-nullable property referencing type byte"
       },
       "numIntOptionalNotNullable": {
         "jx:type": "reference",
+        "type": "defaultInteger",
         "use": "optional",
         "nullable": false,
-        "type": "numInt"
+        "doc": "Optional, not-nullable property referencing type defaultInteger"
       },
-      "numIntRange1": {
+      "numRangeRequired": {
         "jx:type": "reference",
-        "type": "numIntRange1"
+        "type": "numRange",
+        "doc": "Required property referencing type numRange"
       },
-      "numIntRange1Optional": {
+      "numRangeOptional": {
         "jx:type": "reference",
+        "type": "numRange",
         "use": "optional",
-        "type": "numIntRange1"
+        "doc": "Optional property referencing type numRange"
       },
-      "numIntRange1OptionalNotNullable": {
+      "numRangeRequiredNotNullable": {
         "jx:type": "reference",
+        "type": "numRange",
+        "nullable": false,
+        "doc": "Required, not-nullable property referencing type numRange"
+      },
+      "numRangeOptionalNotNullable": {
+        "jx:type": "reference",
+        "type": "numRange",
         "use": "optional",
         "nullable": false,
-        "type": "numIntRange1"
+        "doc": "Optional, not-nullable property referencing type numRange"
       },
-      "numIntRange2": {
+      "cachedIntegerRequired": {
         "jx:type": "reference",
-        "type": "numIntRange2"
+        "type": "cachedInteger",
+        "doc": "Required property referencing type cachedInteger"
       },
-      "numIntRange2Optional": {
+      "cachedIntegerOptional": {
         "jx:type": "reference",
+        "type": "cachedInteger",
         "use": "optional",
-        "type": "numIntRange2"
+        "doc": "Optional property referencing type cachedInteger"
       },
-      "numIntRange2OptionalNotNullable": {
+      "cachedIntegerRequiredNotNullable": {
         "jx:type": "reference",
+        "type": "cachedInteger",
+        "nullable": false,
+        "doc": "Required, not-nullable property referencing type cachedInteger"
+      },
+      "cachedIntegerOptionalNotNullable": {
+        "jx:type": "reference",
+        "type": "cachedInteger",
         "use": "optional",
         "nullable": false,
-        "type": "numIntRange2"
+        "doc": "Optional, not-nullable property referencing type cachedInteger"
       },
-      "numRange1": {
+      "plainDecimalRequired": {
         "jx:type": "reference",
-        "type": "numRange1"
+        "type": "plainDecimal",
+        "doc": "Required property referencing type plainDecimal"
       },
-      "numRange1Optional": {
+      "plainDecimalOptional": {
         "jx:type": "reference",
+        "type": "plainDecimal",
         "use": "optional",
-        "type": "numRange1"
+        "doc": "Optional property referencing type plainDecimal"
       },
-      "numRange1OptionalNotNullable": {
+      "plainDecimalRequiredNotNullable": {
         "jx:type": "reference",
+        "type": "plainDecimal",
+        "nullable": false,
+        "doc": "Required, not-nullable property referencing type plainDecimal"
+      },
+      "plainDecimalOptionalNotNullable": {
+        "jx:type": "reference",
+        "type": "plainDecimal",
         "use": "optional",
         "nullable": false,
-        "type": "numRange1"
+        "doc": "Optional, not-nullable property referencing type plainDecimal"
       },
-      "numRange2": {
+      "plainDecimalRangeRequired": {
         "jx:type": "reference",
-        "type": "numRange2"
+        "type": "cachedPlainDecimal",
+        "doc": "Required property referencing type cachedPlainDecimal"
       },
-      "numRange2Optional": {
+      "plainDecimalRangeOptional": {
         "jx:type": "reference",
+        "type": "defaultDecimalRange2",
         "use": "optional",
-        "type": "numRange2"
+        "doc": "Optional property referencing type defaultDecimalRange2"
       },
-      "numRange2OptionalNotNullable": {
+      "plainDecimalRangeRequiredNotNullable": {
         "jx:type": "reference",
+        "type": "defaultDecimalRange2",
+        "nullable": false,
+        "doc": "Required, not-nullable property referencing type defaultDecimalRange2"
+      },
+      "plainDecimalRangeOptionalNotNullable": {
+        "jx:type": "reference",
+        "type": "cachedPlainDecimal",
         "use": "optional",
         "nullable": false,
-        "type": "numRange2"
+        "doc": "Optional, not-nullable property referencing type cachedPlainDecimal"
       }
     }
   },
   "objObj": {
     "jx:type": "object",
+    "doc": "Object of objects",
     "properties": {
       "objOptional": {
         "jx:type": "reference",
+        "type": "objBool",
         "use": "optional",
-        "type": "objBool"
+        "doc": "Optional reference to objBool",
+        "bindings": [{
+          "lang": "java",
+          "field": "obj1"
+        }]
       },
       "objOptionalNotNullable": {
         "jx:type": "reference",
+        "type": "objNum",
         "use": "optional",
         "nullable": false,
-        "type": "objNum"
+        "doc": "Optional, not-nullable reference to objNum",
+        "bindings": [{
+          "lang": "java",
+          "field": "obj2"
+        }]
       },
       "objExtends1": {
         "jx:type": "object",
         "extends": "objObj",
         "use": "optional",
+        "doc": "Nested definition of optional object extending objObj",
+        "bindings": [{
+          "lang": "java",
+          "field": "obj3"
+        }],
         "properties": {
           "objExtends2": {
             "jx:type": "object",
             "extends": "objObj",
             "use": "optional",
+            "doc": "Further nested definition of optional object extending objObj",
+            "bindings": [{
+              "lang": "java",
+              "field": "objX"
+            }],
             "properties": {
               "objExtends3": {
                 "jx:type": "object",
                 "extends": "objObj",
                 "use": "optional",
+                "doc": "Further more nested definition of optional object extending objObj",
                 "properties": {
                   "objExtends4": {
                     "jx:type": "object",
                     "extends": "objObj",
                     "use": "optional",
+                    "doc": "And yet further more nested definition of optional object extending objObj",
+                    "bindings": [{
+                      "lang": "java",
+                      "field": "objX"
+                    }],
                     "properties": {
-                      "num": {
+                      "defaultDecimal": {
                         "jx:type": "reference",
+                        "type": "defaultDecimal",
                         "use": "optional",
-                        "type": "num"
+                        "doc": "Optional property named 'defaultDecimal' of type 'defaultDecimal'",
+                        "bindings": [{
+                          "lang": "java",
+                          "field": "objX"
+                        }]
                       }
                     }
                   }
@@ -2237,22 +2663,38 @@ This section provides sample schemas in both `jsdx` and `jsd` representations.
         "jx:type": "object",
         "extends": "objBool",
         "use": "optional",
+        "doc": "Optional property of nested object definition extending objBool",
+        "bindings": [{
+          "lang": "java",
+          "field": "obj4"
+        }],
         "properties": {
-          "num": {
+          "defaultString": {
             "jx:type": "reference",
-            "type": "num"
+            "type": "defaultString",
+            "doc": "Optional property named 'defaultString' of type 'defaultString'"
+          },
+          "charArray": {
+            "jx:type": "reference",
+            "type": "charArray",
+            "doc": "Optional property named 'charArray' of type 'charArray'"
           }
         }
       },
       "objExtendsOptionalNotNullable": {
         "jx:type": "object",
         "extends": "objBool",
-        "nullable": false,
         "use": "optional",
+        "nullable": false,
+        "bindings": [{
+          "lang": "java",
+          "field": "obj5"
+        }],
         "properties": {
-          "num": {
+          "arrayBool": {
             "jx:type": "reference",
-            "type": "num"
+            "type": "arrayBool",
+            "doc": "Optional property named 'arrayBool' of type 'arrayBool'"
           }
         }
       }
@@ -2260,126 +2702,495 @@ This section provides sample schemas in both `jsdx` and `jsd` representations.
   },
   "objStr": {
     "jx:type": "object",
+    "doc": "Object definition with properties of string types",
     "properties": {
-      "str": {
+      "defaultString": {
         "jx:type": "reference",
-        "type": "str"
+        "type": "defaultString",
+        "doc": "Property referencing 'defaultString' type"
       },
-      "strOptional": {
+      "defaultStringOptional": {
         "jx:type": "reference",
+        "type": "defaultString",
         "use": "optional",
-        "type": "str"
+        "doc": "Optional property referencing 'defaultString' type"
       },
-      "strOptionalNotNullable": {
+      "defaultStringOptionalNotNullable": {
         "jx:type": "reference",
-        "use": "optional",
-        "nullable": false,
-        "type": "str"
-      },
-      "strDec": {
-        "jx:type": "reference",
-        "type": "strDec"
-      },
-      "strDecOptional": {
-        "jx:type": "reference",
-        "use": "optional",
-        "type": "strDec"
-      },
-      "strDecOptionalNotNullable": {
-        "jx:type": "reference",
+        "type": "defaultString",
         "use": "optional",
         "nullable": false,
-        "type": "strDec"
+        "doc": "Optional, not-nullable property referencing 'defaultString' type"
       },
-      "strDecEnc": {
+      "charArray": {
         "jx:type": "reference",
-        "type": "strDecEnc"
+        "type": "charArray",
+        "doc": "Property referencing 'charArray' type"
       },
-      "strDecEncOptional": {
+      "charArrayOptional": {
         "jx:type": "reference",
+        "type": "charArray",
         "use": "optional",
-        "type": "strDecEnc"
+        "doc": "Optional property referencing 'charArray' type"
       },
-      "strDecEncOptionalNotNullable": {
+      "charArrayOptionalNotNullable": {
         "jx:type": "reference",
-        "use": "optional",
-        "nullable": false,
-        "type": "strDecEnc"
-      },
-      "strEnc": {
-        "jx:type": "reference",
-        "type": "strEnc"
-      },
-      "strEncOptional": {
-        "jx:type": "reference",
-        "use": "optional",
-        "type": "strEnc"
-      },
-      "strEncOptionalNotNullable": {
-        "jx:type": "reference",
+        "type": "charArray",
         "use": "optional",
         "nullable": false,
-        "type": "strEnc"
+        "doc": "Optional, not-nullable property referencing 'charArray' type"
       },
-      "strPattern": {
+      "uuid": {
         "jx:type": "reference",
-        "type": "strPattern"
+        "type": "uuid",
+        "doc": "Property referencing 'uuid' type"
       },
-      "strPatternOptional": {
+      "uuidOptional": {
         "jx:type": "reference",
+        "type": "uuid",
         "use": "optional",
-        "type": "strPattern"
+        "doc": "Optional property referencing 'uuid' type"
       },
-      "strPatternOptionalNotNullable": {
+      "uuidOptionalNotNullable": {
         "jx:type": "reference",
-        "use": "optional",
-        "nullable": false,
-        "type": "strPattern"
-      },
-      "strPatternDec": {
-        "jx:type": "reference",
-        "type": "strPatternDec"
-      },
-      "strPatternDecOptional": {
-        "jx:type": "reference",
-        "use": "optional",
-        "type": "strPatternDec"
-      },
-      "strPatternDecOptionalNotNullable": {
-        "jx:type": "reference",
+        "type": "uuid",
         "use": "optional",
         "nullable": false,
-        "type": "strPatternDec"
+        "doc": "Optional, not-nullable property referencing 'uuid' type"
       },
-      "strPatternDecEnc": {
+      "url": {
         "jx:type": "reference",
-        "type": "strPatternDecEnc"
+        "type": "url",
+        "doc": "Property referencing 'url' type"
       },
-      "strPatternDecEncOptional": {
+      "urlOptional": {
         "jx:type": "reference",
+        "type": "url",
         "use": "optional",
-        "type": "strPatternDecEnc"
+        "doc": "Optional property referencing 'url' type"
       },
-      "strPatternDecEncOptionalNotNullable": {
+      "urlOptionalNotNullable": {
         "jx:type": "reference",
-        "use": "optional",
-        "nullable": false,
-        "type": "strPatternDecEnc"
-      },
-      "strPatternEnc": {
-        "jx:type": "reference",
-        "type": "strPatternEnc"
-      },
-      "strPatternEncOptional": {
-        "jx:type": "reference",
-        "use": "optional",
-        "type": "strPatternEnc"
-      },
-      "strPatternEncOptionalNotNullable": {
-        "jx:type": "reference",
+        "type": "url",
         "use": "optional",
         "nullable": false,
-        "type": "strPatternEnc"
+        "doc": "Optional, not-nullable property referencing 'url' type"
+      },
+      "StringBigDecimal": {
+        "jx:type": "reference",
+        "type": "StringBigDecimal",
+        "doc": "Property referencing 'StringBigDecimal' type"
+      },
+      "StringBigDecimalOptional": {
+        "jx:type": "reference",
+        "type": "StringBigDecimal",
+        "use": "optional",
+        "doc": "Optional property referencing 'StringBigDecimal' type"
+      },
+      "StringBigDecimalOptionalNotNullable": {
+        "jx:type": "reference",
+        "type": "StringBigDecimal",
+        "use": "optional",
+        "nullable": false,
+        "doc": "Optional, not-nullable property referencing 'StringBigDecimal' type"
+      },
+      "nonEmptyString": {
+        "jx:type": "reference",
+        "type": "nonEmptyString",
+        "doc": "Property referencing 'nonEmptyString' type"
+      },
+      "nonEmptyStringOptional": {
+        "jx:type": "reference",
+        "type": "nonEmptyString",
+        "use": "optional",
+        "doc": "Optional property referencing 'nonEmptyString' type"
+      },
+      "nonEmptyStringOptionalNotNullable": {
+        "jx:type": "reference",
+        "type": "nonEmptyString",
+        "use": "optional",
+        "nullable": false,
+        "doc": "Optional, not-nullable property referencing 'nonEmptyString' type"
+      }
+    }
+  }
+}
+```
+
+#### <b>6.5</b> `bindings.jsdx`
+
+```xml
+<schema
+  doc="Schema focusing on bindings"
+  xmlns="http://www.jsonx.org/schema-0.4.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.jsonx.org/schema-0.4.xsd http://www.jsonx.org/schema.xsd">
+
+  <boolean name="StringBoolean">
+    <binding lang="java" type="java.lang.String"/>
+  </boolean>
+
+  <number name="short" scale="0" range="[-32768,32767]">
+    <binding lang="java" type="short"/>
+  </number>
+  <number name="StringDecimal">
+    <binding lang="java" type="java.lang.StringBuilder" decode="java.lang.StringBuilder.&lt;init&gt;"/>
+  </number>
+
+  <string name="uuid">
+    <binding lang="java" type="java.util.UUID" decode="org.libj.lang.Strings.toUuidOrNull"/>
+  </string>
+
+  <array name="arrayReferences">
+    <reference type="StringBoolean"/>
+    <reference type="short" nullable="false"/>
+    <reference type="StringDecimal"/>
+    <reference type="uuid"/>
+  </array>
+
+  <array name="arrayDirect">
+    <boolean>
+      <binding lang="java" type="java.lang.String"/>
+    </boolean>
+    <number scale="0" nullable="false">
+      <binding lang="java" type="short"/>
+    </number>
+    <number>
+      <binding lang="java" type="java.lang.StringBuilder" decode="java.lang.StringBuilder.&lt;init&gt;"/>
+    </number>
+    <string>
+      <binding lang="java" type="java.util.UUID" decode="org.libj.lang.Strings.toUuidOrNull"/>
+    </string>
+  </array>
+
+  <object name="objRefs">
+    <property name="arrayDirect" xsi:type="reference" type="arrayDirect">
+      <binding lang="java" field="objRefArrayDirect"/>
+    </property>
+    <property name="arrayReferences" xsi:type="reference" type="arrayReferences">
+      <binding lang="java" field="objRefArrayReferences"/>
+    </property>
+    <property name="StringBoolean" xsi:type="reference" type="StringBoolean">
+      <binding lang="java" field="objRefStringBoolean"/>
+    </property>
+    <property name="short" xsi:type="reference" type="short" nullable="false">
+      <binding lang="java" field="objRefShortPrimitive"/>
+    </property>
+    <property name="StringDecimal" xsi:type="reference" type="StringDecimal">
+      <binding lang="java" field="objRefStringDecimal"/>
+    </property>
+    <property name="uuid" xsi:type="reference" type="uuid">
+      <binding lang="java" field="objRefUuid"/>
+    </property>
+    <property name="object" xsi:type="reference" type="objRefs">
+      <binding lang="java" field="objRefObject"/>
+    </property>
+  </object>
+
+  <object name="objDir">
+    <property name="arrayDirect" xsi:type="array">
+      <boolean>
+        <binding lang="java" type="java.lang.String"/>
+      </boolean>
+      <number scale="0" nullable="false">
+        <binding lang="java" type="short"/>
+      </number>
+      <number>
+        <binding lang="java" type="java.lang.StringBuilder" decode="java.lang.StringBuilder.&lt;init&gt;"/>
+      </number>
+      <string>
+        <binding lang="java" type="java.util.UUID" decode="org.libj.lang.Strings.toUuidOrNull"/>
+      </string>
+      <binding lang="java" field="objDirArrayDirect"/>
+    </property>
+    <property name="arrayReferences" xsi:type="array">
+      <reference type="arrayDirect"/>
+      <reference type="arrayReferences"/>
+      <reference type="StringBoolean"/>
+      <reference type="short" nullable="false"/>
+      <reference type="StringDecimal"/>
+      <reference type="uuid"/>
+      <binding lang="java" field="objDirArrayReferences"/>
+    </property>
+    <property name="StringBoolean" xsi:type="boolean">
+      <binding lang="java" type="java.lang.String" field="objDirStringBoolean"/>
+    </property>
+    <property name="short" xsi:type="number" scale="0" nullable="false">
+      <binding lang="java" type="short" field="objDirShortPrimitive"/>
+    </property>
+    <property name="StringDecimal" xsi:type="number">
+      <binding lang="java" type="java.lang.StringBuilder" decode="java.lang.StringBuilder.&lt;init&gt;" field="objDirStringDecimal"/>
+    </property>
+    <property name="uuid" xsi:type="string">
+      <binding lang="java" type="java.util.UUID" decode="org.libj.lang.Strings.toUuidOrNull" field="objDirUuid"/>
+    </property>
+    <property name="object" xsi:type="object" extends="objDir">
+      <binding lang="java" field="objDirObject"/>
+    </property>
+  </object>
+
+</schema>
+```
+
+#### <b>6.6</b> `bindings.jsd`
+
+```json
+{
+  "doc": "Schema focusing on bindings",
+  "jx:ns": "http://www.jsonx.org/schema-0.4.jsd",
+  "jx:schemaLocation": "http://www.jsonx.org/schema-0.4.jsd http://www.jsonx.org/schema-0.4.jsd",
+  "StringBoolean": {
+    "jx:type": "boolean",
+    "bindings": [{
+      "lang": "java",
+      "type": "java.lang.String"
+    }]
+  },
+  "short": {
+    "jx:type": "number",
+    "scale": 0,
+    "range": "[-32768,32767]",
+    "bindings": [{
+      "lang": "java",
+      "type": "short"
+    }]
+  },
+  "StringDecimal": {
+    "jx:type": "number",
+    "bindings": [{
+      "lang": "java",
+      "type": "java.lang.StringBuilder",
+      "decode": "java.lang.StringBuilder.<init>"
+    }]
+  },
+  "uuid": {
+    "jx:type": "string",
+    "bindings": [{
+      "lang": "java",
+      "type": "java.util.UUID",
+      "decode": "org.libj.lang.Strings.toUuidOrNull"
+    }]
+  },
+  "arrayReferences": {
+    "jx:type": "array",
+    "elements": [{
+      "jx:type": "reference",
+      "type": "StringBoolean"
+    }, {
+      "jx:type": "reference",
+      "type": "short",
+      "nullable": false
+    }, {
+      "jx:type": "reference",
+      "type": "StringDecimal"
+    }, {
+      "jx:type": "reference",
+      "type": "uuid"
+    }]
+  },
+  "arrayDirect": {
+    "jx:type": "array",
+    "elements": [{
+      "jx:type": "boolean",
+      "bindings": [{
+        "lang": "java",
+        "type": "java.lang.String"
+      }]
+    }, {
+      "jx:type": "number",
+      "scale": 0,
+      "nullable": false,
+      "bindings": [{
+        "lang": "java",
+        "type": "short"
+      }]
+    }, {
+      "jx:type": "number",
+      "bindings": [{
+        "lang": "java",
+        "type": "java.lang.StringBuilder",
+        "decode": "java.lang.StringBuilder.<init>"
+      }]
+    }, {
+      "jx:type": "string",
+      "bindings": [{
+        "lang": "java",
+        "type": "java.util.UUID",
+        "decode": "org.libj.lang.Strings.toUuidOrNull"
+      }]
+    }]
+  },
+  "objRefs": {
+    "jx:type": "object",
+    "properties": {
+      "arrayDirect": {
+        "jx:type": "reference",
+        "type": "arrayDirect",
+        "bindings": [{
+          "lang": "java",
+          "field": "objRefArrayDirect"
+        }]
+      },
+      "arrayReferences": {
+        "jx:type": "reference",
+        "type": "arrayReferences",
+        "bindings": [{
+          "lang": "java",
+          "field": "objRefArrayReferences"
+        }]
+      },
+      "StringBoolean": {
+        "jx:type": "reference",
+        "type": "StringBoolean",
+        "bindings": [{
+          "lang": "java",
+          "field": "objRefStringBoolean"
+        }]
+      },
+      "short": {
+        "jx:type": "reference",
+        "type": "short",
+        "nullable": false,
+        "bindings": [{
+          "lang": "java",
+          "field": "objRefShortPrimitive"
+        }]
+      },
+      "StringDecimal": {
+        "jx:type": "reference",
+        "type": "StringDecimal",
+        "bindings": [{
+          "lang": "java",
+          "field": "objRefStringDecimal"
+        }]
+      },
+      "uuid": {
+        "jx:type": "reference",
+        "type": "uuid",
+        "bindings": [{
+          "lang": "java",
+          "field": "objRefUuid"
+        }]
+      },
+      "object": {
+        "jx:type": "reference",
+        "type": "objRefs",
+        "bindings": [{
+          "lang": "java",
+          "field": "objRefObject"
+        }]
+      }
+    }
+  },
+  "objDir": {
+    "jx:type": "object",
+    "properties": {
+      "arrayDirect": {
+        "jx:type": "array",
+        "bindings": [{
+          "lang": "java",
+          "field": "objDirArrayDirect"
+        }],
+        "elements": [{
+          "jx:type": "boolean",
+          "bindings": [{
+            "lang": "java",
+            "type": "java.lang.String"
+          }]
+        }, {
+          "jx:type": "number",
+          "scale": 0,
+          "nullable": false,
+          "bindings": [{
+            "lang": "java",
+            "type": "short"
+          }]
+        }, {
+          "jx:type": "number",
+          "bindings": [{
+            "lang": "java",
+            "type": "java.lang.StringBuilder",
+            "decode": "java.lang.StringBuilder.<init>"
+          }]
+        }, {
+          "jx:type": "string",
+          "bindings": [{
+            "lang": "java",
+            "type": "java.util.UUID",
+            "decode": "org.libj.lang.Strings.toUuidOrNull"
+          }]
+        }]
+      },
+      "arrayReferences": {
+        "jx:type": "array",
+        "bindings": [{
+          "lang": "java",
+          "field": "objDirArrayReferences"
+        }],
+        "elements": [{
+          "jx:type": "reference",
+          "type": "arrayDirect"
+        }, {
+          "jx:type": "reference",
+          "type": "arrayReferences"
+        }, {
+          "jx:type": "reference",
+          "type": "StringBoolean"
+        }, {
+          "jx:type": "reference",
+          "type": "short",
+          "nullable": false
+        }, {
+          "jx:type": "reference",
+          "type": "StringDecimal"
+        }, {
+          "jx:type": "reference",
+          "type": "uuid"
+        }]
+      },
+      "StringBoolean": {
+        "jx:type": "boolean",
+        "bindings": [{
+          "lang": "java",
+          "type": "java.lang.String",
+          "field": "objDirStringBoolean"
+        }]
+      },
+      "short": {
+        "jx:type": "number",
+        "scale": 0,
+        "nullable": false,
+        "bindings": [{
+          "lang": "java",
+          "type": "short",
+          "field": "objDirShortPrimitive"
+        }]
+      },
+      "StringDecimal": {
+        "jx:type": "number",
+        "bindings": [{
+          "lang": "java",
+          "type": "java.lang.StringBuilder",
+          "field": "objDirStringDecimal",
+          "decode": "java.lang.StringBuilder.<init>"
+        }]
+      },
+      "uuid": {
+        "jx:type": "string",
+        "bindings": [{
+          "lang": "java",
+          "type": "java.util.UUID",
+          "field": "objDirUuid",
+          "decode": "org.libj.lang.Strings.toUuidOrNull"
+        }]
+      },
+      "object": {
+        "jx:type": "object",
+        "extends": "objDir",
+        "bindings": [{
+          "lang": "java",
+          "field": "objDirObject"
+        }]
       }
     }
   }
@@ -2425,6 +3236,10 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 [#type-declarations]: #43-type-declarations
 [#object-properties]: #44-object-properties
 [#array-elements]: #45-array-elements
+[#bindings]: #46-language-specific-bindings
+[#type-bindings]: #461-type-bindings
+[#field-bindings]: #462-field-bindings
+[#type-field-bindings]: #463-type-field-bindings
 
 [ecma262]: http://www.ecma-international.org/publications/standards/Ecma-262.htm
 [interval-notation]: https://en.wikipedia.org/wiki/Interval_(mathematics)#Classification_of_intervals
