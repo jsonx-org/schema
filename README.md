@@ -63,7 +63,7 @@ This document specifies the <ins>JSON Schema Definition Language</ins>, which al
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.6 [Language specific bindings][#bindings]<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.6.1 [Type Bindings][#type-bindings]<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.6.2 [Field Bindings][#field-bindings]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.6.3 [Type/Field Bindings][#type-field-bindings]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.6.3 [Type/Field Bindings][#typefield-bindings]<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.6.4 [Examples](#464-examples)<br>
 <samp>&nbsp;&nbsp;</samp>5 [<ins>Related Resources for JSON Schema</ins>](#5-related-resources-for-json-schema)<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>5.1 [Schemas for JSON Schema](#51-schemas-for-json-schema)<br>
@@ -155,7 +155,7 @@ The JSD is comprised of 5 structural abstractions:
 <samp>&nbsp;&nbsp;</samp>4.6 [Language specific bindings][#bindings]<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.6.1 [Type Bindings][#type-bindings]<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.6.2 [Field Bindings][#field-bindings]<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.6.3 [Type/Field Bindings][#type-field-bindings]<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.6.3 [Type/Field Bindings][#typefield-bindings]<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.6.4 [Examples](#464-examples)
 
 ### <b>4.1</b> Schema Document
@@ -172,8 +172,8 @@ The <samp>**schema**</samp> is the root object of the JSD, and contains [type][#
 
 ```json
 {
-  "jx:ns": "http://www.jsonx.org/schema-0.3.jsd",
-  "jx:schemaLocation": "http://www.jsonx.org/schema-0.3.jsd http://www.jsonx.org/schema.jsd",
+  "jx:ns": "http://www.jsonx.org/schema-0.4.jsd",
+  "jx:schemaLocation": "http://www.jsonx.org/schema-0.4.jsd http://www.jsonx.org/schema.jsd",
   ...
 }
 ```
@@ -182,8 +182,8 @@ The <samp>**schema**</samp> is the root object of the JSD, and contains [type][#
 
 ```xml
 <schema
-   xmlns="http://www.jsonx.org/schema-0.3.xsd"
-   xsi:schemaLocation="http://www.jsonx.org/schema-0.3.xsd http://www.jsonx.org/schema.xsd">
+   xmlns="http://www.jsonx.org/schema-0.4.xsd"
+   xsi:schemaLocation="http://www.jsonx.org/schema-0.4.xsd http://www.jsonx.org/schema.xsd">
   ...
 </schema>
 ```
@@ -945,7 +945,7 @@ The `type` property specifies the accepted type declaration.
 Usage for [type declarations][#type-declarations], [object properties][#object-properties], and [array elements][#array-elements]:
 
 ```json
-{ "jx:ns": "http://www.jsonx.org/schema-0.3.jsd",
+{ "jx:ns": "http://www.jsonx.org/schema-0.4.jsd",
   "myNumber": { "jx:type": "number" },
   "myObject": { "jx:type": "object", "properties": {
     "numOrStr": { "jx:type": "reference", "type": "myNumber" } } }
@@ -957,7 +957,7 @@ Usage for [type declarations][#type-declarations], [object properties][#object-p
 Usage for [object properties][#object-properties]:
 
 ```xml
-<schema xmlns="http://www.jsonx.org/schema-0.3.xsd">
+<schema xmlns="http://www.jsonx.org/schema-0.4.xsd">
   <number name="myNumber"/>
   <object name="myArray">
     <property name="numOrStr" xsi:type="reference" type="myNumber"/>
@@ -985,7 +985,7 @@ Usage for [object properties][#object-properties]:
 Usage for [type declarations][#type-declarations], [object properties][#object-properties], and [array elements][#array-elements]:
 
 ```json
-{ "jx:ns": "http://www.jsonx.org/schema-0.3.jsd",
+{ "jx:ns": "http://www.jsonx.org/schema-0.4.jsd",
   "myNumber": { "jx:type": "number" },
   "myArray": { "jx:type": "array", "elements": [
     { "jx:type": "reference", "type": "myNumber" } ] }
@@ -997,7 +997,7 @@ Usage for [type declarations][#type-declarations], [object properties][#object-p
 Usage for [array elements][#array-elements]:
 
 ```xml
-<schema xmlns="http://www.jsonx.org/schema-0.3.xsd">
+<schema xmlns="http://www.jsonx.org/schema-0.4.xsd">
   <number name="myNumber"/>
   <array name="myArray">
     <reference type="myNumber"/>
@@ -1077,7 +1077,7 @@ The `types` property specifies accepted [type declarations][#type-declarations].
 Usage for [type declarations][#type-declarations], [object properties][#object-properties], and [array elements][#array-elements]:
 
 ```json
-{ "jx:ns": "http://www.jsonx.org/schema-0.3.jsd",
+{ "jx:ns": "http://www.jsonx.org/schema-0.4.jsd",
   "myNumber": { "jx:type": "number" },
   "myString": { "jx:type": "string" },
   "myObject": { "jx:type": "object", "properties": {
@@ -1090,7 +1090,7 @@ Usage for [type declarations][#type-declarations], [object properties][#object-p
 Usage for [object properties][#object-properties]:
 
 ```xml
-<schema xmlns="http://www.jsonx.org/schema-0.3.xsd">
+<schema xmlns="http://www.jsonx.org/schema-0.4.xsd">
   <number name="myNumber"/>
   <string name="myString"/>
   <object name="myArray">
@@ -1119,7 +1119,7 @@ Usage for [object properties][#object-properties]:
 Usage for [type declarations][#type-declarations], [object properties][#object-properties], and [array elements][#array-elements]:
 
 ```json
-{ "jx:ns": "http://www.jsonx.org/schema-0.3.jsd",
+{ "jx:ns": "http://www.jsonx.org/schema-0.4.jsd",
   "myNumber": { "jx:type": "number" },
   "myString": { "jx:type": "string" },
   "myArray": { "jx:type": "array", "elements": [
@@ -1132,7 +1132,7 @@ Usage for [type declarations][#type-declarations], [object properties][#object-p
 Usage for [array elements][#array-elements]:
 
 ```xml
-<schema xmlns="http://www.jsonx.org/schema-0.3.xsd">
+<schema xmlns="http://www.jsonx.org/schema-0.4.xsd">
   <number name="myNumber"/>
   <string name="myString"/>
   <array name="myArray">
@@ -1166,7 +1166,7 @@ The declarative <samp>**type**</samp> objects are immediate children of the <sam
 ###### **JSD**
 
 ```json
-{ "jx:ns": "http://www.jsonx.org/schema-0.3.jsd",
+{ "jx:ns": "http://www.jsonx.org/schema-0.4.jsd",
   ...
   "rootArray": { "jx:type": "array",
     "elements": [...] },
@@ -1182,7 +1182,7 @@ The declarative <samp>**type**</samp> objects are immediate children of the <sam
 ###### **JSDx**
 
 ```xml
-<schema xmlns="http://www.jsonx.org/schema-0.3.xsd">
+<schema xmlns="http://www.jsonx.org/schema-0.4.xsd">
   ...
   <array name="rootArray">
     ...
@@ -1212,7 +1212,7 @@ The <samp>**property**</samp> objects define properties for the declarative obje
 ###### **JSD**
 
 ```json
-{ "jx:ns": "http://www.jsonx.org/schema-0.3.jsd",
+{ "jx:ns": "http://www.jsonx.org/schema-0.4.jsd",
   ...
   "rootObject": { "jx:type": "object",
     "properties": {
@@ -1234,7 +1234,7 @@ The <samp>**property**</samp> objects define properties for the declarative obje
 ###### **JSDx**
 
 ```xml
-<schema xmlns="http://www.jsonx.org/schema-0.3.xsd">
+<schema xmlns="http://www.jsonx.org/schema-0.4.xsd">
   ...
   <object name="rootObject">
     <property name="propArray" xsi:type="array" nullable="true" use="required">
@@ -1268,7 +1268,7 @@ The <samp>**element**</samp> objects define properties for the declarative objec
 ###### **JSD**
 
 ```json
-{ "jx:ns": "http://www.jsonx.org/schema-0.3.jsd",
+{ "jx:ns": "http://www.jsonx.org/schema-0.4.jsd",
   ...
   "rootArray": {
     "jx:type": "array",
@@ -1289,7 +1289,7 @@ The <samp>**element**</samp> objects define properties for the declarative objec
 ###### **JSDx**
 
 ```xml
-<schema xmlns="http://www.jsonx.org/schema-0.3.xsd">
+<schema xmlns="http://www.jsonx.org/schema-0.4.xsd">
   ...
   <array name="rootArray">
     <boolean minOccurs="1" maxOccurs="unbounded" nullable="true"/>
@@ -1396,9 +1396,9 @@ This section provides sample schemas in both `jsdx` and `jsd` representations.
 
 ```xml
 <schema
-  xmlns="http://www.jsonx.org/schema-0.3.xsd"
+  xmlns="http://www.jsonx.org/schema-0.4.xsd"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.jsonx.org/schema-0.3.xsd http://www.jsonx.org/schema.xsd">
+  xsi:schemaLocation="http://www.jsonx.org/schema-0.4.xsd http://www.jsonx.org/schema.xsd">
   <array name="array">
     <boolean nullable="true"/>
     <number range="[-1,1)" nullable="true"/>
@@ -1461,8 +1461,8 @@ This section provides sample schemas in both `jsdx` and `jsd` representations.
 
 ```json
 {
-  "jx:ns": "http://www.jsonx.org/schema-0.3.jsd",
-  "jx:schemaLocation": "http://www.jsonx.org/schema-0.3.jsd http://www.jsonx.org/schema.jsd",
+  "jx:ns": "http://www.jsonx.org/schema-0.4.jsd",
+  "jx:schemaLocation": "http://www.jsonx.org/schema-0.4.jsd http://www.jsonx.org/schema.jsd",
   "array": {
     "jx:type": "array",
     "elements": [{
@@ -3239,7 +3239,7 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 [#bindings]: #46-language-specific-bindings
 [#type-bindings]: #461-type-bindings
 [#field-bindings]: #462-field-bindings
-[#type-field-bindings]: #463-type-field-bindings
+[#typefield-bindings]: #463-typefield-bindings
 
 [ecma262]: http://www.ecma-international.org/publications/standards/Ecma-262.htm
 [interval-notation]: https://en.wikipedia.org/wiki/Interval_(mathematics)#Classification_of_intervals
