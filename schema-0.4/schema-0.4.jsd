@@ -280,7 +280,7 @@
         "pattern": "[\\(\\[](-?(0|[1-9]\\d*)(\\.\\d+)?([eE][+-]?([1-9]\\d*))?)?,(-?(0|[1-9]\\d*)(\\.\\d+)?([eE][+-]?([1-9]\\d*))?)?[\\)\\]]",
         "use": "optional",
         "nullable": false,
-        "doc": "       Specifies the value range in interval notation:\n       Open (exclusive) interval: (min,max)\n       Closed (inclusive) interval: [min,max]\n       Half-open or half-closed interval: [min,max)\n       Degenerate interval: [val]"
+        "doc": "Specifies the value range in interval notation:\n       Open (exclusive) interval: (min,max)\n       Closed (inclusive) interval: [min,max]\n       Half-open or half-closed interval: [min,max)\n       Degenerate interval: [val]"
       },
       "scale": {
         "jx:type": "number",
