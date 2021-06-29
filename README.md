@@ -2,7 +2,7 @@
 
 > **JSON Schema for the enterprise**
 
-[![Build Status](https://github.com/jsonx-org/schema/workflows/build.yml/badge.svg)](https://github.com/jsonx-org/schema/actions/workflows/build.yml)
+[![Build Status](https://github.com/jsonx-org/schema/actions/workflows/build.yml/badge.svg)](https://github.com/jsonx-org/schema/actions/workflows/build.yml)
 [![XSD](https://img.shields.io/badge/schema.xsd-v0.4-blue.svg)](http://jsonx.org/schema-0.4.xsd)
 [![JSDx](https://img.shields.io/badge/schema.jsdx-v0.4-blue.svg)](http://jsonx.org/schema-0.4.jsdx)
 [![JSD](https://img.shields.io/badge/schema.jsd-v0.4-blue.svg)](http://jsonx.org/schema-0.4.jsd)<br>
