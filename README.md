@@ -2,19 +2,19 @@
 
 > **JSON Schema for the enterprise**
 
-[![Build Status](https://github.com/jsonx-org/schema/actions/workflows/build.yml/badge.svg)](https://github.com/jsonx-org/schema/actions/workflows/build.yml)
+[![Build Status](https://github.com/jsonx-org/schema/actions/workflows/test.yml/badge.svg)](https://github.com/jsonx-org/schema/actions/workflows/test.yml)
 [![XSD](https://img.shields.io/badge/schema.xsd-v0.4-blue.svg)](http://jsonx.org/schema-0.4.xsd)
 [![JSDx](https://img.shields.io/badge/schema.jsdx-v0.4-blue.svg)](http://jsonx.org/schema-0.4.jsdx)
 [![JSD](https://img.shields.io/badge/schema.jsd-v0.4-blue.svg)](http://jsonx.org/schema-0.4.jsd)<br>
-[![Build Status](https://img.shields.io/badge/build-passing-orange.svg)](https://github.com/jsonx-org/schema/actions/workflows/build.yml)
+[![Build Status](https://img.shields.io/badge/test-passing-orange.svg)](https://github.com/jsonx-org/schema/actions/workflows/test.yml)
 [![XSD](https://img.shields.io/badge/schema.xsd-v0.3-orange.svg)](http://jsonx.org/schema-0.3.xsd)
 [![JSDx](https://img.shields.io/badge/schema.jsdx-v0.3-orange.svg)](http://jsonx.org/schema-0.3.jsdx)
 [![JSD](https://img.shields.io/badge/schema.jsd-v0.3-orange.svg)](http://jsonx.org/schema-0.3.jsd)<br>
-[![Build Status](https://img.shields.io/badge/build-passing-yellow.svg)](https://github.com/jsonx-org/schema/actions/workflows/build.yml)
+[![Build Status](https://img.shields.io/badge/test-passing-yellow.svg)](https://github.com/jsonx-org/schema/actions/workflows/test.yml)
 [![XSD](https://img.shields.io/badge/schema.xsd-v0.2-yellow.svg)](http://jsonx.org/schema-0.2.xsd)
 [![JSDx](https://img.shields.io/badge/schema.jsdx-v0.2-yellow.svg)](http://jsonx.org/schema-0.2.jsdx)
 [![JSD](https://img.shields.io/badge/schema.jsd-v0.2-yellow.svg)](http://jsonx.org/schema-0.2.jsd)<br>
-[![Build Status](https://img.shields.io/badge/build-passing-yellow.svg)](https://github.com/jsonx-org/schema/actions/workflows/build.yml)
+[![Build Status](https://img.shields.io/badge/test-passing-yellow.svg)](https://github.com/jsonx-org/schema/actions/workflows/test.yml)
 [![XSD](https://img.shields.io/badge/schema.xsd-v0.1-yellow.svg)](http://jsonx.org/schema-0.1.xsd)
 [![JSDx](https://img.shields.io/badge/schema.jsdx-v0.1-inactive.svg)]()
 [![JSD](https://img.shields.io/badge/schema.jsd-v0.1-inactive.svg)]()
