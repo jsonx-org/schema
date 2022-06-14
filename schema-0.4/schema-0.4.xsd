@@ -504,6 +504,11 @@
               <xs:field xpath="@lang"/>
               <xs:field xpath="@field"/>
             </xs:unique>
+            <xs:unique name="uniqueMemberObjectBindingField2">
+              <xs:selector xpath="."/>
+              <xs:field xpath="@name"/>
+              <xs:field xpath="@extends"/>
+            </xs:unique>
           </xs:element>
         </xs:sequence>
         <xs:attribute name="extends" type="jx:typeName">
@@ -617,6 +622,13 @@
                         </xs:annotation>
                       </xs:attribute>
                       <xs:attributeGroup ref="jx:id"/>
+                      <xs:assert test="count(distinct-values(@name | @extends)) = count(@name | @extends)">
+                        <xs:annotation>
+                          <xs:documentation>
+                            Object cannot extend itself.
+                          </xs:documentation>
+                        </xs:annotation>
+                      </xs:assert>
                     </xs:extension>
                   </xs:complexContent>
                 </xs:complexType>

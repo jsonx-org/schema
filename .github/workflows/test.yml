@@ -24,9 +24,33 @@ jobs:
 
     - name: Test
       run: |
-        wget "https://archive.apache.org/dist/xerces/j/Xerces-J-bin.2.12.0.tar.gz" && tar zxpf Xerces-J-bin.2.12.0.tar.gz
+        BUILD_DIR="build/validate"
+        mkdir -p $BUILD_DIR
+
+        ARTIFACT_ID="sax"
+        VERSION="0.9.5-SNAPSHOT"
+        CLASSIFIER="bundle"
+        JAR="$ARTIFACT_ID-$VERSION-$CLASSIFIER.jar"
+
+        DOWNLOAD_ROOT="https://oss.sonatype.org/content/repositories/snapshots/org/openjax/xml/sax/$VERSION/"
+        METADATA_XML="maven-metadata.xml"
+
+        curl -s -o "$BUILD_DIR/$METADATA_XML" -z "$BUILD_DIR/$METADATA_XML" "$DOWNLOAD_ROOT$METADATA_XML"
+
+        METADATA=$(cat $BUILD_DIR/$METADATA_XML | tr '\n' ' ')
+        TIMESTAMP=$(echo $METADATA | sed -e 's/^.*<timestamp>//' -e 's/<\/timestamp>.*//')
+        BUILD_NUMBER=$(echo $METADATA | sed -e 's/^.*<buildNumber>//' -e 's/<\/buildNumber>.*//')
+        DOWNLOAD_FILE="$ARTIFACT_ID-$(echo $VERSION | sed 's/\-SNAPSHOT//')-$TIMESTAMP-$BUILD_NUMBER-$CLASSIFIER.jar"
+
+        curl -s -o "$BUILD_DIR/$JAR" -z "$BUILD_DIR/$JAR" "$DOWNLOAD_ROOT$DOWNLOAD_FILE"
+
+        set +e
+
         for FILE in schema-*/*.jsdx examples/*.jsdx; do
-          RESULT=$(java -classpath xerces-2_12_0/xercesImpl.jar:xerces-2_12_0/xml-apis.jar:xerces-2_12_0/xercesSamples.jar sax.Counter -v -n -np -s -f $* $FILE 2>&1);
-          echo $RESULT;
-          [ -n "$(echo $RESULT | grep Error)" ] && exit 1;
+          echo "Validating $FILE"
+          RESULT=$(java -cp $BUILD_DIR/$JAR org.openjax.xml.sax.Validator "$FILE" 2>&1);
+          echo $RESULT | grep 'Error\|Exception' > /dev/null;
+          ERROR=$?;
+          echo "$RESULT";
+          [ $ERROR -eq 0 ] && >&2 echo "[ERROR]" && exit 1;
         done; exit 0
