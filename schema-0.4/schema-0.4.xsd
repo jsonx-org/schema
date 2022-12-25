@@ -266,7 +266,6 @@
               Open (exclusive) interval: (min,max)
               Closed (inclusive) interval: [min,max]
               Half-open or half-closed interval: [min,max)
-              Degenerate interval: [val]
             </xs:documentation>
           </xs:annotation>
           <xs:simpleType>
@@ -282,6 +281,7 @@
             </xs:documentation>
           </xs:annotation>
         </xs:attribute>
+        <xs:assert test="not(@range) or (some $range in replace(@range, '[\[\(\]\)]', ''), $min in substring-before($range, ','), $max in substring-after($range, ',') satisfies not($min) or not($max) or number($max) >= number($min))"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
