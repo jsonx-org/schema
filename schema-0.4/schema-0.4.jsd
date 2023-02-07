@@ -52,9 +52,9 @@
         "types": "array boolean number objectType string",
         "nullable": false,
         "bindings": [{
-          "lang": "java",
-          "field": "declarations"
-        }]
+            "lang": "java",
+            "field": "declarations"
+          }]
       }
     }
   },
@@ -142,28 +142,28 @@
     "jx:type": "array",
     "doc": "Specifies language-specific bindings.",
     "elements": [{
-      "jx:type": "reference",
-      "type": "fieldBinding",
-      "nullable": false
-    }]
+        "jx:type": "reference",
+        "type": "fieldBinding",
+        "nullable": false
+      }]
   },
   "typeBindings": {
     "jx:type": "array",
     "doc": "Specifies language-specific bindings.",
     "elements": [{
-      "jx:type": "reference",
-      "type": "typeBinding",
-      "nullable": false
-    }]
+        "jx:type": "reference",
+        "type": "typeBinding",
+        "nullable": false
+      }]
   },
   "typeFieldBindings": {
     "jx:type": "array",
     "doc": "Specifies language-specific bindings.",
     "elements": [{
-      "jx:type": "reference",
-      "type": "typeFieldBinding",
-      "nullable": false
-    }]
+        "jx:type": "reference",
+        "type": "typeFieldBinding",
+        "nullable": false
+      }]
   },
   "any": {
     "jx:type": "object",
@@ -211,41 +211,41 @@
         "maxIterate": "unbounded",
         "nullable": false,
         "elements": [{
-          "jx:type": "reference",
-          "type": "anyElement",
-          "minOccurs": "0",
-          "nullable": false
-        }, {
-          "jx:type": "reference",
-          "type": "arrayElement",
-          "minOccurs": "0",
-          "nullable": false
-        }, {
-          "jx:type": "reference",
-          "type": "booleanElement",
-          "minOccurs": "0",
-          "nullable": false
-        }, {
-          "jx:type": "reference",
-          "type": "numberElement",
-          "minOccurs": "0",
-          "nullable": false
-        }, {
-          "jx:type": "reference",
-          "type": "referenceElement",
-          "minOccurs": "0",
-          "nullable": false
-        }, {
-          "jx:type": "reference",
-          "type": "stringElement",
-          "minOccurs": "0",
-          "nullable": false
-        }, {
-          "jx:type": "reference",
-          "type": "objectElement",
-          "minOccurs": "0",
-          "nullable": false
-        }]
+            "jx:type": "reference",
+            "type": "anyElement",
+            "minOccurs": "0",
+            "nullable": false
+          }, {
+            "jx:type": "reference",
+            "type": "arrayElement",
+            "minOccurs": "0",
+            "nullable": false
+          }, {
+            "jx:type": "reference",
+            "type": "booleanElement",
+            "minOccurs": "0",
+            "nullable": false
+          }, {
+            "jx:type": "reference",
+            "type": "numberElement",
+            "minOccurs": "0",
+            "nullable": false
+          }, {
+            "jx:type": "reference",
+            "type": "referenceElement",
+            "minOccurs": "0",
+            "nullable": false
+          }, {
+            "jx:type": "reference",
+            "type": "stringElement",
+            "minOccurs": "0",
+            "nullable": false
+          }, {
+            "jx:type": "reference",
+            "type": "objectElement",
+            "minOccurs": "0",
+            "nullable": false
+          }]
       }
     }
   },
@@ -323,9 +323,9 @@
             "types": "anyProperty arrayProperty booleanProperty numberProperty objectProperty referenceProperty stringProperty",
             "nullable": false,
             "bindings": [{
-              "lang": "java",
-              "field": "properties"
-            }]
+                "lang": "java",
+                "field": "properties"
+              }]
           }
         }
       }
