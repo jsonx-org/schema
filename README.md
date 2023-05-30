@@ -90,11 +90,11 @@ Any application that consumes well-formed JSON can use the <ins>JSON Schema Defi
 
 ### <b>1.1</b> Dependencies on Other Specifications
 
-The definition of the <ins>JSON Schema Definition Language</ins> depends on the following specifications: [RFC4627<sup>❐</sup>][rfc4627] and [XMLSchema<sup>❐</sup>][xmlschema].
+The definition of the <ins>JSON Schema Definition Language</ins> depends on the following specifications: [RFC4627<sup>❐</sup>][rfc4627], [RFC7159<sup>❐</sup>][rfc7159], and [XMLSchema<sup>❐</sup>][xmlschema].
 
 ### <b>1.2</b> Conventions Used in This Document
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC2119](https://www.ietf.org/rfc/rfc2119.txt).
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC2119][rfc2119].
 
 ## <b>2</b> <ins>Purpose</ins>
 
@@ -106,7 +106,7 @@ Provide a <ins>schema language</ins> to describe normative contracts between pro
 
 1. The <ins>schema language</ins> MUST provide meaningful and useful constraint rules for the 5 JSON value types: `boolean`, `number`, `string`, `object`, and `array`.
 
-1. The <ins>schema language</ins> MUST support schema descriptions for any and all legal JSON documents, as specified by [RFC2119](https://www.ietf.org/rfc/rfc2119.txt).
+1. The <ins>schema language</ins> MUST support schema descriptions for any and all legal JSON documents, as specified by [RFC2119][rfc2119].
 
 1. The <ins>schema language</ins> MUST be free-of and agnostic-to patterns specific to any particular programming language.
 
@@ -1697,13 +1697,13 @@ This section provides sample schemas in both `jsdx` and `jsd` representations.
   </number>
   <number name="numRange" range="[1e10,]" doc="Template for number type with range"/>
   <number name="cachedInteger" scale="0" range="[1,]" doc="Template for integer number type with range">
-    <binding lang="java" decode="org.libj.math.BigIntegers.of"/>
+    <binding lang="java" type="java.math.BigInteger" decode="org.libj.math.BigIntegers.intern"/>
   </number>
   <number name="plainDecimal" scale="2" doc="Template cached BigDecimal">
-    <binding lang="java" encode="this.toPlainString"/>
+    <binding lang="java" type="java.math.BigDecimal" encode="this.toPlainString"/>
   </number>
   <number name="cachedPlainDecimal" scale="3" range="[-2.222e-12,]" doc="First template for real number type with range">
-    <binding lang="java" decode="org.libj.math.BigDecimals.of" encode="this.toPlainString"/>
+    <binding lang="java" type="java.math.BigDecimal" decode="org.libj.math.BigDecimals.intern" encode="this.toPlainString"/>
   </number>
   <number name="defaultDecimalRange2" scale="3" range="[-2.222e-12,]" doc="Second template for real number type with range"/>
 
@@ -2164,7 +2164,8 @@ This section provides sample schemas in both `jsdx` and `jsd` representations.
     "doc": "Template for integer number type with range",
     "bindings": [{
       "lang": "java",
-      "decode": "org.libj.math.BigIntegers.of"
+      "type": "java.math.BigInteger",
+      "decode": "org.libj.math.BigIntegers.intern"
     }]
   },
   "plainDecimal": {
@@ -2173,6 +2174,7 @@ This section provides sample schemas in both `jsdx` and `jsd` representations.
     "doc": "Template cached BigDecimal",
     "bindings": [{
       "lang": "java",
+      "type": "java.math.BigDecimal",
       "encode": "this.toPlainString"
     }]
   },
@@ -2183,7 +2185,8 @@ This section provides sample schemas in both `jsdx` and `jsd` representations.
     "doc": "First template for real number type with range",
     "bindings": [{
       "lang": "java",
-      "decode": "org.libj.math.BigDecimals.of",
+      "type": "java.math.BigInteger",
+      "decode": "org.libj.math.BigDecimals.intern",
       "encode": "this.toPlainString"
     }]
   },
@@ -3250,5 +3253,7 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 [ecma262]: http://www.ecma-international.org/publications/standards/Ecma-262.htm
 [interval-notation]: https://en.wikipedia.org/wiki/Interval_(mathematics)#Classification_of_intervals
 [oxygenxml]: https://www.oxygenxml.com/xml_editor/download_oxygenxml_editor.html
+[rfc2119]: https://www.ietf.org/rfc/rfc2119.txt
 [rfc4627]: https://www.ietf.org/rfc/rfc4627.txt
+[rfc7159]: https://www.ietf.org/rfc/rfc7159.txt
 [xmlschema]: http://www.w3.org/2001/XMLSchema

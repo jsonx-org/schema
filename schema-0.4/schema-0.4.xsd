@@ -69,7 +69,7 @@
     </xs:attribute>
   </xs:attributeGroup>
 
-  <xs:simpleType name="typeName">
+  <xs:simpleType name="typeRef">
     <xs:annotation>
       <xs:documentation>Identifier pattern that must start with either a capital letter, or must include a '$' followed by a capital letter.</xs:documentation>
     </xs:annotation>
@@ -89,18 +89,10 @@
     </xs:attribute>
   </xs:attributeGroup>
 
-  <xs:attributeGroup name="idrefs">
-    <xs:attribute name="types" type="xs:IDREFS">
-      <xs:annotation>
-        <xs:documentation>Specifies a list of type names. Optional.</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:attributeGroup>
-
   <xs:complexType name="referenceMember" abstract="true">
     <xs:complexContent>
       <xs:extension base="jx:member">
-        <xs:attribute name="type" type="jx:typeName" use="required">
+        <xs:attribute name="type" type="jx:typeRef" use="required">
           <xs:annotation>
             <xs:documentation>Specifies the name of the referenced type. Required.</xs:documentation>
           </xs:annotation>
@@ -200,7 +192,14 @@
 
   <xs:complexType name="anyMember" abstract="true">
     <xs:complexContent>
-      <xs:extension base="jx:member"/>
+      <xs:extension base="jx:member">
+        <xs:attribute name="types" type="xs:IDREFS">
+          <xs:annotation>
+            <xs:documentation>Specifies a list of type names. Optional.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attributeGroup ref="jx:annullable"/>
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
 
@@ -214,8 +213,6 @@
             </xs:annotation>
           </xs:element>
         </xs:sequence>
-        <xs:attributeGroup ref="jx:idrefs"/>
-        <xs:attributeGroup ref="jx:annullable"/>
         <xs:attributeGroup ref="jx:use"/>
         <xs:attribute name="names" type="dt:stringNonEmpty" use="required">
           <xs:annotation>
@@ -249,13 +246,6 @@
     </xs:complexContent>
   </xs:complexType>
 
-  <xs:simpleType name="form">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="integer"/>
-      <xs:enumeration value="real"/>
-    </xs:restriction>
-  </xs:simpleType>
-
   <xs:complexType name="numberMember" abstract="true">
     <xs:complexContent>
       <xs:extension base="jx:member">
@@ -274,7 +264,7 @@
             </xs:restriction>
           </xs:simpleType>
         </xs:attribute>
-        <xs:attribute name="scale" type="xs:nonNegativeInteger">
+        <xs:attribute name="scale" type="xs:long">
           <xs:annotation>
             <xs:documentation>
               The number of digits to the right of the decimal point. If a value is not specified, the scale is unbounded.
@@ -359,8 +349,6 @@
             <xs:complexType>
               <xs:complexContent>
                 <xs:extension base="jx:anyMember">
-                  <xs:attributeGroup ref="jx:idrefs"/>
-                  <xs:attributeGroup ref="jx:annullable"/>
                   <xs:attributeGroup ref="jx:recurrable"/>
                 </xs:extension>
               </xs:complexContent>
@@ -511,7 +499,7 @@
             </xs:unique>
           </xs:element>
         </xs:sequence>
-        <xs:attribute name="extends" type="jx:typeName">
+        <xs:attribute name="extends" type="jx:typeRef">
           <xs:annotation>
             <xs:documentation>Specifies the name of the type to extend. Optional.</xs:documentation>
           </xs:annotation>
@@ -647,6 +635,14 @@
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
+    <xs:key name="object_name">
+      <xs:selector xpath="./jx:object"/>
+      <xs:field xpath="@name"/>
+    </xs:key>
+    <xs:keyref name="extends_must_match_object_name" refer="jx:object_name">
+      <xs:selector xpath=".//jx:object"/>
+      <xs:field xpath="@extends"/>
+    </xs:keyref>
   </xs:element>
 
 </xs:schema>
