@@ -360,7 +360,7 @@ Usage for [object properties][#object-properties]:
 | `9.2E-1` | :white_check_mark: | Exponential notation representing a number with 2 digits after the decimal point. |
 | `-0.1` | :white_check_mark: | Floating point number with 1 digit after the decimal point. |
 | `8.123` | :x: | Floating point number with 3 digits after the decimal point. |
-| `8.3-2` | :x: | Exponential notation representing a number with 3 digits after the decimal point. |
+| `8.3E-2` | :x: | Exponential notation representing a number with 3 digits after the decimal point. |
 | `"7.65"` | :x: | Number as string. |
 
 ##### <b>4.2.2.2</b> `number.range`
