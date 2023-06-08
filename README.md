@@ -72,10 +72,10 @@ This document specifies the <ins>JSON Schema Definition Language</ins>, which al
 <samp>&nbsp;&nbsp;</samp>6 [<ins>Sample Schemas</ins>](#6-sample-schemas)<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>6.1 [`structure.jsdx`](#61-structurejsdx)<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>6.2 [`structure.jsd`](#62-structurejsd)<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>6.3 [`datatype.jsdx`](#63-datatypesjsdx)<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>6.4 [`datatype.jsd`](#64-datatypesjsd)<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>6.5 [`bindings.jsdx`](#65-bindingsjsdx)<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>6.6 [`bindings.jsd`](#65-bindingsjsd)<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>6.3 [`datatype.jsdx`](#63-datatypejsdx)<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>6.4 [`datatype.jsd`](#64-datatypejsd)<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>6.5 [`binding.jsdx`](#65-bindingjsdx)<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>6.6 [`binding.jsd`](#65-bindingjsd)<br>
 <samp>&nbsp;&nbsp;</samp>7 [<ins>Contributing</ins>](#7-contributing)<br>
 <samp>&nbsp;&nbsp;</samp>8 [<ins>Special Thanks</ins>](#8-special-thanks)<br>
 <samp>&nbsp;&nbsp;</samp>9 [<ins>License</ins>](#9-license)
@@ -165,7 +165,7 @@ The <samp>**schema**</samp> is the root object of the JSD, and contains [type][#
 
 | <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Name**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> | **Property&nbsp;Value**<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp> |
 |:-|:-|:-|
-| <samp>( **schema** )</samp><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp; | <samp>jx:ns</samp><br>&nbsp;<br>&nbsp;<br><samp>jx:schemaLocation</samp><br>&nbsp;<br>&nbsp;<br>&nbsp;<br><samp>doc</samp><br><samp>[a-zA-Z_$][-a-zA-Z\\d_$]*</samp><br>&nbsp;<br>&nbsp; | _Namespace of the JSON Schema._ Required.<br>&nbsp;&nbsp;Used by schema processors to determine to which<br>&nbsp;&nbsp;version of the JSON Schema the JSD is written.<br>_Location URL of namespace._ Optional.<br>&nbsp;&nbsp;Specified as: `"%NAMESPACE_URI% %LOCATION_URL%"`<br>&nbsp;&nbsp;Used by schema processors to determine location of<br>&nbsp;&nbsp;schema definition for a namespace.<br>Text comments. Optional.<br>_[Type Declaration][#type-declarations]_. Optional.<br>&nbsp;&nbsp;Root object definitions that are referenceable<br>&nbsp;&nbsp;throughout the schema. |
+| <samp>( **schema** )</samp><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp; | <samp>jx:ns</samp><br>&nbsp;<br>&nbsp;<br><samp>jx:schemaLocation</samp><br>&nbsp;<br>&nbsp;<br>&nbsp;<br><samp>jx:targetNamespace</samp><br>&nbsp;<br>&nbsp;<br>&nbsp;<br><samp>doc</samp><br><samp>[a-zA-Z_$][-a-zA-Z\\d_$]*</samp><br>&nbsp;<br>&nbsp; | _Namespace of the JSON Schema._ Required.<br>&nbsp;&nbsp;Used by schema processors to determine to which<br>&nbsp;&nbsp;version of the JSON Schema the JSD is written.<br>_Location URL of namespace._ Optional.<br>&nbsp;&nbsp;Specified as: `"%NAMESPACE_URI% %LOCATION_URL%"`<br>&nbsp;&nbsp;Used by schema processors to determine location of<br>&nbsp;&nbsp;schema definition for a namespace.<br>_Target namespace of schema document._ Optional.<br>&nbsp;&nbsp;Specified as: `"%NAMESPACE_URI%"`<br>&nbsp;&nbsp;Represents the namespace of elements declared<br>&nbsp;&nbsp;within the schema document.<br>Text comments. Optional.<br>_[Type Declaration][#type-declarations]_. Optional.<br>&nbsp;&nbsp;Root object definitions that are referenceable<br>&nbsp;&nbsp;throughout the schema. |
 
 <!-- tabs:start -->
 
@@ -175,6 +175,7 @@ The <samp>**schema**</samp> is the root object of the JSD, and contains [type][#
 {
   "jx:ns": "http://www.jsonx.org/schema-0.4.jsd",
   "jx:schemaLocation": "http://www.jsonx.org/schema-0.4.jsd http://www.jsonx.org/schema.jsd",
+  "jx:targetNamespace": "https://www.jsonx.org/example.jsd"
   ...
 }
 ```
@@ -183,8 +184,10 @@ The <samp>**schema**</samp> is the root object of the JSD, and contains [type][#
 
 ```xml
 <schema
-   xmlns="http://www.jsonx.org/schema-0.4.xsd"
-   xsi:schemaLocation="http://www.jsonx.org/schema-0.4.xsd http://www.jsonx.org/schema.xsd">
+  xmlns="http://www.jsonx.org/schema-0.4.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.jsonx.org/schema-0.4.xsd http://www.jsonx.org/schema.xsd">
+  targetNamespace="https://www.jsonx.org/example.jsdx">
   ...
 </schema>
 ```
@@ -1344,10 +1347,10 @@ These bindings are allowed on [Object Properties of type `boolean`, `number`, or
 
 #### <b>4.6.4</b> Examples
 
-1. [`datatypes.jsdx`](#63-datatypesjsdx)
-1. [`datatypes.jsd`](#64-datatypesjsd)
-1. [`bindings.jsdx`](#65-bindingsjsdx)
-1. [`bindings.jsd`](#66-bindingsjsd)
+1. [`datatype.jsdx`](#63-datatypejsdx)
+1. [`datatype.jsd`](#64-datatypejsd)
+1. [`binding.jsdx`](#65-bindingjsdx)
+1. [`binding.jsd`](#66-bindingjsd)
 
 ## <b>5</b> <ins>Related Resources for JSON Schema</ins>
 
@@ -1399,7 +1402,8 @@ This section provides sample schemas in both `jsdx` and `jsd` representations.
 <schema
   xmlns="http://www.jsonx.org/schema-0.4.xsd"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.jsonx.org/schema-0.4.xsd http://www.jsonx.org/schema.xsd">
+  xsi:schemaLocation="http://www.jsonx.org/schema-0.4.xsd http://www.jsonx.org/schema.xsd"
+  doc="Schema expressing complex nested structures">
   <array name="array">
     <boolean nullable="true"/>
     <number range="[-1,1)" nullable="true"/>
@@ -1464,6 +1468,7 @@ This section provides sample schemas in both `jsdx` and `jsd` representations.
 {
   "jx:ns": "http://www.jsonx.org/schema-0.4.jsd",
   "jx:schemaLocation": "http://www.jsonx.org/schema-0.4.jsd http://www.jsonx.org/schema.jsd",
+  "doc": "Schema expressing complex nested structures",
   "array": {
     "jx:type": "array",
     "elements": [{
@@ -1621,14 +1626,15 @@ This section provides sample schemas in both `jsdx` and `jsd` representations.
 }
 ```
 
-#### <b>6.3</b> `datatypes.jsdx`
+#### <b>6.3</b> `datatype.jsdx`
 
 ```xml
 <schema
-  doc="Schema intended to express full variability of type declarations"
   xmlns="http://www.jsonx.org/schema-0.4.xsd"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.jsonx.org/schema-0.4.xsd http://www.jsonx.org/schema.xsd">
+  xsi:schemaLocation="http://www.jsonx.org/schema-0.4.xsd http://www.jsonx.org/schema.xsd"
+  targetNamespace="http://www.jsonx.org/generator/test/datatype.jsdx"
+  doc="Schema intended to express full variability of type declarations">
   <array name="arrayArr" doc="Array of arrays">
     <reference type="arrayBool" maxOccurs="1" doc="Reference to array of booleans"/>
     <reference type="arrayNum" maxOccurs="1" doc="Reference to array of numbers"/>
@@ -1857,13 +1863,14 @@ This section provides sample schemas in both `jsdx` and `jsd` representations.
 </schema>
 ```
 
-#### <b>6.4</b> `datatypes.jsd`
+#### <b>6.4</b> `datatype.jsd`
 
 ```json
 {
-  "doc": "Schema intended to express full variability of type declarations",
   "jx:ns": "http://www.jsonx.org/schema-0.4.jsd",
   "jx:schemaLocation": "http://www.jsonx.org/schema-0.4.jsd http://www.jsonx.org/schema-0.4.jsd",
+  "jx:targetNamespace": "http://www.jsonx.org/generator/test/datatype.jsdx",
+  "doc": "Schema intended to express full variability of type declarations",
   "arrayArr": {
     "jx:type": "array",
     "doc": "Array of arrays",
@@ -2821,14 +2828,14 @@ This section provides sample schemas in both `jsdx` and `jsd` representations.
 }
 ```
 
-#### <b>6.5</b> `bindings.jsdx`
+#### <b>6.5</b> `binding.jsdx`
 
 ```xml
 <schema
-  doc="Schema focusing on bindings"
   xmlns="http://www.jsonx.org/schema-0.4.xsd"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.jsonx.org/schema-0.4.xsd http://www.jsonx.org/schema.xsd">
+  xsi:schemaLocation="http://www.jsonx.org/schema-0.4.xsd http://www.jsonx.org/schema.xsd"
+  doc="Schema focusing on bindings">
 
   <boolean name="StringBoolean">
     <binding lang="java" type="java.lang.String"/>
@@ -2936,13 +2943,13 @@ This section provides sample schemas in both `jsdx` and `jsd` representations.
 </schema>
 ```
 
-#### <b>6.6</b> `bindings.jsd`
+#### <b>6.6</b> `binding.jsd`
 
 ```json
 {
-  "doc": "Schema focusing on bindings",
   "jx:ns": "http://www.jsonx.org/schema-0.4.jsd",
   "jx:schemaLocation": "http://www.jsonx.org/schema-0.4.jsd http://www.jsonx.org/schema-0.4.jsd",
+  "doc": "Schema focusing on bindings",
   "StringBoolean": {
     "jx:type": "boolean",
     "bindings": [{

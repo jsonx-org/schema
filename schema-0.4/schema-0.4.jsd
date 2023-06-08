@@ -1,21 +1,22 @@
 {
   "jx:ns": "http://www.jsonx.org/schema-0.4.jsd",
   "jx:schemaLocation": "http://www.jsonx.org/schema-0.4.jsd http://www.jsonx.org/schema-0.4.jsd",
+  "jx:targetNamespace": "http://www.jsonx.org/schema-0.4.jsd",
   "min": {
     "jx:type": "string",
-    "pattern": "[\\d]+"
+    "pattern": "\\d+"
   },
   "max": {
     "jx:type": "string",
-    "pattern": "([\\d]+|unbounded)"
+    "pattern": "\\d+|unbounded"
   },
   "use": {
     "jx:type": "string",
-    "pattern": "(required|optional)"
+    "pattern": "required|optional"
   },
   "nonEmptyString": {
     "jx:type": "string",
-    "pattern": "\\S+( \\S+)*"
+    "pattern": "\\S|\\S.*\\S"
   },
   "documented": {
     "jx:type": "object",
@@ -44,6 +45,12 @@
       "jx:schemaLocation": {
         "jx:type": "string",
         "pattern": "http://www.jsonx.org/schema-0.4.jsd [^ ]+",
+        "use": "optional",
+        "nullable": false
+      },
+      "jx:targetNamespace": {
+        "jx:type": "reference",
+        "type": "nonEmptyString",
         "use": "optional",
         "nullable": false
       },

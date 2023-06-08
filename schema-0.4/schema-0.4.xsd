@@ -632,6 +632,13 @@
               </xs:element>
             </xs:choice>
           </xs:sequence>
+          <xs:attribute name="targetNamespace">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(\S)|(\S.*\S)"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
