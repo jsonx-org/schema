@@ -32,7 +32,7 @@ jobs:
         CLASSIFIER="bundle"
         JAR="$ARTIFACT_ID-$VERSION-$CLASSIFIER.jar"
 
-        DOWNLOAD_ROOT="https://oss.sonatype.org/content/repositories/snapshots/org/openjax/xml/sax/$VERSION/"
+        DOWNLOAD_ROOT="https://oss.sonatype.org/content/repositories/snapshots/org/openjax/xml/$ARTIFACT_ID/$VERSION/"
         METADATA_XML="maven-metadata.xml"
 
         curl -s -o "$BUILD_DIR/$METADATA_XML" -z "$BUILD_DIR/$METADATA_XML" "$DOWNLOAD_ROOT$METADATA_XML"
