@@ -15,13 +15,17 @@
   program. If not, see <http://opensource.org/licenses/MIT/>.
 -->
 <xs:schema
+  vc:minVersion="1.1"
   elementFormDefault="qualified"
   targetNamespace="http://www.jsonx.org/schema-0.4.xsd"
   xmlns:jx="http://www.jsonx.org/schema-0.4.xsd"
   xmlns:dt="http://www.openjax.org/xml/datatypes-0.9.xsd"
+  xmlns:xml="http://www.w3.org/XML/1998/namespace"
+  xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
   xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
   <xs:import namespace="http://www.openjax.org/xml/datatypes-0.9.xsd" schemaLocation="http://www.openjax.org/xml/datatypes-0.9.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/XML/1998/namespace"/>
 
   <xs:complexType name="documented" abstract="true">
     <xs:attribute name="doc" type="xs:string">
@@ -504,6 +508,7 @@
             <xs:documentation>Specifies the name of the type to extend. Optional.</xs:documentation>
           </xs:annotation>
         </xs:attribute>
+        <xs:assert test="not(@extends) or (some $extends in @extends satisfies root()/jx:object[@name=$extends])"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -639,17 +644,11 @@
               </xs:restriction>
             </xs:simpleType>
           </xs:attribute>
+          <xs:attribute ref="xml:base"/>
+          <xs:assert test="true()"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
-    <xs:key name="object_name">
-      <xs:selector xpath="./jx:object"/>
-      <xs:field xpath="@name"/>
-    </xs:key>
-    <xs:keyref name="extends_must_match_object_name" refer="jx:object_name">
-      <xs:selector xpath=".//jx:object"/>
-      <xs:field xpath="@extends"/>
-    </xs:keyref>
   </xs:element>
 
 </xs:schema>
