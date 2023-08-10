@@ -87,6 +87,7 @@
       </xs:annotation>
       <xs:simpleType>
         <xs:restriction base="xs:ID">
+          <!-- FIXME: [#10] Support full scope of property names -->
           <xs:pattern value="([a-zA-Z]+\d*)+([.-]?[a-zA-Z]+\d*)*"/>
         </xs:restriction>
       </xs:simpleType>
@@ -123,70 +124,9 @@
     </xs:restriction>
   </xs:simpleType>
   
-  <xs:complexType name="binding">
-    <xs:attribute name="lang" type="dt:NCNameNonEmpty" use="required">
-      <xs:annotation>
-        <xs:documentation>Specifies the language to which this binding applies.</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  
-  <xs:complexType name="fieldBinding">
-    <xs:complexContent>
-      <xs:extension base="jx:binding">
-        <xs:attribute name="field" type="jx:fieldIdentifier">
-          <xs:annotation>
-            <xs:documentation>Specifies the "field" identifier.</xs:documentation>
-          </xs:annotation>
-        </xs:attribute>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  
-  <xs:complexType name="typeBinding">
-    <xs:complexContent>
-      <xs:extension base="jx:binding">
-        <xs:attribute name="type" type="jx:typeIdentifier">
-          <xs:annotation>
-            <xs:documentation>Specifies the "type" qualified identifier.</xs:documentation>
-          </xs:annotation>
-        </xs:attribute>
-        <xs:attribute name="decode" type="jx:methodIdentifier">
-          <xs:annotation>
-            <xs:documentation>Specifies the "decode" qualified function identifier that accepts input as a string, or as the native JSON type of this property, and returns an output of the specified "type" (or the default type if "type" is unspecified).</xs:documentation>
-          </xs:annotation>
-        </xs:attribute>
-        <xs:attribute name="encode" type="jx:methodIdentifier">
-          <xs:annotation>
-            <xs:documentation>Specifies the "encode" qualified function identifier that accepts input of the type specified in "type" (or the default type if "type" is unspecified), and returns an output as a string, or as the native JSON type of this property.</xs:documentation>
-          </xs:annotation>
-        </xs:attribute>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  
-  <xs:complexType name="typeFieldBinding">
-    <xs:complexContent>
-      <xs:extension base="jx:typeBinding">
-        <xs:attribute name="field" type="jx:fieldIdentifier">
-          <xs:annotation>
-            <xs:documentation>Specifies the "field" identifier.</xs:documentation>
-          </xs:annotation>
-        </xs:attribute>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  
   <xs:complexType name="reference">
     <xs:complexContent>
       <xs:extension base="jx:referenceMember">
-        <xs:sequence minOccurs="0" maxOccurs="unbounded">
-          <xs:element name="binding" type="jx:fieldBinding">
-            <xs:annotation>
-              <xs:documentation>Specifies language-specific bindings.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
         <xs:attributeGroup ref="jx:nameable"/>
         <xs:attributeGroup ref="jx:annullable"/>
         <xs:attributeGroup ref="jx:use"/>
@@ -210,13 +150,6 @@
   <xs:complexType name="any">
     <xs:complexContent>
       <xs:extension base="jx:anyMember">
-        <xs:sequence minOccurs="0" maxOccurs="unbounded">
-          <xs:element name="binding" type="jx:fieldBinding">
-            <xs:annotation>
-              <xs:documentation>Specifies language-specific bindings.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
         <xs:attributeGroup ref="jx:use"/>
         <xs:attribute name="names" type="dt:stringNonEmpty" use="required">
           <xs:annotation>
@@ -236,13 +169,6 @@
   <xs:complexType name="boolean">
     <xs:complexContent>
       <xs:extension base="jx:booleanMember">
-        <xs:sequence minOccurs="0" maxOccurs="unbounded">
-          <xs:element name="binding" type="jx:typeFieldBinding">
-            <xs:annotation>
-              <xs:documentation>Specifies language-specific bindings.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
         <xs:attributeGroup ref="jx:nameable"/>
         <xs:attributeGroup ref="jx:annullable"/>
         <xs:attributeGroup ref="jx:use"/>
@@ -283,13 +209,6 @@
   <xs:complexType name="number">
     <xs:complexContent>
       <xs:extension base="jx:numberMember">
-        <xs:sequence minOccurs="0" maxOccurs="unbounded">
-          <xs:element name="binding" type="jx:typeFieldBinding">
-            <xs:annotation>
-              <xs:documentation>Specifies language-specific bindings.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
         <xs:attributeGroup ref="jx:nameable"/>
         <xs:attributeGroup ref="jx:annullable"/>
         <xs:attributeGroup ref="jx:use"/>
@@ -312,13 +231,6 @@
   <xs:complexType name="string">
     <xs:complexContent>
       <xs:extension base="jx:stringMember">
-        <xs:sequence minOccurs="0" maxOccurs="unbounded">
-          <xs:element name="binding" type="jx:typeFieldBinding">
-            <xs:annotation>
-              <xs:documentation>Specifies language-specific bindings.</xs:documentation>
-            </xs:annotation>
-          </xs:element>          
-        </xs:sequence>
         <xs:attributeGroup ref="jx:nameable"/>
         <xs:attributeGroup ref="jx:annullable"/>
         <xs:attributeGroup ref="jx:use"/>
@@ -372,64 +284,31 @@
             <xs:complexType>
               <xs:complexContent>
                 <xs:extension base="jx:booleanMember">
-                  <xs:sequence minOccurs="0" maxOccurs="unbounded">
-                    <xs:element name="binding" type="jx:typeBinding">
-                      <xs:annotation>
-                        <xs:documentation>Specifies language-specific bindings.</xs:documentation>
-                      </xs:annotation>
-                    </xs:element>
-                  </xs:sequence>
                   <xs:attributeGroup ref="jx:annullable"/>
                   <xs:attributeGroup ref="jx:recurrable"/>
                 </xs:extension>
               </xs:complexContent>
             </xs:complexType>
-            <xs:unique name="uniqueArrayBooleanBindingLang">
-              <xs:selector xpath="./jx:binding"/>
-              <xs:field xpath="@lang"/>
-            </xs:unique>
           </xs:element>
           <xs:element name="number">
             <xs:complexType>
               <xs:complexContent>
                 <xs:extension base="jx:numberMember">
-                  <xs:sequence minOccurs="0" maxOccurs="unbounded">
-                    <xs:element name="binding" type="jx:typeBinding">
-                      <xs:annotation>
-                        <xs:documentation>Specifies language-specific bindings.</xs:documentation>
-                      </xs:annotation>
-                    </xs:element>
-                  </xs:sequence>
                   <xs:attributeGroup ref="jx:annullable"/>
                   <xs:attributeGroup ref="jx:recurrable"/>
                 </xs:extension>
               </xs:complexContent>
             </xs:complexType>
-            <xs:unique name="uniqueArrayNumberBindingLang">
-              <xs:selector xpath="./jx:binding"/>
-              <xs:field xpath="@lang"/>
-            </xs:unique>
           </xs:element>
           <xs:element name="string">
             <xs:complexType>
               <xs:complexContent>
                 <xs:extension base="jx:stringMember">
-                  <xs:sequence minOccurs="0" maxOccurs="unbounded">
-                    <xs:element name="binding" type="jx:typeBinding">
-                      <xs:annotation>
-                        <xs:documentation>Specifies language-specific bindings.</xs:documentation>
-                      </xs:annotation>
-                    </xs:element>
-                  </xs:sequence>
                   <xs:attributeGroup ref="jx:annullable"/>
                   <xs:attributeGroup ref="jx:recurrable"/>
                 </xs:extension>
               </xs:complexContent>
             </xs:complexType>
-            <xs:unique name="uniqueArrayStringBindingLang">
-              <xs:selector xpath="./jx:binding"/>
-              <xs:field xpath="@lang"/>
-            </xs:unique>
           </xs:element>
           <xs:element name="reference">
             <xs:complexType>
@@ -459,13 +338,6 @@
   <xs:complexType name="array">
     <xs:complexContent>
       <xs:extension base="jx:arrayMember">
-        <xs:sequence minOccurs="0" maxOccurs="unbounded">
-          <xs:element name="binding" type="jx:fieldBinding">
-            <xs:annotation>
-              <xs:documentation>Specifies language-specific bindings.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
         <xs:attributeGroup ref="jx:nameable"/>
         <xs:attributeGroup ref="jx:annullable"/>
         <xs:attributeGroup ref="jx:use"/>
@@ -481,20 +353,6 @@
             <xs:unique name="uniqueMemberObjectPropertyName">
               <xs:selector xpath="./jx:property"/>
               <xs:field xpath="@name"/>
-            </xs:unique>
-            <xs:unique name="uniqueObjectBindingLang">
-              <xs:selector xpath="./jx:binding"/>
-              <xs:field xpath="@lang"/>
-            </xs:unique>
-            <xs:unique name="uniqueObjectBindingField">
-              <xs:selector xpath="./jx:binding"/>
-              <xs:field xpath="@lang"/>
-              <xs:field xpath="@field"/>
-            </xs:unique>
-            <xs:unique name="uniqueMemberObjectBindingField">
-              <xs:selector xpath="./jx:property/jx:binding"/>
-              <xs:field xpath="@lang"/>
-              <xs:field xpath="@field"/>
             </xs:unique>
             <xs:unique name="uniqueMemberObjectBindingField2">
               <xs:selector xpath="."/>
@@ -516,13 +374,6 @@
   <xs:complexType name="object">
     <xs:complexContent>
       <xs:extension base="jx:objectMember">
-        <xs:sequence minOccurs="0" maxOccurs="unbounded">
-          <xs:element name="binding" type="jx:fieldBinding">
-            <xs:annotation>
-              <xs:documentation>Specifies language-specific bindings.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
         <xs:attributeGroup ref="jx:nameable"/>
         <xs:attributeGroup ref="jx:annullable"/>
         <xs:attributeGroup ref="jx:use"/>
@@ -540,61 +391,28 @@
                 <xs:complexType>
                   <xs:complexContent>
                     <xs:extension base="jx:booleanMember">
-                      <xs:sequence minOccurs="0" maxOccurs="unbounded">
-                        <xs:element name="binding" type="jx:typeBinding">
-                          <xs:annotation>
-                            <xs:documentation>Specifies language-specific bindings.</xs:documentation>
-                          </xs:annotation>
-                        </xs:element>
-                      </xs:sequence>
                       <xs:attributeGroup ref="jx:id"/>
                     </xs:extension>
                   </xs:complexContent>
                 </xs:complexType>
-                <xs:unique name="uniqueBooleanBindingLang">
-                  <xs:selector xpath="./jx:binding"/>
-                  <xs:field xpath="@lang"/>
-                </xs:unique>
               </xs:element>
               <xs:element name="number">
                 <xs:complexType>
                   <xs:complexContent>
                     <xs:extension base="jx:numberMember">
-                      <xs:sequence minOccurs="0" maxOccurs="unbounded">
-                        <xs:element name="binding" type="jx:typeBinding">
-                          <xs:annotation>
-                            <xs:documentation>Specifies language-specific bindings.</xs:documentation>
-                          </xs:annotation>
-                        </xs:element>
-                      </xs:sequence>
                       <xs:attributeGroup ref="jx:id"/>
                     </xs:extension>
                   </xs:complexContent>
                 </xs:complexType>
-                <xs:unique name="uniqueNumberBindingLang">
-                  <xs:selector xpath="./jx:binding"/>
-                  <xs:field xpath="@lang"/>
-                </xs:unique>
               </xs:element>
               <xs:element name="string">
                 <xs:complexType>
                   <xs:complexContent>
                     <xs:extension base="jx:stringMember">
-                      <xs:sequence minOccurs="0" maxOccurs="unbounded">
-                        <xs:element name="binding" type="jx:typeBinding">
-                          <xs:annotation>
-                            <xs:documentation>Specifies language-specific bindings.</xs:documentation>
-                          </xs:annotation>
-                        </xs:element>
-                      </xs:sequence>
                       <xs:attributeGroup ref="jx:id"/>
                     </xs:extension>
                   </xs:complexContent>
                 </xs:complexType>
-                <xs:unique name="uniqueStringBindingLang">
-                  <xs:selector xpath="./jx:binding"/>
-                  <xs:field xpath="@lang"/>
-                </xs:unique>
               </xs:element>
               <xs:element name="array">
                 <xs:complexType>
@@ -628,11 +446,6 @@
                 <xs:unique name="uniqueRootObjectPropertyName">
                   <xs:selector xpath="./jx:property"/>
                   <xs:field xpath="@name | @names"/>
-                </xs:unique>
-                <xs:unique name="uniqueRootObjectBindingField">
-                  <xs:selector xpath="./jx:property/jx:binding"/>
-                  <xs:field xpath="@lang"/>
-                  <xs:field xpath="@field"/>
                 </xs:unique>
               </xs:element>
             </xs:choice>
