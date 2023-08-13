@@ -31,7 +31,7 @@
   <xs:simpleType name="path">
     <xs:restriction base="xs:string">
       <!-- FIXME: [#10] Support full scope of property names -->
-      <xs:pattern value="([a-zA-Z]+\d*)+((\\\.|-)?[a-zA-Z]+\d*)*(\.([a-zA-Z]+\d*)+((\\\.|-)?[a-zA-Z]+\d*)*)*(\[\d+\])*"/>
+      <xs:pattern value="([a-zA-Z]+\d*)+((\\\.|-)?[a-zA-Z]+\d*)*.*"/>
     </xs:restriction>
   </xs:simpleType>
 

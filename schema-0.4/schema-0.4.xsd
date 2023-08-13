@@ -73,11 +73,10 @@
     </xs:attribute>
   </xs:attributeGroup>
 
-  <xs:simpleType name="typeRef">
-    <xs:annotation>
-      <xs:documentation>Identifier pattern that must start with either a capital letter, or must include a '$' followed by a capital letter.</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:IDREF"/>
+  <xs:simpleType name="ref">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(([\i-[:]][\c-[:]]*):)?([a-zA-Z]+\d*)+([.-]?[a-zA-Z]+\d*)*"/>
+    </xs:restriction>
   </xs:simpleType>
 
   <xs:attributeGroup name="id">
@@ -86,8 +85,7 @@
         <xs:documentation>Specifies the name. Required.</xs:documentation>
       </xs:annotation>
       <xs:simpleType>
-        <xs:restriction base="xs:ID">
-          <!-- FIXME: [#10] Support full scope of property names -->
+        <xs:restriction base="xs:string">
           <xs:pattern value="([a-zA-Z]+\d*)+([.-]?[a-zA-Z]+\d*)*"/>
         </xs:restriction>
       </xs:simpleType>
@@ -97,7 +95,7 @@
   <xs:complexType name="referenceMember" abstract="true">
     <xs:complexContent>
       <xs:extension base="jx:member">
-        <xs:attribute name="type" type="jx:typeRef" use="required">
+        <xs:attribute name="type" type="jx:ref" use="required">
           <xs:annotation>
             <xs:documentation>Specifies the name of the referenced type. Required.</xs:documentation>
           </xs:annotation>
@@ -105,24 +103,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
-  <xs:simpleType name="methodIdentifier">
-    <xs:restriction base="xs:string">
-      <xs:pattern value="(([a-zA-Z_$][a-zA-Z\d_$]*)\.)*[a-zA-Z_$][a-zA-Z\d_$]*(\.&lt;init&gt;)?"/>
-    </xs:restriction>
-  </xs:simpleType>
-  
-  <xs:simpleType name="typeIdentifier">
-    <xs:restriction base="xs:string">
-      <xs:pattern value="(([a-zA-Z_$][a-zA-Z\d_$]*)\.)*[a-zA-Z_$][a-zA-Z\d_$]*(\[\])?"/>
-    </xs:restriction>
-  </xs:simpleType>
-  
-  <xs:simpleType name="fieldIdentifier">
-    <xs:restriction base="xs:string">
-      <xs:pattern value="[a-zA-Z_$][a-zA-Z\d_$]*"/>
-    </xs:restriction>
-  </xs:simpleType>
   
   <xs:complexType name="reference">
     <xs:complexContent>
@@ -137,10 +117,13 @@
   <xs:complexType name="anyMember" abstract="true">
     <xs:complexContent>
       <xs:extension base="jx:member">
-        <xs:attribute name="types" type="xs:IDREFS">
+        <xs:attribute name="types">
           <xs:annotation>
             <xs:documentation>Specifies a list of type names. Optional.</xs:documentation>
           </xs:annotation>
+          <xs:simpleType>
+            <xs:list itemType="jx:ref"/>
+          </xs:simpleType>
         </xs:attribute>
         <xs:attributeGroup ref="jx:annullable"/>
       </xs:extension>
@@ -361,12 +344,11 @@
             </xs:unique>
           </xs:element>
         </xs:sequence>
-        <xs:attribute name="extends" type="jx:typeRef">
+        <xs:attribute name="extends" type="jx:ref">
           <xs:annotation>
             <xs:documentation>Specifies the name of the type to extend. Optional.</xs:documentation>
           </xs:annotation>
         </xs:attribute>
-        <xs:assert test="not(@extends) or (some $extends in @extends satisfies root()/jx:object[@name=$extends])"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -448,6 +430,16 @@
                   <xs:field xpath="@name | @names"/>
                 </xs:unique>
               </xs:element>
+              <xs:element name="import">
+                <xs:complexType>
+                  <xs:all>
+                    <xs:element ref="jx:schema"/>
+                  </xs:all>
+                  <xs:attribute name="namespace" type="xs:anyURI" use="required"/>
+                  <xs:attribute name="schemaLocation" type="xs:string" use="required"/>
+                  <xs:assert test="@namespace = ./jx:schema/@targetNamespace"/>
+                </xs:complexType>
+              </xs:element>
             </xs:choice>
           </xs:sequence>
           <xs:attribute name="targetNamespace">
@@ -458,10 +450,23 @@
             </xs:simpleType>
           </xs:attribute>
           <xs:attribute ref="xml:base"/>
-          <xs:assert test="true()"/>
+          <xs:anyAttribute namespace="http://www.jsonx.org/namespace" processContents="skip"/>
+
+          <xs:assert test="every $extends in *[@extends]/@extends satisfies contains($extends, ':') and (some $namespace in @*[name() = concat('jxns:', substring-before($extends, ':'))] satisfies jx:import[@namespace = $namespace]/jx:schema/jx:object[@name = substring-after($extends, ':')]) or ./jx:object[@name = $extends]"/>
+          <xs:assert test="every $extends in *[local-name() != 'import']//*[@extends]/@extends satisfies false() and contains($extends, ':') and (some $namespace in @*[name() = concat('jxns:', substring-before($extends, ':'))] satisfies jx:import[@namespace = $namespace]/jx:schema/jx:object[@name = substring-after($extends, ':')]) or ./jx:object[@name = $extends]"/>
+
+          <xs:assert test="every $type in *[@type]/@type satisfies contains($type, ':') and (some $namespace in @*[name() = concat('jxns:', substring-before($type, ':'))] satisfies jx:import[@namespace = $namespace]/jx:schema/*[@name = substring-after($type, ':')]) or ./*[@name = $type]"/>
+          <xs:assert test="every $type in *[local-name() != 'import']//*[@type]/@type satisfies contains($type, ':') and (some $namespace in @*[name() = concat('jxns:', substring-before($type, ':'))] satisfies jx:import[@namespace = $namespace]/jx:schema/*[@name = substring-after($type, ':')]) or ./*[@name = $type]"/>
+
+          <xs:assert test="every $types in *[@types]/@types satisfies every $type in tokenize(string($types), ' ') satisfies contains($type, ':') and true() or ./*[@name = $type]"/>
+          <xs:assert test="every $types in *[local-name() != 'import']//*[@types]/@types satisfies every $type in tokenize(string($types), ' ') satisfies contains($type, ':') and true() or ./*[@name = $type]"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
+    <xs:unique name="uniqueName">
+      <xs:selector xpath="*"/>
+      <xs:field xpath="@name"/>
+    </xs:unique>
   </xs:element>
 
 </xs:schema>
