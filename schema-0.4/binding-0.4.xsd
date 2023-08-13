@@ -35,13 +35,31 @@
     </xs:restriction>
   </xs:simpleType>
 
+  <xs:simpleType name="methodIdentifier">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(([a-zA-Z_$][a-zA-Z\d_$]*)\.)*[a-zA-Z_$][a-zA-Z\d_$]*(\.&lt;init&gt;)?"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="typeIdentifier">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(([a-zA-Z_$][a-zA-Z\d_$]*)\.)*[a-zA-Z_$][a-zA-Z\d_$]*(\[\])?"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="fieldIdentifier">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z_$][a-zA-Z\d_$]*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
   <xs:complexType name="fieldBinding">
     <xs:attribute name="lang" type="dt:NCNameNonEmpty" use="required">
       <xs:annotation>
         <xs:documentation>Specifies the language to which this binding applies.</xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="field" type="jx:fieldIdentifier">
+    <xs:attribute name="field" type="jb:fieldIdentifier">
       <xs:annotation>
         <xs:documentation>Specifies the "field" identifier.</xs:documentation>
       </xs:annotation>
@@ -51,17 +69,17 @@
   <xs:complexType name="typeFieldBinding">
     <xs:complexContent>
       <xs:extension base="jb:fieldBinding">
-        <xs:attribute name="type" type="jx:typeIdentifier">
+        <xs:attribute name="type" type="jb:typeIdentifier">
           <xs:annotation>
             <xs:documentation>Specifies the "type" qualified identifier.</xs:documentation>
           </xs:annotation>
         </xs:attribute>
-        <xs:attribute name="decode" type="jx:methodIdentifier">
+        <xs:attribute name="decode" type="jb:methodIdentifier">
           <xs:annotation>
             <xs:documentation>Specifies the "decode" qualified function identifier that accepts input as a string, or as the native JSON type of this property, and returns an output of the specified "type" (or the default type if "type" is unspecified).</xs:documentation>
           </xs:annotation>
         </xs:attribute>
-        <xs:attribute name="encode" type="jx:methodIdentifier">
+        <xs:attribute name="encode" type="jb:methodIdentifier">
           <xs:annotation>
             <xs:documentation>Specifies the "encode" qualified function identifier that accepts input of the type specified in "type" (or the default type if "type" is unspecified), and returns an output as a string, or as the native JSON type of this property.</xs:documentation>
           </xs:annotation>
