@@ -94,9 +94,11 @@
     <property name="jx:type" xsi:type="string" pattern="string" nullable="false"/>
   </object>
   
-  <array name="binding">
-    <reference type="jx:schema"/>
-    <any types="any reference array object boolean number string" nullable="false"/>
-  </array>
+  <object name="binding">
+    <property name="schema" xsi:type="reference" type="jx:schema" nullable="false"/>
+    <property name="bindings" xsi:type="array" nullable="false">
+      <any types="any reference array object boolean number string" nullable="false"/>
+    </property>
+  </object>
   
 </schema>
