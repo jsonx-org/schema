@@ -47,15 +47,11 @@
   </object>
 
   <object name="fieldBindings" abstract="true">
-    <property name="bindings" xsi:type="object" nullable="false">
-      <property names="\S|\S.*\S" xsi:type="any" types="fieldBinding" nullable="false"/>
-    </property>
+    <property names="\S|\S.*\S" xsi:type="any" types="fieldBinding" nullable="false"/>
   </object>
   
   <object name="typeFieldBindings" abstract="true">
-    <property name="bindings" xsi:type="object" nullable="false">
-      <property names="\S|\S.*\S" xsi:type="any" types="typeFieldBinding" nullable="false"/>
-    </property>
+    <property names="\S|\S.*\S" xsi:type="any" types="typeFieldBinding" nullable="false"/>
   </object>
   
   <object name="any" extends="fieldBindings">
