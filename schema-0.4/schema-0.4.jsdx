@@ -36,7 +36,7 @@
 
   <object name="schema" extends="documented">
     <property name="jx:ns" xsi:type="string" pattern="http://www.jsonx.org/schema-0.4.jsd" nullable="false"/>
-    <property name="jx:schemaLocation" xsi:type="string" pattern="http://www.jsonx.org/schema-0.4.jsd [^ ]+" use="optional" nullable="false"/>
+    <property name="jx:schemaLocation" xsi:type="string" pattern="((\S|\S.*\S) (\S|\S.*\S))+" use="optional" nullable="false"/>
     <property name="jx:targetNamespace" xsi:type="reference" type="nonEmptyString" nullable="false" use="optional"/>
     <property names="[a-zA-Z_][-a-zA-Z\d_]*" xsi:type="any" types="array boolean number objectType string" nullable="false"/>
   </object>
