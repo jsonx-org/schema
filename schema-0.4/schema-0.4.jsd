@@ -1,709 +1,582 @@
 {
-  "jx:ns": "http://www.jsonx.org/schema-0.4.jsd",
-  "jx:schemaLocation": "http://www.jsonx.org/schema-0.4.jsd http://www.jsonx.org/schema-0.4.jsd",
-  "jx:targetNamespace": "http://www.jsonx.org/schema-0.4.jsd",
+  "@ns": "http://www.jsonx.org/schema-0.4.jsd",
+  "@schemaLocation": "http://www.jsonx.org/schema-0.4.jsd http://www.jsonx.org/schema-0.4.jsd",
+  "@targetNamespace": "http://www.jsonx.org/schema-0.4.jsd",
   "min": {
-    "jx:type": "string",
-    "pattern": "\\d+"
+    "@": "string",
+    "@pattern": "\\d+"
   },
   "max": {
-    "jx:type": "string",
-    "pattern": "\\d+|unbounded"
+    "@": "string",
+    "@pattern": "\\d+|unbounded"
   },
   "use": {
-    "jx:type": "string",
-    "pattern": "required|optional"
+    "@": "string",
+    "@pattern": "required|optional"
   },
   "nonEmptyString": {
-    "jx:type": "string",
-    "pattern": "\\S|\\S.*\\S"
+    "@": "string",
+    "@pattern": "\\S|\\S.*\\S"
+  },
+  "typeIdentifier": {
+    "@": "string",
+    "@pattern": "(([a-zA-Z_$][a-zA-Z\\d_$]*)\\.)*[a-zA-Z_$][a-zA-Z\\d_$]*(\\[\\])?"
+  },
+  "methodIdentifier": {
+    "@": "string",
+    "@pattern": "(([a-zA-Z_$][a-zA-Z\\d_$]*)\\.)*[a-zA-Z_$][a-zA-Z\\d_$]*(\\.<init>)?"
+  },
+  "fieldIdentifier": {
+    "@": "string",
+    "@pattern": "[a-zA-Z_$][a-zA-Z\\d_$]*"
+  },
+  "schemaLocation": {
+    "@": "string",
+    "@pattern": "((\\S|\\S.*\\S) (\\S|\\S.*\\S))+"
   },
   "documented": {
-    "jx:type": "object",
-    "abstract": true,
-    "properties": {
-      "doc": {
-        "jx:type": "string",
-        "doc": "Defines text comments. Optional."
+    "@": "object",
+    "@abstract": true,
+    "@properties": {
+      "@doc": {
+        "@": "string",
+        "@doc": "Defines text comments. Optional."
       }
     }
   },
   "member": {
-    "jx:type": "object",
-    "abstract": true,
-    "extends": "documented"
+    "@": "object",
+    "@abstract": true,
+    "@extends": "documented"
+  },
+  "import": {
+    "@": "object",
+    "@properties": {
+      "@namespace": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "nonEmptyString",
+        "@use": "optional"
+      },
+      "@schemaLocation": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "schemaLocation",
+        "@use": "optional"
+      }
+    }
   },
   "schema": {
-    "jx:type": "object",
-    "extends": "documented",
-    "properties": {
-      "jx:ns": {
-        "jx:type": "string",
-        "pattern": "http://www.jsonx.org/schema-0.4.jsd",
-        "nullable": false
+    "@": "object",
+    "@extends": "documented",
+    "@properties": {
+      "@ns": {
+        "@": "string",
+        "@nullable": false,
+        "@pattern": "http://www.jsonx.org/schema-0.4.jsd"
       },
-      "jx:schemaLocation": {
-        "jx:type": "string",
-        "pattern": "http://www.jsonx.org/schema-0.4.jsd [^ ]+",
-        "use": "optional",
-        "nullable": false
+      "@schemaLocation": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "schemaLocation",
+        "@use": "optional"
       },
-      "jx:targetNamespace": {
-        "jx:type": "reference",
-        "type": "nonEmptyString",
-        "use": "optional",
-        "nullable": false
+      "@targetNamespace": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "nonEmptyString",
+        "@use": "optional"
+      },
+      "@imports": {
+        "@": "array",
+        "@nullable": false,
+        "@use": "optional",
+        "@elements": [{
+            "@": "reference",
+            "@type": "import"
+          }]
       },
       "[a-zA-Z_][-a-zA-Z\\d_]*": {
-        "jx:type": "any",
-        "types": "array boolean number objectType string",
-        "nullable": false,
-        "bindings": [{
-            "lang": "java",
-            "field": "declarations"
-          }]
+        "@": "any",
+        "@nullable": false,
+        "@types": "array boolean number objectType string"
       }
     }
-  },
-  "typeIdentifier": {
-    "jx:type": "string",
-    "pattern": "(([a-zA-Z_$][a-zA-Z\\d_$]*)\\.)*[a-zA-Z_$][a-zA-Z\\d_$]*(\\[\\])?"
-  },
-  "methodIdentifier": {
-    "jx:type": "string",
-    "pattern": "(([a-zA-Z_$][a-zA-Z\\d_$]*)\\.)*[a-zA-Z_$][a-zA-Z\\d_$]*(\\.<init>)?"
-  },
-  "fieldIdentifier": {
-    "jx:type": "string",
-    "pattern": "[a-zA-Z_$][a-zA-Z\\d_$]*"
-  },
-  "binding": {
-    "jx:type": "object",
-    "abstract": true,
-    "properties": {
-      "lang": {
-        "jx:type": "reference",
-        "type": "nonEmptyString",
-        "nullable": false,
-        "doc": "Specifies the language to which this binding applies."
-      }
-    }
-  },
-  "fieldBinding": {
-    "jx:type": "object",
-    "extends": "binding",
-    "doc": "Specifies language-specific binding.",
-    "properties": {
-      "field": {
-        "jx:type": "reference",
-        "type": "fieldIdentifier",
-        "use": "optional",
-        "nullable": false,
-        "doc": "Specifies the \"field\" identifier."
-      }
-    }
-  },
-  "typeBinding": {
-    "jx:type": "object",
-    "extends": "binding",
-    "doc": "Specifies language-specific binding.",
-    "properties": {
-      "type": {
-        "jx:type": "reference",
-        "type": "typeIdentifier",
-        "use": "optional",
-        "nullable": false,
-        "doc": "Specifies the \"type\" qualified identifier."
-      },
-      "decode": {
-        "jx:type": "reference",
-        "type": "methodIdentifier",
-        "use": "optional",
-        "nullable": false,
-        "doc": "Specifies the \"decode\" qualified function identifier that accepts input as a string, or as the native JSON type of this property, and returns an output of the specified \"type\" (or the default type if \"type\" is unspecified)."
-      },
-      "encode": {
-        "jx:type": "reference",
-        "type": "methodIdentifier",
-        "use": "optional",
-        "nullable": false,
-        "doc": "Specifies the \"encode\" qualified function identifier that accepts input of the type specified in \"type\" (or the default type if \"type\" is unspecified), and returns an output as a string, or as the native JSON type of this property."
-      }
-    }
-  },
-  "typeFieldBinding": {
-    "jx:type": "object",
-    "extends": "typeBinding",
-    "doc": "Specifies language-specific binding.",
-    "properties": {
-      "field": {
-        "jx:type": "reference",
-        "type": "fieldIdentifier",
-        "use": "optional",
-        "nullable": false,
-        "doc": "Specifies the \"field\" identifier."
-      }
-    }
-  },
-  "fieldBindings": {
-    "jx:type": "array",
-    "doc": "Specifies language-specific bindings.",
-    "elements": [{
-        "jx:type": "reference",
-        "type": "fieldBinding",
-        "nullable": false
-      }]
-  },
-  "typeBindings": {
-    "jx:type": "array",
-    "doc": "Specifies language-specific bindings.",
-    "elements": [{
-        "jx:type": "reference",
-        "type": "typeBinding",
-        "nullable": false
-      }]
-  },
-  "typeFieldBindings": {
-    "jx:type": "array",
-    "doc": "Specifies language-specific bindings.",
-    "elements": [{
-        "jx:type": "reference",
-        "type": "typeFieldBinding",
-        "nullable": false
-      }]
   },
   "any": {
-    "jx:type": "object",
-    "abstract": true,
-    "extends": "member",
-    "properties": {
-      "jx:type": {
-        "jx:type": "string",
-        "pattern": "any",
-        "nullable": false
+    "@": "object",
+    "@abstract": true,
+    "@extends": "member",
+    "@properties": {
+      "@": {
+        "@": "string",
+        "@nullable": false,
+        "@pattern": "any"
       },
-      "types": {
-        "jx:type": "reference",
-        "type": "nonEmptyString",
-        "use": "optional",
-        "nullable": false
+      "@types": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "nonEmptyString",
+        "@use": "optional"
       }
     }
   },
   "array": {
-    "jx:type": "object",
-    "extends": "member",
-    "properties": {
-      "jx:type": {
-        "jx:type": "string",
-        "pattern": "array",
-        "nullable": false
+    "@": "object",
+    "@extends": "member",
+    "@properties": {
+      "@": {
+        "@": "string",
+        "@nullable": false,
+        "@pattern": "array"
       },
-      "minIterate": {
-        "jx:type": "reference",
-        "type": "min",
-        "use": "optional",
-        "nullable": false,
-        "doc": "Specifies the minimum inclusive number of iterations of child elements. Default: 1."
+      "@minIterate": {
+        "@": "reference",
+        "@doc": "Specifies the minimum inclusive number of iterations of child elements. Default: 1.",
+        "@nullable": false,
+        "@type": "min",
+        "@use": "optional"
       },
-      "maxIterate": {
-        "jx:type": "reference",
-        "type": "max",
-        "use": "optional",
-        "nullable": false,
-        "doc": "Specifies the maximum inclusive number of iterations of child elements. Default: 1."
+      "@maxIterate": {
+        "@": "reference",
+        "@doc": "Specifies the maximum inclusive number of iterations of child elements. Default: 1.",
+        "@nullable": false,
+        "@type": "max",
+        "@use": "optional"
       },
-      "elements": {
-        "jx:type": "array",
-        "maxIterate": "unbounded",
-        "nullable": false,
-        "elements": [{
-            "jx:type": "reference",
-            "type": "anyElement",
-            "minOccurs": "0",
-            "nullable": false
+      "@elements": {
+        "@": "array",
+        "@maxIterate": "unbounded",
+        "@nullable": false,
+        "@elements": [{
+            "@": "reference",
+            "@minOccurs": "0",
+            "@nullable": false,
+            "@type": "anyElement"
           }, {
-            "jx:type": "reference",
-            "type": "arrayElement",
-            "minOccurs": "0",
-            "nullable": false
+            "@": "reference",
+            "@minOccurs": "0",
+            "@nullable": false,
+            "@type": "arrayElement"
           }, {
-            "jx:type": "reference",
-            "type": "booleanElement",
-            "minOccurs": "0",
-            "nullable": false
+            "@": "reference",
+            "@minOccurs": "0",
+            "@nullable": false,
+            "@type": "booleanElement"
           }, {
-            "jx:type": "reference",
-            "type": "numberElement",
-            "minOccurs": "0",
-            "nullable": false
+            "@": "reference",
+            "@minOccurs": "0",
+            "@nullable": false,
+            "@type": "numberElement"
           }, {
-            "jx:type": "reference",
-            "type": "referenceElement",
-            "minOccurs": "0",
-            "nullable": false
+            "@": "reference",
+            "@minOccurs": "0",
+            "@nullable": false,
+            "@type": "referenceElement"
           }, {
-            "jx:type": "reference",
-            "type": "stringElement",
-            "minOccurs": "0",
-            "nullable": false
+            "@": "reference",
+            "@minOccurs": "0",
+            "@nullable": false,
+            "@type": "stringElement"
           }, {
-            "jx:type": "reference",
-            "type": "objectElement",
-            "minOccurs": "0",
-            "nullable": false
+            "@": "reference",
+            "@minOccurs": "0",
+            "@nullable": false,
+            "@type": "objectElement"
           }]
       }
     }
   },
   "boolean": {
-    "jx:type": "object",
-    "extends": "member",
-    "properties": {
-      "jx:type": {
-        "jx:type": "string",
-        "pattern": "boolean",
-        "nullable": false
-      },
-      "bindings": {
-        "jx:type": "reference",
-        "type": "typeBindings",
-        "use": "optional",
-        "nullable": false
+    "@": "object",
+    "@extends": "member",
+    "@properties": {
+      "@": {
+        "@": "string",
+        "@nullable": false,
+        "@pattern": "boolean"
       }
     }
   },
   "number": {
-    "jx:type": "object",
-    "extends": "member",
-    "properties": {
-      "jx:type": {
-        "jx:type": "string",
-        "pattern": "number",
-        "nullable": false
+    "@": "object",
+    "@extends": "member",
+    "@properties": {
+      "@": {
+        "@": "string",
+        "@nullable": false,
+        "@pattern": "number"
       },
-      "range": {
-        "jx:type": "string",
-        "pattern": "[\\(\\[](-?(0|[1-9]\\d*)(\\.\\d+)?([eE][+-]?([1-9]\\d*))?)?,(-?(0|[1-9]\\d*)(\\.\\d+)?([eE][+-]?([1-9]\\d*))?)?[\\)\\]]",
-        "use": "optional",
-        "nullable": false,
-        "doc": "Specifies the value range in interval notation:\n       Open (exclusive) interval: (min,max)\n       Closed (inclusive) interval: [min,max]\n       Half-open or half-closed interval: [min,max)\n       Degenerate interval: [val]"
+      "@range": {
+        "@": "string",
+        "@doc": "Specifies the value range in interval notation:\n       Open (exclusive) interval: (min,max)\n       Closed (inclusive) interval: [min,max]\n       Half-open or half-closed interval: [min,max)\n       Degenerate interval: [val]",
+        "@nullable": false,
+        "@pattern": "[\\(\\[](-?(0|[1-9]\\d*)(\\.\\d+)?([eE][+-]?([1-9]\\d*))?)?,(-?(0|[1-9]\\d*)(\\.\\d+)?([eE][+-]?([1-9]\\d*))?)?[\\)\\]]",
+        "@use": "optional"
       },
-      "scale": {
-        "jx:type": "number",
-        "scale": 0,
-        "use": "optional",
-        "nullable": false,
-        "doc": "The number of digits to the right of the decimal point. If a value is not specified, the scale is unbounded."
-      },
-      "bindings": {
-        "jx:type": "reference",
-        "type": "typeBindings",
-        "use": "optional",
-        "nullable": false
+      "@scale": {
+        "@": "number",
+        "@doc": "The number of digits to the right of the decimal point. If a value is not specified, the scale is unbounded.",
+        "@nullable": false,
+        "@scale": 0,
+        "@use": "optional"
       }
     }
   },
   "object": {
-    "jx:type": "object",
-    "abstract": true,
-    "extends": "member",
-    "properties": {
-      "jx:type": {
-        "jx:type": "string",
-        "pattern": "object",
-        "nullable": false
+    "@": "object",
+    "@abstract": true,
+    "@extends": "member",
+    "@properties": {
+      "@": {
+        "@": "string",
+        "@nullable": false,
+        "@pattern": "object"
       },
-      "extends": {
-        "jx:type": "string",
-        "use": "optional",
-        "nullable": false,
-        "doc": "Specifies the name of the type to extend. Optional."
+      "@extends": {
+        "@": "string",
+        "@doc": "Specifies the name of the type to extend. Optional.",
+        "@nullable": false,
+        "@use": "optional"
       },
-      "properties": {
-        "jx:type": "object",
-        "use": "optional",
-        "nullable": false,
-        "properties": {
+      "@properties": {
+        "@": "object",
+        "@nullable": false,
+        "@use": "optional",
+        "@properties": {
           ".*": {
-            "jx:type": "any",
-            "types": "anyProperty arrayProperty booleanProperty numberProperty objectProperty referenceProperty stringProperty",
-            "nullable": false,
-            "bindings": [{
-                "lang": "java",
-                "field": "properties"
-              }]
+            "@": "any",
+            "@nullable": false,
+            "@types": "anyProperty arrayProperty booleanProperty numberProperty objectProperty referenceProperty stringProperty"
           }
         }
       }
     }
   },
   "objectType": {
-    "jx:type": "object",
-    "extends": "object",
-    "properties": {
-      "abstract": {
-        "jx:type": "boolean",
-        "use": "optional",
-        "nullable": false,
-        "doc": "Specifies whether the object is abstract. Default: false."
+    "@": "object",
+    "@extends": "object",
+    "@properties": {
+      "@abstract": {
+        "@": "boolean",
+        "@doc": "Specifies whether the object is abstract. Default: false.",
+        "@nullable": false,
+        "@use": "optional"
       }
     }
   },
   "reference": {
-    "jx:type": "object",
-    "abstract": true,
-    "extends": "member",
-    "properties": {
-      "jx:type": {
-        "jx:type": "string",
-        "pattern": "reference",
-        "nullable": false
+    "@": "object",
+    "@abstract": true,
+    "@extends": "member",
+    "@properties": {
+      "@": {
+        "@": "string",
+        "@nullable": false,
+        "@pattern": "reference"
       },
-      "type": {
-        "jx:type": "reference",
-        "type": "nonEmptyString",
-        "nullable": false,
-        "doc": "Specifies the name of the referenced type. Required."
+      "@type": {
+        "@": "reference",
+        "@doc": "Specifies the name of the referenced type. Required.",
+        "@nullable": false,
+        "@type": "nonEmptyString"
       }
     }
   },
   "string": {
-    "jx:type": "object",
-    "extends": "member",
-    "properties": {
-      "jx:type": {
-        "jx:type": "string",
-        "pattern": "string",
-        "nullable": false
+    "@": "object",
+    "@extends": "member",
+    "@properties": {
+      "@": {
+        "@": "string",
+        "@nullable": false,
+        "@pattern": "string"
       },
-      "pattern": {
-        "jx:type": "reference",
-        "type": "nonEmptyString",
-        "use": "optional",
-        "nullable": false
-      },
-      "bindings": {
-        "jx:type": "reference",
-        "type": "typeBindings",
-        "use": "optional",
-        "nullable": false
+      "@pattern": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "nonEmptyString",
+        "@use": "optional"
       }
     }
   },
   "anyProperty": {
-    "jx:type": "object",
-    "extends": "any",
-    "properties": {
-      "nullable": {
-        "jx:type": "boolean",
-        "use": "optional",
-        "nullable": false
+    "@": "object",
+    "@extends": "any",
+    "@properties": {
+      "@nullable": {
+        "@": "boolean",
+        "@nullable": false,
+        "@use": "optional"
       },
-      "use": {
-        "jx:type": "reference",
-        "type": "use",
-        "use": "optional",
-        "nullable": false
-      },
-      "bindings": {
-        "jx:type": "reference",
-        "type": "fieldBindings",
-        "use": "optional",
-        "nullable": false
+      "@use": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "use",
+        "@use": "optional"
       }
     }
   },
   "arrayProperty": {
-    "jx:type": "object",
-    "extends": "array",
-    "properties": {
-      "nullable": {
-        "jx:type": "boolean",
-        "use": "optional",
-        "nullable": false
+    "@": "object",
+    "@extends": "array",
+    "@properties": {
+      "@nullable": {
+        "@": "boolean",
+        "@nullable": false,
+        "@use": "optional"
       },
-      "use": {
-        "jx:type": "reference",
-        "type": "use",
-        "use": "optional",
-        "nullable": false
-      },
-      "bindings": {
-        "jx:type": "reference",
-        "type": "fieldBindings",
-        "use": "optional",
-        "nullable": false
+      "@use": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "use",
+        "@use": "optional"
       }
     }
   },
   "booleanProperty": {
-    "jx:type": "object",
-    "extends": "boolean",
-    "properties": {
-      "nullable": {
-        "jx:type": "boolean",
-        "use": "optional",
-        "nullable": false
+    "@": "object",
+    "@extends": "boolean",
+    "@properties": {
+      "@nullable": {
+        "@": "boolean",
+        "@nullable": false,
+        "@use": "optional"
       },
-      "use": {
-        "jx:type": "reference",
-        "type": "use",
-        "use": "optional",
-        "nullable": false
-      },
-      "bindings": {
-        "jx:type": "reference",
-        "type": "typeFieldBindings"
+      "@use": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "use",
+        "@use": "optional"
       }
     }
   },
   "numberProperty": {
-    "jx:type": "object",
-    "extends": "number",
-    "properties": {
-      "nullable": {
-        "jx:type": "boolean",
-        "use": "optional",
-        "nullable": false
+    "@": "object",
+    "@extends": "number",
+    "@properties": {
+      "@nullable": {
+        "@": "boolean",
+        "@nullable": false,
+        "@use": "optional"
       },
-      "use": {
-        "jx:type": "reference",
-        "type": "use",
-        "use": "optional",
-        "nullable": false
-      },
-      "bindings": {
-        "jx:type": "reference",
-        "type": "typeFieldBindings"
+      "@use": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "use",
+        "@use": "optional"
       }
     }
   },
   "objectProperty": {
-    "jx:type": "object",
-    "extends": "object",
-    "properties": {
-      "nullable": {
-        "jx:type": "boolean",
-        "use": "optional",
-        "nullable": false
+    "@": "object",
+    "@extends": "object",
+    "@properties": {
+      "@nullable": {
+        "@": "boolean",
+        "@nullable": false,
+        "@use": "optional"
       },
-      "use": {
-        "jx:type": "reference",
-        "type": "use",
-        "use": "optional",
-        "nullable": false
-      },
-      "bindings": {
-        "jx:type": "reference",
-        "type": "fieldBindings",
-        "use": "optional",
-        "nullable": false
+      "@use": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "use",
+        "@use": "optional"
       }
     }
   },
   "referenceProperty": {
-    "jx:type": "object",
-    "extends": "reference",
-    "properties": {
-      "nullable": {
-        "jx:type": "boolean",
-        "use": "optional",
-        "nullable": false
+    "@": "object",
+    "@extends": "reference",
+    "@properties": {
+      "@nullable": {
+        "@": "boolean",
+        "@nullable": false,
+        "@use": "optional"
       },
-      "use": {
-        "jx:type": "reference",
-        "type": "use",
-        "use": "optional",
-        "nullable": false
-      },
-      "bindings": {
-        "jx:type": "reference",
-        "type": "fieldBindings",
-        "use": "optional",
-        "nullable": false
+      "@use": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "use",
+        "@use": "optional"
       }
     }
   },
   "stringProperty": {
-    "jx:type": "object",
-    "extends": "string",
-    "properties": {
-      "nullable": {
-        "jx:type": "boolean",
-        "use": "optional",
-        "nullable": false
+    "@": "object",
+    "@extends": "string",
+    "@properties": {
+      "@nullable": {
+        "@": "boolean",
+        "@nullable": false,
+        "@use": "optional"
       },
-      "use": {
-        "jx:type": "reference",
-        "type": "use",
-        "use": "optional",
-        "nullable": false
-      },
-      "bindings": {
-        "jx:type": "reference",
-        "type": "typeFieldBindings"
+      "@use": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "use",
+        "@use": "optional"
       }
     }
   },
   "anyElement": {
-    "jx:type": "object",
-    "extends": "any",
-    "properties": {
-      "nullable": {
-        "jx:type": "boolean",
-        "use": "optional",
-        "nullable": false
+    "@": "object",
+    "@extends": "any",
+    "@properties": {
+      "@nullable": {
+        "@": "boolean",
+        "@nullable": false,
+        "@use": "optional"
       },
-      "minOccurs": {
-        "jx:type": "reference",
-        "type": "min",
-        "use": "optional",
-        "nullable": false
+      "@minOccurs": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "min",
+        "@use": "optional"
       },
-      "maxOccurs": {
-        "jx:type": "reference",
-        "type": "max",
-        "use": "optional",
-        "nullable": false
+      "@maxOccurs": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "max",
+        "@use": "optional"
       }
     }
   },
   "arrayElement": {
-    "jx:type": "object",
-    "extends": "array",
-    "properties": {
-      "nullable": {
-        "jx:type": "boolean",
-        "use": "optional",
-        "nullable": false
+    "@": "object",
+    "@extends": "array",
+    "@properties": {
+      "@nullable": {
+        "@": "boolean",
+        "@nullable": false,
+        "@use": "optional"
       },
-      "minOccurs": {
-        "jx:type": "reference",
-        "type": "min",
-        "use": "optional",
-        "nullable": false
+      "@minOccurs": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "min",
+        "@use": "optional"
       },
-      "maxOccurs": {
-        "jx:type": "reference",
-        "type": "max",
-        "use": "optional",
-        "nullable": false
+      "@maxOccurs": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "max",
+        "@use": "optional"
       }
     }
   },
   "booleanElement": {
-    "jx:type": "object",
-    "extends": "boolean",
-    "properties": {
-      "nullable": {
-        "jx:type": "boolean",
-        "use": "optional",
-        "nullable": false
+    "@": "object",
+    "@extends": "boolean",
+    "@properties": {
+      "@nullable": {
+        "@": "boolean",
+        "@nullable": false,
+        "@use": "optional"
       },
-      "minOccurs": {
-        "jx:type": "reference",
-        "type": "min",
-        "use": "optional",
-        "nullable": false
+      "@minOccurs": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "min",
+        "@use": "optional"
       },
-      "maxOccurs": {
-        "jx:type": "reference",
-        "type": "max",
-        "use": "optional",
-        "nullable": false
+      "@maxOccurs": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "max",
+        "@use": "optional"
       }
     }
   },
   "numberElement": {
-    "jx:type": "object",
-    "extends": "number",
-    "properties": {
-      "nullable": {
-        "jx:type": "boolean",
-        "use": "optional",
-        "nullable": false
+    "@": "object",
+    "@extends": "number",
+    "@properties": {
+      "@nullable": {
+        "@": "boolean",
+        "@nullable": false,
+        "@use": "optional"
       },
-      "minOccurs": {
-        "jx:type": "reference",
-        "type": "min",
-        "use": "optional",
-        "nullable": false
+      "@minOccurs": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "min",
+        "@use": "optional"
       },
-      "maxOccurs": {
-        "jx:type": "reference",
-        "type": "max",
-        "use": "optional",
-        "nullable": false
+      "@maxOccurs": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "max",
+        "@use": "optional"
       }
     }
   },
   "objectElement": {
-    "jx:type": "object",
-    "extends": "object",
-    "properties": {
-      "nullable": {
-        "jx:type": "boolean",
-        "use": "optional",
-        "nullable": false
+    "@": "object",
+    "@extends": "object",
+    "@properties": {
+      "@nullable": {
+        "@": "boolean",
+        "@nullable": false,
+        "@use": "optional"
       },
-      "minOccurs": {
-        "jx:type": "reference",
-        "type": "min",
-        "use": "optional",
-        "nullable": false
+      "@minOccurs": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "min",
+        "@use": "optional"
       },
-      "maxOccurs": {
-        "jx:type": "reference",
-        "type": "max",
-        "use": "optional",
-        "nullable": false
+      "@maxOccurs": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "max",
+        "@use": "optional"
       }
     }
   },
   "referenceElement": {
-    "jx:type": "object",
-    "extends": "reference",
-    "properties": {
-      "nullable": {
-        "jx:type": "boolean",
-        "use": "optional",
-        "nullable": false
+    "@": "object",
+    "@extends": "reference",
+    "@properties": {
+      "@nullable": {
+        "@": "boolean",
+        "@nullable": false,
+        "@use": "optional"
       },
-      "minOccurs": {
-        "jx:type": "reference",
-        "type": "min",
-        "use": "optional",
-        "nullable": false
+      "@minOccurs": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "min",
+        "@use": "optional"
       },
-      "maxOccurs": {
-        "jx:type": "reference",
-        "type": "max",
-        "use": "optional",
-        "nullable": false
+      "@maxOccurs": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "max",
+        "@use": "optional"
       }
     }
   },
   "stringElement": {
-    "jx:type": "object",
-    "extends": "string",
-    "properties": {
-      "nullable": {
-        "jx:type": "boolean",
-        "use": "optional",
-        "nullable": false
+    "@": "object",
+    "@extends": "string",
+    "@properties": {
+      "@nullable": {
+        "@": "boolean",
+        "@nullable": false,
+        "@use": "optional"
       },
-      "minOccurs": {
-        "jx:type": "reference",
-        "type": "min",
-        "use": "optional",
-        "nullable": false
+      "@minOccurs": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "min",
+        "@use": "optional"
       },
-      "maxOccurs": {
-        "jx:type": "reference",
-        "type": "max",
-        "use": "optional",
-        "nullable": false
+      "@maxOccurs": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "max",
+        "@use": "optional"
       }
     }
   }
