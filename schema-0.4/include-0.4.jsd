@@ -1,0 +1,19 @@
+{
+  "@ns": "http://www.jsonx.org/schema-0.4.jsd",
+  "@schemaLocation": "http://www.jsonx.org/schema-0.4.jsd http://www.jsonx.org/schema-0.4.jsd",
+  "@targetNamespace": "http://www.jsonx.org/include-0.4.jsd",
+  "include": {
+    "@": "object",
+    "@properties": {
+      "@ns": {
+        "@": "string",
+        "@nullable": false,
+        "@pattern": "http://www.jsonx.org/include-0.4.jsd"
+      },
+      "href": {
+        "@": "string",
+        "@nullable": false
+      }
+    }
+  }
+}
