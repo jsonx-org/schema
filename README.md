@@ -3,9 +3,21 @@
 > **JSON Schema for the enterprise**
 
 [![Build Status](https://github.com/jsonx-org/schema/actions/workflows/test.yml/badge.svg)](https://github.com/jsonx-org/schema/actions/workflows/test.yml)
-[![XSD](https://img.shields.io/badge/schema.xsd-v0.4-blue.svg)](http://jsonx.org/schema-0.4.xsd)
-[![JSDx](https://img.shields.io/badge/schema.jsdx-v0.4-blue.svg)](http://jsonx.org/schema-0.4.jsdx)
-[![JSD](https://img.shields.io/badge/schema.jsd-v0.4-blue.svg)](http://jsonx.org/schema-0.4.jsd)<br>
+[![XSD](https://img.shields.io/badge/schema.xsd-v0.5-blue.svg)](http://jsonx.org/schema-0.5.xsd)
+[![JSDx](https://img.shields.io/badge/schema.jsdx-v0.5-blue.svg)](http://jsonx.org/schema-0.5.jsdx)
+[![JSD](https://img.shields.io/badge/schema.jsd-v0.5-blue.svg)](http://jsonx.org/schema-0.5.jsd)<br>
+[![Build Status](https://github.com/jsonx-org/schema/actions/workflows/test.yml/badge.svg)](https://github.com/jsonx-org/schema/actions/workflows/test.yml)
+[![XSD](https://img.shields.io/badge/binding.xsd-v0.5-blue.svg)](http://jsonx.org/binding-0.5.xsd)
+[![JSDx](https://img.shields.io/badge/binding.jsdx-v0.5-blue.svg)](http://jsonx.org/binding-0.5.jsdx)
+[![JSD](https://img.shields.io/badge/binding.jsd-v0.5-blue.svg)](http://jsonx.org/binding-0.5.jsd)<br>
+[![Build Status](https://github.com/jsonx-org/schema/actions/workflows/test.yml/badge.svg)](https://github.com/jsonx-org/schema/actions/workflows/test.yml)
+[![XSD](https://img.shields.io/badge/include.xsd-v0.5-blue.svg)](http://jsonx.org/include-0.5.xsd)
+[![JSDx](https://img.shields.io/badge/include.jsdx-v0.5-blue.svg)](http://jsonx.org/include-0.5.jsdx)
+[![JSD](https://img.shields.io/badge/include.jsd-v0.5-blue.svg)](http://jsonx.org/include-0.5.jsd)<br>
+[![Build Status](https://img.shields.io/badge/test-passing-orange.svg)](https://github.com/jsonx-org/schema/actions/workflows/test.yml)
+[![XSD](https://img.shields.io/badge/schema.xsd-v0.4-orange.svg)](http://jsonx.org/schema-0.4.xsd)
+[![JSDx](https://img.shields.io/badge/schema.jsdx-v0.4-orange.svg)](http://jsonx.org/schema-0.4.jsdx)
+[![JSD](https://img.shields.io/badge/schema.jsd-v0.4-orange.svg)](http://jsonx.org/schema-0.4.jsd)<br>
 [![Build Status](https://img.shields.io/badge/test-passing-orange.svg)](https://github.com/jsonx-org/schema/actions/workflows/test.yml)
 [![XSD](https://img.shields.io/badge/schema.xsd-v0.3-orange.svg)](http://jsonx.org/schema-0.3.xsd)
 [![JSDx](https://img.shields.io/badge/schema.jsdx-v0.3-orange.svg)](http://jsonx.org/schema-0.3.jsdx)
@@ -67,8 +79,9 @@ This document specifies the <ins>JSON Schema Definition Language</ins>, which al
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>4.6.4 [Examples](#464-examples)<br>
 <samp>&nbsp;&nbsp;</samp>5 [<ins>Related Resources for JSON Schema</ins>](#5-related-resources-for-json-schema)<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>5.1 [Schemas for JSON Schema](#51-schemas-for-json-schema)<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>5.1.1 [Current](#511-current)<br>
-<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>5.1.2 [Obsolete](#512-obsolete)<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>5.1.1 [Development](#511-development)<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>5.1.2 [Current](#512-current)<br>
+<samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</samp>5.1.3 [Obsolete](#513-obsolete)<br>
 <samp>&nbsp;&nbsp;</samp>6 [<ins>Sample Schemas</ins>](#6-sample-schemas)<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>6.1 [`structure.jsdx`](#61-structurejsdx)<br>
 <samp>&nbsp;&nbsp;&nbsp;&nbsp;</samp>6.2 [`structure.jsd`](#62-structurejsd)<br>
@@ -1356,7 +1369,33 @@ These bindings are allowed on [Object Properties of type `boolean`, `number`, or
 
 ### <b>5.1</b> Schemas for JSON Schema
 
-#### <b>5.1.1</b> Current
+#### <b>5.1.1</b> Development
+
+* <ins>JSON Schema 0.5</ins> **[Development]**
+
+  * A JSON Schema schema document XSD [schema-0.5.xsd](http://www.jsonx.org/schema-0.5.xsd) for JSON Schema documents. It incorporates an auxiliary XSD, [datatypes-0.9.xsd](http://www.openjax.org/xml/datatypes-0.9.xsd).
+
+  * A JSON Schema schema document JSDx [schema-0.5.jsdx](http://www.jsonx.org/schema-0.5.jsdx) for JSON Schema documents.
+
+  * A JSON Schema schema document JSD [schema-0.5.jsd](http://www.jsonx.org/schema-0.5.jsd) for JSON Schema documents.
+
+* <ins>JSON Binding 0.5</ins> **[Development]**
+
+  * A JSON Binding schema document XSD [binding-0.5.xsd](http://www.jsonx.org/binding-0.5.xsd) for JSON Binding documents.
+
+  * A JSON Binding schema document JSDx [binding-0.5.jsdx](http://www.jsonx.org/binding-0.5.jsdx) for JSON Binding documents.
+
+  * A JSON Binding schema document JSD [binding-0.5.jsd](http://www.jsonx.org/binding-0.5.jsd) for JSON Binding documents.
+
+* <ins>JSON Include 0.5</ins> **[Development]**
+
+  * A JSON Include schema document XSD [include-0.5.xsd](http://www.jsonx.org/include-0.5.xsd) for JSON Include declarations.
+
+  * A JSON Include schema document JSDx [include-0.5.jsdx](http://www.jsonx.org/include-0.5.jsdx) for JSON Include declarations.
+
+  * A JSON Include schema document JSD [include-0.5.jsd](http://www.jsonx.org/include-0.5.jsd) for JSON Include declarations.
+
+#### <b>5.1.2</b> Current
 
 * <ins>JSON Schema 0.4</ins> **[Current]**
 
@@ -1366,7 +1405,7 @@ These bindings are allowed on [Object Properties of type `boolean`, `number`, or
 
   * A JSON Schema schema document JSD [schema-0.4.jsd](http://www.jsonx.org/schema-0.4.jsd) for JSON Schema documents.
 
-#### <b>5.1.2</b> Obsolete
+#### <b>5.1.3</b> Obsolete
 
 * <ins>JSON Schema 0.3</ins> **[Deprecated]**
 
