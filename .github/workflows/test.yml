@@ -28,7 +28,7 @@ jobs:
         mkdir -p $BUILD_DIR
 
         ARTIFACT_ID="sax"
-        VERSION="0.9.5-SNAPSHOT"
+        VERSION="1.0.0-SNAPSHOT"
         CLASSIFIER="bundle"
         JAR="$ARTIFACT_ID-$VERSION-$CLASSIFIER.jar"
 

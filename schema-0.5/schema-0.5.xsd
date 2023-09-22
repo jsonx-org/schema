@@ -1,0 +1,655 @@
+<!--
+  Copyright (c) 2015 JSONx
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  You should have received a copy of The MIT License (MIT) along with this
+  program. If not, see <http://opensource.org/licenses/MIT/>.
+-->
+<xs:schema
+  elementFormDefault="qualified"
+  targetNamespace="http://www.jsonx.org/schema-0.5.xsd"
+  xmlns:jx="http://www.jsonx.org/schema-0.5.xsd"
+  xmlns:dt="http://www.openjax.org/xml/datatypes-0.9.xsd"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:import namespace="http://www.openjax.org/xml/datatypes-0.9.xsd" schemaLocation="http://www.openjax.org/xml/datatypes-0.9.xsd"/>
+
+  <xs:complexType name="documented" abstract="true">
+    <xs:attribute name="doc" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>
+          Defines text comments. Optional.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="member" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="jx:documented"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:attributeGroup name="annullable">
+    <xs:attribute name="nullable" type="xs:boolean" default="true">
+      <xs:annotation>
+        <xs:documentation>Specifies whether the element can be null. Default: true.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="nameable">
+    <xs:attribute name="name" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>Specifies the name. Required.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="use">
+    <xs:attribute name="use" default="required">
+      <xs:annotation>
+        <xs:documentation>Specifies the property use &lt;required|optional&gt;. Default: required.</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="required"/>
+          <xs:enumeration value="optional"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+
+  <xs:simpleType name="typeRef">
+    <xs:annotation>
+      <xs:documentation>Identifier pattern that must start with either a capital letter, or must include a '$' followed by a capital letter.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:IDREF"/>
+  </xs:simpleType>
+
+  <xs:attributeGroup name="id">
+    <xs:attribute name="name" use="required">
+      <xs:annotation>
+        <xs:documentation>Specifies the name. Required.</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:ID">
+          <xs:pattern value="([a-zA-Z]+\d*)+([.-]?[a-zA-Z]+\d*)*"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+
+  <xs:complexType name="referenceMember" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="jx:member">
+        <xs:attribute name="type" type="jx:typeRef" use="required">
+          <xs:annotation>
+            <xs:documentation>Specifies the name of the referenced type. Required.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:simpleType name="methodIdentifier">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(([a-zA-Z_$][a-zA-Z\d_$]*)\.)*[a-zA-Z_$][a-zA-Z\d_$]*(\.&lt;init&gt;)?"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="typeIdentifier">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(([a-zA-Z_$][a-zA-Z\d_$]*)\.)*[a-zA-Z_$][a-zA-Z\d_$]*(\[\])?"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="fieldIdentifier">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z_$][a-zA-Z\d_$]*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="binding">
+    <xs:attribute name="lang" type="dt:NCNameNonEmpty" use="required">
+      <xs:annotation>
+        <xs:documentation>Specifies the language to which this binding applies.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  
+  <xs:complexType name="fieldBinding">
+    <xs:complexContent>
+      <xs:extension base="jx:binding">
+        <xs:attribute name="field" type="jx:fieldIdentifier">
+          <xs:annotation>
+            <xs:documentation>Specifies the "field" identifier.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  
+  <xs:complexType name="typeBinding">
+    <xs:complexContent>
+      <xs:extension base="jx:binding">
+        <xs:attribute name="type" type="jx:typeIdentifier">
+          <xs:annotation>
+            <xs:documentation>Specifies the "type" qualified identifier.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="decode" type="jx:methodIdentifier">
+          <xs:annotation>
+            <xs:documentation>Specifies the "decode" qualified function identifier that accepts input as a string, or as the native JSON type of this property, and returns an output of the specified "type" (or the default type if "type" is unspecified).</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="encode" type="jx:methodIdentifier">
+          <xs:annotation>
+            <xs:documentation>Specifies the "encode" qualified function identifier that accepts input of the type specified in "type" (or the default type if "type" is unspecified), and returns an output as a string, or as the native JSON type of this property.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  
+  <xs:complexType name="typeFieldBinding">
+    <xs:complexContent>
+      <xs:extension base="jx:typeBinding">
+        <xs:attribute name="field" type="jx:fieldIdentifier">
+          <xs:annotation>
+            <xs:documentation>Specifies the "field" identifier.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  
+  <xs:complexType name="reference">
+    <xs:complexContent>
+      <xs:extension base="jx:referenceMember">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="binding" type="jx:fieldBinding">
+            <xs:annotation>
+              <xs:documentation>Specifies language-specific bindings.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+        <xs:attributeGroup ref="jx:nameable"/>
+        <xs:attributeGroup ref="jx:annullable"/>
+        <xs:attributeGroup ref="jx:use"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="anyMember" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="jx:member">
+        <xs:attribute name="types" type="xs:IDREFS">
+          <xs:annotation>
+            <xs:documentation>Specifies a list of type names. Optional.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attributeGroup ref="jx:annullable"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="any">
+    <xs:complexContent>
+      <xs:extension base="jx:anyMember">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="binding" type="jx:fieldBinding">
+            <xs:annotation>
+              <xs:documentation>Specifies language-specific bindings.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+        <xs:attributeGroup ref="jx:use"/>
+        <xs:attribute name="names" type="dt:stringNonEmpty" use="required">
+          <xs:annotation>
+            <xs:documentation>Specifies the regex pattern of property names. Required.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="booleanMember" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="jx:member"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="boolean">
+    <xs:complexContent>
+      <xs:extension base="jx:booleanMember">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="binding" type="jx:typeFieldBinding">
+            <xs:annotation>
+              <xs:documentation>Specifies language-specific bindings.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+        <xs:attributeGroup ref="jx:nameable"/>
+        <xs:attributeGroup ref="jx:annullable"/>
+        <xs:attributeGroup ref="jx:use"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="numberMember" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="jx:member">
+        <xs:attribute name="range">
+          <xs:annotation>
+            <xs:documentation>
+              Specifies the value range in interval notation:
+              Open (exclusive) interval: (min,max)
+              Closed (inclusive) interval: [min,max]
+              Half-open or half-closed interval: [min,max)
+            </xs:documentation>
+          </xs:annotation>
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:pattern value="[(\[](-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?([1-9]\d*))?)?,(-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?([1-9]\d*))?)?[)\]]"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="scale" type="xs:long">
+          <xs:annotation>
+            <xs:documentation>
+              The number of digits to the right of the decimal point. If a value is not specified, the scale is unbounded.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:assert test="not(@range) or (some $range in replace(@range, '[\[\(\]\)]', ''), $min in substring-before($range, ','), $max in substring-after($range, ',') satisfies not($min) or not($max) or number($max) >= number($min))"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="number">
+    <xs:complexContent>
+      <xs:extension base="jx:numberMember">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="binding" type="jx:typeFieldBinding">
+            <xs:annotation>
+              <xs:documentation>Specifies language-specific bindings.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+        <xs:attributeGroup ref="jx:nameable"/>
+        <xs:attributeGroup ref="jx:annullable"/>
+        <xs:attributeGroup ref="jx:use"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="stringMember" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="jx:member">
+        <xs:attribute name="pattern" type="dt:stringNonEmpty">
+          <xs:annotation>
+            <xs:documentation>Specifies the regex pattern.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="string">
+    <xs:complexContent>
+      <xs:extension base="jx:stringMember">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="binding" type="jx:typeFieldBinding">
+            <xs:annotation>
+              <xs:documentation>Specifies language-specific bindings.</xs:documentation>
+            </xs:annotation>
+          </xs:element>          
+        </xs:sequence>
+        <xs:attributeGroup ref="jx:nameable"/>
+        <xs:attributeGroup ref="jx:annullable"/>
+        <xs:attributeGroup ref="jx:use"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:simpleType name="maxOccurs">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="([1-9]\d*)|(unbounded)"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:attributeGroup name="recurrable">
+    <xs:attribute name="minOccurs" type="xs:nonNegativeInteger" default="1">
+      <xs:annotation>
+        <xs:documentation>Specifies the minimum inclusive number of occurrence of this element. Default: 1.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="maxOccurs" type="jx:maxOccurs" default="unbounded">
+      <xs:annotation>
+        <xs:documentation>Specifies the maximum inclusive number of occurrence of this element. Default: unbounded.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+
+  <xs:complexType name="arrayMember" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="jx:member">
+        <xs:choice minOccurs="1" maxOccurs="unbounded">
+          <xs:element name="any">
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:extension base="jx:anyMember">
+                  <xs:attributeGroup ref="jx:recurrable"/>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="array">
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:extension base="jx:arrayMember">
+                  <xs:attributeGroup ref="jx:annullable"/>
+                  <xs:attributeGroup ref="jx:recurrable"/>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="boolean">
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:extension base="jx:booleanMember">
+                  <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="binding" type="jx:typeBinding">
+                      <xs:annotation>
+                        <xs:documentation>Specifies language-specific bindings.</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attributeGroup ref="jx:annullable"/>
+                  <xs:attributeGroup ref="jx:recurrable"/>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:unique name="uniqueArrayBooleanBindingLang">
+              <xs:selector xpath="./jx:binding"/>
+              <xs:field xpath="@lang"/>
+            </xs:unique>
+          </xs:element>
+          <xs:element name="number">
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:extension base="jx:numberMember">
+                  <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="binding" type="jx:typeBinding">
+                      <xs:annotation>
+                        <xs:documentation>Specifies language-specific bindings.</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attributeGroup ref="jx:annullable"/>
+                  <xs:attributeGroup ref="jx:recurrable"/>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:unique name="uniqueArrayNumberBindingLang">
+              <xs:selector xpath="./jx:binding"/>
+              <xs:field xpath="@lang"/>
+            </xs:unique>
+          </xs:element>
+          <xs:element name="string">
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:extension base="jx:stringMember">
+                  <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="binding" type="jx:typeBinding">
+                      <xs:annotation>
+                        <xs:documentation>Specifies language-specific bindings.</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attributeGroup ref="jx:annullable"/>
+                  <xs:attributeGroup ref="jx:recurrable"/>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+            <xs:unique name="uniqueArrayStringBindingLang">
+              <xs:selector xpath="./jx:binding"/>
+              <xs:field xpath="@lang"/>
+            </xs:unique>
+          </xs:element>
+          <xs:element name="reference">
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:extension base="jx:referenceMember">
+                  <xs:attributeGroup ref="jx:annullable"/>
+                  <xs:attributeGroup ref="jx:recurrable"/>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+        <xs:attribute name="minIterate" type="xs:nonNegativeInteger" default="1">
+          <xs:annotation>
+            <xs:documentation>Specifies the minimum inclusive number of iterations of child elements. Default: 1.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="maxIterate" type="jx:maxOccurs" default="1">
+          <xs:annotation>
+            <xs:documentation>Specifies the maximum inclusive number of iterations of child elements. Default: 1.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="array">
+    <xs:complexContent>
+      <xs:extension base="jx:arrayMember">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="binding" type="jx:fieldBinding">
+            <xs:annotation>
+              <xs:documentation>Specifies language-specific bindings.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+        <xs:attributeGroup ref="jx:nameable"/>
+        <xs:attributeGroup ref="jx:annullable"/>
+        <xs:attributeGroup ref="jx:use"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="objectMember" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="jx:member">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="property" type="jx:member">
+            <xs:unique name="uniqueMemberObjectPropertyName">
+              <xs:selector xpath="./jx:property"/>
+              <xs:field xpath="@name"/>
+            </xs:unique>
+            <xs:unique name="uniqueObjectBindingLang">
+              <xs:selector xpath="./jx:binding"/>
+              <xs:field xpath="@lang"/>
+            </xs:unique>
+            <xs:unique name="uniqueObjectBindingField">
+              <xs:selector xpath="./jx:binding"/>
+              <xs:field xpath="@lang"/>
+              <xs:field xpath="@field"/>
+            </xs:unique>
+            <xs:unique name="uniqueMemberObjectBindingField">
+              <xs:selector xpath="./jx:property/jx:binding"/>
+              <xs:field xpath="@lang"/>
+              <xs:field xpath="@field"/>
+            </xs:unique>
+            <xs:unique name="uniqueMemberObjectBindingField2">
+              <xs:selector xpath="."/>
+              <xs:field xpath="@name"/>
+              <xs:field xpath="@extends"/>
+            </xs:unique>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute name="extends" type="jx:typeRef">
+          <xs:annotation>
+            <xs:documentation>Specifies the name of the type to extend. Optional.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="object">
+    <xs:complexContent>
+      <xs:extension base="jx:objectMember">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="binding" type="jx:fieldBinding">
+            <xs:annotation>
+              <xs:documentation>Specifies language-specific bindings.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+        <xs:attributeGroup ref="jx:nameable"/>
+        <xs:attributeGroup ref="jx:annullable"/>
+        <xs:attributeGroup ref="jx:use"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="schema">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="jx:documented">
+          <xs:sequence>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="boolean">
+                <xs:complexType>
+                  <xs:complexContent>
+                    <xs:extension base="jx:booleanMember">
+                      <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                        <xs:element name="binding" type="jx:typeBinding">
+                          <xs:annotation>
+                            <xs:documentation>Specifies language-specific bindings.</xs:documentation>
+                          </xs:annotation>
+                        </xs:element>
+                      </xs:sequence>
+                      <xs:attributeGroup ref="jx:id"/>
+                    </xs:extension>
+                  </xs:complexContent>
+                </xs:complexType>
+                <xs:unique name="uniqueBooleanBindingLang">
+                  <xs:selector xpath="./jx:binding"/>
+                  <xs:field xpath="@lang"/>
+                </xs:unique>
+              </xs:element>
+              <xs:element name="number">
+                <xs:complexType>
+                  <xs:complexContent>
+                    <xs:extension base="jx:numberMember">
+                      <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                        <xs:element name="binding" type="jx:typeBinding">
+                          <xs:annotation>
+                            <xs:documentation>Specifies language-specific bindings.</xs:documentation>
+                          </xs:annotation>
+                        </xs:element>
+                      </xs:sequence>
+                      <xs:attributeGroup ref="jx:id"/>
+                    </xs:extension>
+                  </xs:complexContent>
+                </xs:complexType>
+                <xs:unique name="uniqueNumberBindingLang">
+                  <xs:selector xpath="./jx:binding"/>
+                  <xs:field xpath="@lang"/>
+                </xs:unique>
+              </xs:element>
+              <xs:element name="string">
+                <xs:complexType>
+                  <xs:complexContent>
+                    <xs:extension base="jx:stringMember">
+                      <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                        <xs:element name="binding" type="jx:typeBinding">
+                          <xs:annotation>
+                            <xs:documentation>Specifies language-specific bindings.</xs:documentation>
+                          </xs:annotation>
+                        </xs:element>
+                      </xs:sequence>
+                      <xs:attributeGroup ref="jx:id"/>
+                    </xs:extension>
+                  </xs:complexContent>
+                </xs:complexType>
+                <xs:unique name="uniqueStringBindingLang">
+                  <xs:selector xpath="./jx:binding"/>
+                  <xs:field xpath="@lang"/>
+                </xs:unique>
+              </xs:element>
+              <xs:element name="array">
+                <xs:complexType>
+                  <xs:complexContent>
+                    <xs:extension base="jx:arrayMember">
+                      <xs:attributeGroup ref="jx:id"/>
+                    </xs:extension>
+                  </xs:complexContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="object">
+                <xs:complexType>
+                  <xs:complexContent>
+                    <xs:extension base="jx:objectMember">
+                      <xs:attribute name="abstract" type="xs:boolean" default="false">
+                        <xs:annotation>
+                          <xs:documentation>Specifies whether the object is abstract. Default: false.</xs:documentation>
+                        </xs:annotation>
+                      </xs:attribute>
+                      <xs:attributeGroup ref="jx:id"/>
+                      <xs:assert test="count(distinct-values(@name | @extends)) = count(@name | @extends)">
+                        <xs:annotation>
+                          <xs:documentation>
+                            Object cannot extend itself.
+                          </xs:documentation>
+                        </xs:annotation>
+                      </xs:assert>
+                    </xs:extension>
+                  </xs:complexContent>
+                </xs:complexType>
+                <xs:unique name="uniqueRootObjectPropertyName">
+                  <xs:selector xpath="./jx:property"/>
+                  <xs:field xpath="@name | @names"/>
+                </xs:unique>
+                <xs:unique name="uniqueRootObjectBindingField">
+                  <xs:selector xpath="./jx:property/jx:binding"/>
+                  <xs:field xpath="@lang"/>
+                  <xs:field xpath="@field"/>
+                </xs:unique>
+              </xs:element>
+            </xs:choice>
+          </xs:sequence>
+          <xs:attribute name="targetNamespace">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(\S)|(\S.*\S)"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:key name="object_name">
+      <xs:selector xpath="./jx:object"/>
+      <xs:field xpath="@name"/>
+    </xs:key>
+    <xs:keyref name="extends_must_match_object_name" refer="jx:object_name">
+      <xs:selector xpath=".//jx:object"/>
+      <xs:field xpath="@extends"/>
+    </xs:keyref>
+  </xs:element>
+
+</xs:schema>
