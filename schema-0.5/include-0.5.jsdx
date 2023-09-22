@@ -15,17 +15,17 @@
   program. If not, see <http://opensource.org/licenses/MIT/>.
 -->
 <schema
-  xmlns="http://www.jsonx.org/schema-0.4.xsd"
+  xmlns="http://www.jsonx.org/schema-0.5.xsd"
   xmlns:xi="http://www.w3.org/2001/XInclude"
   xmlns:jxns="http://www.jsonx.org/namespace"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.jsonx.org/schema-0.4.xsd schema-0.4.xsd"
+  xsi:schemaLocation="http://www.jsonx.org/schema-0.5.xsd schema-0.5.xsd"
   
-  jxns:jx="http://www.jsonx.org/schema-0.4.jsdx"
-  targetNamespace="http://www.jsonx.org/include-0.4.jsdx">
+  jxns:jx="http://www.jsonx.org/schema-0.5.jsdx"
+  targetNamespace="http://www.jsonx.org/include-0.5.jsdx">
 
   <object name="include">
-    <property name="@ns" xsi:type="string" pattern="http://www.jsonx.org/include-0.4.jsd" nullable="false"/>
+    <property name="@ns" xsi:type="string" pattern="http://www.jsonx.org/include-0.5.jsd" nullable="false"/>
     <property name="href" xsi:type="string" nullable="false"/>
   </object>
 

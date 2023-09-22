@@ -15,18 +15,18 @@
   program. If not, see <http://opensource.org/licenses/MIT/>.
 -->
 <schema
-  xmlns="http://www.jsonx.org/schema-0.4.xsd"
+  xmlns="http://www.jsonx.org/schema-0.5.xsd"
   xmlns:xi="http://www.w3.org/2001/XInclude"
   xmlns:jxns="http://www.jsonx.org/namespace"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.jsonx.org/schema-0.4.xsd schema-0.4.xsd"
+  xsi:schemaLocation="http://www.jsonx.org/schema-0.5.xsd schema-0.5.xsd"
 
-  jxns:jx="http://www.jsonx.org/schema-0.4.jsdx"
-  jxns:ji="http://www.jsonx.org/include-0.4.jsdx"
-  targetNamespace="http://www.jsonx.org/binding-0.4.jsdx">
+  jxns:jx="http://www.jsonx.org/schema-0.5.jsdx"
+  jxns:ji="http://www.jsonx.org/include-0.5.jsdx"
+  targetNamespace="http://www.jsonx.org/binding-0.5.jsdx">
 
-  <import namespace="http://www.jsonx.org/schema-0.4.jsdx" schemaLocation="http://www.jsonx.org/schema-0.4.jsdx"><xi:include href="http://www.jsonx.org/schema-0.4.jsdx"/></import>
-  <import namespace="http://www.jsonx.org/include-0.4.jsdx" schemaLocation="http://www.jsonx.org/include-0.4.jsdx"><xi:include href="http://www.jsonx.org/include-0.4.jsdx"/></import>
+  <import namespace="http://www.jsonx.org/schema-0.5.jsdx" schemaLocation="http://www.jsonx.org/schema-0.5.jsdx"><xi:include href="http://www.jsonx.org/schema-0.5.jsdx"/></import>
+  <import namespace="http://www.jsonx.org/include-0.5.jsdx" schemaLocation="http://www.jsonx.org/include-0.5.jsdx"><xi:include href="http://www.jsonx.org/include-0.5.jsdx"/></import>
   
   <string name="nonEmptyString" pattern="\S|\S.*\S"/>
   <string name="typeIdentifier" pattern="(([a-zA-Z_$][a-zA-Z\d_$]*)\.)*[a-zA-Z_$][a-zA-Z\d_$]*(\[\])?"/>
@@ -85,7 +85,7 @@
   </object>
   
   <object name="binding">
-    <property name="@ns" xsi:type="string" pattern="http://www.jsonx.org/binding-0.4.jsd" nullable="false"/>
+    <property name="@ns" xsi:type="string" pattern="http://www.jsonx.org/binding-0.5.jsd" nullable="false"/>
     <property name="@schemaLocation" xsi:type="string" pattern="((\S|\S.*\S) (\S|\S.*\S))+" use="optional" nullable="false"/>
     <property names="@schema" xsi:type="any" types="jx:schema ji:include" nullable="false"/>
     <property names="\S|\S.*\S" xsi:type="any" types="any reference array object boolean number string" nullable="false"/>

@@ -1,0 +1,583 @@
+{
+  "@ns": "http://www.jsonx.org/schema-0.5.jsd",
+  "@schemaLocation": "http://www.jsonx.org/schema-0.5.jsd http://www.jsonx.org/schema-0.5.jsd",
+  "@targetNamespace": "http://www.jsonx.org/schema-0.5.jsd",
+  "min": {
+    "@": "string",
+    "@pattern": "\\d+"
+  },
+  "max": {
+    "@": "string",
+    "@pattern": "\\d+|unbounded"
+  },
+  "use": {
+    "@": "string",
+    "@pattern": "required|optional"
+  },
+  "nonEmptyString": {
+    "@": "string",
+    "@pattern": "\\S|\\S.*\\S"
+  },
+  "typeIdentifier": {
+    "@": "string",
+    "@pattern": "(([a-zA-Z_$][a-zA-Z\\d_$]*)\\.)*[a-zA-Z_$][a-zA-Z\\d_$]*(\\[\\])?"
+  },
+  "methodIdentifier": {
+    "@": "string",
+    "@pattern": "(([a-zA-Z_$][a-zA-Z\\d_$]*)\\.)*[a-zA-Z_$][a-zA-Z\\d_$]*(\\.<init>)?"
+  },
+  "fieldIdentifier": {
+    "@": "string",
+    "@pattern": "[a-zA-Z_$][a-zA-Z\\d_$]*"
+  },
+  "schemaLocation": {
+    "@": "string",
+    "@pattern": "((\\S|\\S.*\\S) (\\S|\\S.*\\S))+"
+  },
+  "documented": {
+    "@": "object",
+    "@abstract": true,
+    "@properties": {
+      "@doc": {
+        "@": "string",
+        "@doc": "Defines text comments. Optional."
+      }
+    }
+  },
+  "member": {
+    "@": "object",
+    "@abstract": true,
+    "@extends": "documented"
+  },
+  "import": {
+    "@": "object",
+    "@properties": {
+      "@namespace": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "nonEmptyString",
+        "@use": "optional"
+      },
+      "@schemaLocation": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "schemaLocation",
+        "@use": "optional"
+      }
+    }
+  },
+  "schema": {
+    "@": "object",
+    "@extends": "documented",
+    "@properties": {
+      "@ns": {
+        "@": "string",
+        "@nullable": false,
+        "@pattern": "http://www.jsonx.org/schema-0.5.jsd"
+      },
+      "@schemaLocation": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "schemaLocation",
+        "@use": "optional"
+      },
+      "@targetNamespace": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "nonEmptyString",
+        "@use": "optional"
+      },
+      "@imports": {
+        "@": "array",
+        "@nullable": false,
+        "@use": "optional",
+        "@elements": [{
+            "@": "reference",
+            "@type": "import"
+          }]
+      },
+      "[a-zA-Z_][-a-zA-Z\\d_]*": {
+        "@": "any",
+        "@nullable": false,
+        "@types": "array boolean number objectType string"
+      }
+    }
+  },
+  "any": {
+    "@": "object",
+    "@abstract": true,
+    "@extends": "member",
+    "@properties": {
+      "@": {
+        "@": "string",
+        "@nullable": false,
+        "@pattern": "any"
+      },
+      "@types": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "nonEmptyString",
+        "@use": "optional"
+      }
+    }
+  },
+  "array": {
+    "@": "object",
+    "@extends": "member",
+    "@properties": {
+      "@": {
+        "@": "string",
+        "@nullable": false,
+        "@pattern": "array"
+      },
+      "@minIterate": {
+        "@": "reference",
+        "@doc": "Specifies the minimum inclusive number of iterations of child elements. Default: 1.",
+        "@nullable": false,
+        "@type": "min",
+        "@use": "optional"
+      },
+      "@maxIterate": {
+        "@": "reference",
+        "@doc": "Specifies the maximum inclusive number of iterations of child elements. Default: 1.",
+        "@nullable": false,
+        "@type": "max",
+        "@use": "optional"
+      },
+      "@elements": {
+        "@": "array",
+        "@maxIterate": "unbounded",
+        "@nullable": false,
+        "@elements": [{
+            "@": "reference",
+            "@minOccurs": "0",
+            "@nullable": false,
+            "@type": "anyElement"
+          }, {
+            "@": "reference",
+            "@minOccurs": "0",
+            "@nullable": false,
+            "@type": "arrayElement"
+          }, {
+            "@": "reference",
+            "@minOccurs": "0",
+            "@nullable": false,
+            "@type": "booleanElement"
+          }, {
+            "@": "reference",
+            "@minOccurs": "0",
+            "@nullable": false,
+            "@type": "numberElement"
+          }, {
+            "@": "reference",
+            "@minOccurs": "0",
+            "@nullable": false,
+            "@type": "referenceElement"
+          }, {
+            "@": "reference",
+            "@minOccurs": "0",
+            "@nullable": false,
+            "@type": "stringElement"
+          }, {
+            "@": "reference",
+            "@minOccurs": "0",
+            "@nullable": false,
+            "@type": "objectElement"
+          }]
+      }
+    }
+  },
+  "boolean": {
+    "@": "object",
+    "@extends": "member",
+    "@properties": {
+      "@": {
+        "@": "string",
+        "@nullable": false,
+        "@pattern": "boolean"
+      }
+    }
+  },
+  "number": {
+    "@": "object",
+    "@extends": "member",
+    "@properties": {
+      "@": {
+        "@": "string",
+        "@nullable": false,
+        "@pattern": "number"
+      },
+      "@range": {
+        "@": "string",
+        "@doc": "Specifies the value range in interval notation:\n       Open (exclusive) interval: (min,max)\n       Closed (inclusive) interval: [min,max]\n       Half-open or half-closed interval: [min,max)\n       Degenerate interval: [val]",
+        "@nullable": false,
+        "@pattern": "[\\(\\[](-?(0|[1-9]\\d*)(\\.\\d+)?([eE][+-]?([1-9]\\d*))?)?,(-?(0|[1-9]\\d*)(\\.\\d+)?([eE][+-]?([1-9]\\d*))?)?[\\)\\]]",
+        "@use": "optional"
+      },
+      "@scale": {
+        "@": "number",
+        "@doc": "The number of digits to the right of the decimal point. If a value is not specified, the scale is unbounded.",
+        "@nullable": false,
+        "@scale": 0,
+        "@use": "optional"
+      }
+    }
+  },
+  "object": {
+    "@": "object",
+    "@abstract": true,
+    "@extends": "member",
+    "@properties": {
+      "@": {
+        "@": "string",
+        "@nullable": false,
+        "@pattern": "object"
+      },
+      "@extends": {
+        "@": "string",
+        "@doc": "Specifies the name of the type to extend. Optional.",
+        "@nullable": false,
+        "@use": "optional"
+      },
+      "@properties": {
+        "@": "object",
+        "@nullable": false,
+        "@use": "optional",
+        "@properties": {
+          ".*": {
+            "@": "any",
+            "@nullable": false,
+            "@types": "anyProperty arrayProperty booleanProperty numberProperty objectProperty referenceProperty stringProperty"
+          }
+        }
+      }
+    }
+  },
+  "objectType": {
+    "@": "object",
+    "@extends": "object",
+    "@properties": {
+      "@abstract": {
+        "@": "boolean",
+        "@doc": "Specifies whether the object is abstract. Default: false.",
+        "@nullable": false,
+        "@use": "optional"
+      }
+    }
+  },
+  "reference": {
+    "@": "object",
+    "@abstract": true,
+    "@extends": "member",
+    "@properties": {
+      "@": {
+        "@": "string",
+        "@nullable": false,
+        "@pattern": "reference"
+      },
+      "@type": {
+        "@": "reference",
+        "@doc": "Specifies the name of the referenced type. Required.",
+        "@nullable": false,
+        "@type": "nonEmptyString"
+      }
+    }
+  },
+  "string": {
+    "@": "object",
+    "@extends": "member",
+    "@properties": {
+      "@": {
+        "@": "string",
+        "@nullable": false,
+        "@pattern": "string"
+      },
+      "@pattern": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "nonEmptyString",
+        "@use": "optional"
+      }
+    }
+  },
+  "anyProperty": {
+    "@": "object",
+    "@extends": "any",
+    "@properties": {
+      "@nullable": {
+        "@": "boolean",
+        "@nullable": false,
+        "@use": "optional"
+      },
+      "@use": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "use",
+        "@use": "optional"
+      }
+    }
+  },
+  "arrayProperty": {
+    "@": "object",
+    "@extends": "array",
+    "@properties": {
+      "@nullable": {
+        "@": "boolean",
+        "@nullable": false,
+        "@use": "optional"
+      },
+      "@use": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "use",
+        "@use": "optional"
+      }
+    }
+  },
+  "booleanProperty": {
+    "@": "object",
+    "@extends": "boolean",
+    "@properties": {
+      "@nullable": {
+        "@": "boolean",
+        "@nullable": false,
+        "@use": "optional"
+      },
+      "@use": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "use",
+        "@use": "optional"
+      }
+    }
+  },
+  "numberProperty": {
+    "@": "object",
+    "@extends": "number",
+    "@properties": {
+      "@nullable": {
+        "@": "boolean",
+        "@nullable": false,
+        "@use": "optional"
+      },
+      "@use": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "use",
+        "@use": "optional"
+      }
+    }
+  },
+  "objectProperty": {
+    "@": "object",
+    "@extends": "object",
+    "@properties": {
+      "@nullable": {
+        "@": "boolean",
+        "@nullable": false,
+        "@use": "optional"
+      },
+      "@use": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "use",
+        "@use": "optional"
+      }
+    }
+  },
+  "referenceProperty": {
+    "@": "object",
+    "@extends": "reference",
+    "@properties": {
+      "@nullable": {
+        "@": "boolean",
+        "@nullable": false,
+        "@use": "optional"
+      },
+      "@use": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "use",
+        "@use": "optional"
+      }
+    }
+  },
+  "stringProperty": {
+    "@": "object",
+    "@extends": "string",
+    "@properties": {
+      "@nullable": {
+        "@": "boolean",
+        "@nullable": false,
+        "@use": "optional"
+      },
+      "@use": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "use",
+        "@use": "optional"
+      }
+    }
+  },
+  "anyElement": {
+    "@": "object",
+    "@extends": "any",
+    "@properties": {
+      "@nullable": {
+        "@": "boolean",
+        "@nullable": false,
+        "@use": "optional"
+      },
+      "@minOccurs": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "min",
+        "@use": "optional"
+      },
+      "@maxOccurs": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "max",
+        "@use": "optional"
+      }
+    }
+  },
+  "arrayElement": {
+    "@": "object",
+    "@extends": "array",
+    "@properties": {
+      "@nullable": {
+        "@": "boolean",
+        "@nullable": false,
+        "@use": "optional"
+      },
+      "@minOccurs": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "min",
+        "@use": "optional"
+      },
+      "@maxOccurs": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "max",
+        "@use": "optional"
+      }
+    }
+  },
+  "booleanElement": {
+    "@": "object",
+    "@extends": "boolean",
+    "@properties": {
+      "@nullable": {
+        "@": "boolean",
+        "@nullable": false,
+        "@use": "optional"
+      },
+      "@minOccurs": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "min",
+        "@use": "optional"
+      },
+      "@maxOccurs": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "max",
+        "@use": "optional"
+      }
+    }
+  },
+  "numberElement": {
+    "@": "object",
+    "@extends": "number",
+    "@properties": {
+      "@nullable": {
+        "@": "boolean",
+        "@nullable": false,
+        "@use": "optional"
+      },
+      "@minOccurs": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "min",
+        "@use": "optional"
+      },
+      "@maxOccurs": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "max",
+        "@use": "optional"
+      }
+    }
+  },
+  "objectElement": {
+    "@": "object",
+    "@extends": "object",
+    "@properties": {
+      "@nullable": {
+        "@": "boolean",
+        "@nullable": false,
+        "@use": "optional"
+      },
+      "@minOccurs": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "min",
+        "@use": "optional"
+      },
+      "@maxOccurs": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "max",
+        "@use": "optional"
+      }
+    }
+  },
+  "referenceElement": {
+    "@": "object",
+    "@extends": "reference",
+    "@properties": {
+      "@nullable": {
+        "@": "boolean",
+        "@nullable": false,
+        "@use": "optional"
+      },
+      "@minOccurs": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "min",
+        "@use": "optional"
+      },
+      "@maxOccurs": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "max",
+        "@use": "optional"
+      }
+    }
+  },
+  "stringElement": {
+    "@": "object",
+    "@extends": "string",
+    "@properties": {
+      "@nullable": {
+        "@": "boolean",
+        "@nullable": false,
+        "@use": "optional"
+      },
+      "@minOccurs": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "min",
+        "@use": "optional"
+      },
+      "@maxOccurs": {
+        "@": "reference",
+        "@nullable": false,
+        "@type": "max",
+        "@use": "optional"
+      }
+    }
+  }
+}

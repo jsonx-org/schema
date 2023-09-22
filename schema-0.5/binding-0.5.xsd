@@ -17,16 +17,16 @@
 <xs:schema
   vc:minVersion="1.1"
   elementFormDefault="qualified"
-  targetNamespace="http://www.jsonx.org/binding-0.4.xsd"
-  xmlns:jb="http://www.jsonx.org/binding-0.4.xsd"
-  xmlns:jx="http://www.jsonx.org/schema-0.4.xsd"
+  targetNamespace="http://www.jsonx.org/binding-0.5.xsd"
+  xmlns:jb="http://www.jsonx.org/binding-0.5.xsd"
+  xmlns:jx="http://www.jsonx.org/schema-0.5.xsd"
   xmlns:dt="http://www.openjax.org/xml/datatypes-0.9.xsd"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
   xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
   <xs:import namespace="http://www.openjax.org/xml/datatypes-0.9.xsd" schemaLocation="http://www.openjax.org/xml/datatypes-0.9.xsd"/>
-  <xs:import namespace="http://www.jsonx.org/schema-0.4.xsd" schemaLocation="http://www.jsonx.org/schema-0.4.xsd"/>
+  <xs:import namespace="http://www.jsonx.org/schema-0.5.xsd" schemaLocation="http://www.jsonx.org/schema-0.5.xsd"/>
   
   <xs:simpleType name="methodIdentifier">
     <xs:restriction base="xs:string">

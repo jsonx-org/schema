@@ -1,7 +1,7 @@
 {
-  "@ns": "http://www.jsonx.org/schema-0.4.jsd",
-  "@schemaLocation": "http://www.jsonx.org/schema-0.4.jsd http://www.jsonx.org/schema-0.4.jsd",
-  "@targetNamespace": "http://www.jsonx.org/binding-0.4.jsd",
+  "@ns": "http://www.jsonx.org/schema-0.5.jsd",
+  "@schemaLocation": "http://www.jsonx.org/schema-0.5.jsd http://www.jsonx.org/schema-0.5.jsd",
+  "@targetNamespace": "http://www.jsonx.org/binding-0.5.jsd",
   "nonEmptyString": {
     "@": "string",
     "@pattern": "\\S|\\S.*\\S"
@@ -177,7 +177,7 @@
       "@ns": {
         "@": "string",
         "@nullable": false,
-        "@pattern": "http://www.jsonx.org/binding-0.4.jsd"
+        "@pattern": "http://www.jsonx.org/binding-0.5.jsd"
       },
       "@schemaLocation": {
         "@": "string",
