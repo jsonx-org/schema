@@ -1,0 +1,200 @@
+{
+  "@ns": "http://www.jsonx.org/schema-0.5.jsd",
+  "@schemaLocation": "http://www.jsonx.org/schema-0.5.jsd http://www.jsonx.org/schema-0.5.jsd",
+  "@targetNamespace": "http://www.jsonx.org/binding-0.5.jsd",
+  "nonEmptyString": {
+    "@": "string",
+    "@pattern": "\\S|\\S.*\\S"
+  },
+  "typeIdentifier": {
+    "@": "string",
+    "@pattern": "(([a-zA-Z_$][a-zA-Z\\d_$]*)\\.)*[a-zA-Z_$][a-zA-Z\\d_$]*(\\[\\])?"
+  },
+  "methodIdentifier": {
+    "@": "string",
+    "@pattern": "(([a-zA-Z_$][a-zA-Z\\d_$]*)\\.)*[a-zA-Z_$][a-zA-Z\\d_$]*(\\.<init>)?"
+  },
+  "fieldIdentifier": {
+    "@": "string",
+    "@pattern": "[a-zA-Z_$][a-zA-Z\\d_$]*"
+  },
+  "fieldBinding": {
+    "@": "object",
+    "@doc": "Specifies language-specific binding.",
+    "@properties": {
+      "@field": {
+        "@": "reference",
+        "@doc": "Specifies the \"field\" identifier.",
+        "@nullable": false,
+        "@type": "fieldIdentifier",
+        "@use": "optional"
+      }
+    }
+  },
+  "typeBinding": {
+    "@": "object",
+    "@doc": "Specifies language-specific binding.",
+    "@properties": {
+      "@type": {
+        "@": "reference",
+        "@doc": "Specifies the \"type\" qualified identifier.",
+        "@nullable": false,
+        "@type": "typeIdentifier",
+        "@use": "optional"
+      },
+      "@decode": {
+        "@": "reference",
+        "@doc": "Specifies the \"decode\" qualified function identifier that accepts input as a string, or as the native JSON type of this property, and returns an output of the specified \"type\" (or the default type if \"type\" is unspecified).",
+        "@nullable": false,
+        "@type": "methodIdentifier",
+        "@use": "optional"
+      },
+      "@encode": {
+        "@": "reference",
+        "@doc": "Specifies the \"encode\" qualified function identifier that accepts input of the type specified in \"type\" (or the default type if \"type\" is unspecified), and returns an output as a string, or as the native JSON type of this property.",
+        "@nullable": false,
+        "@type": "methodIdentifier",
+        "@use": "optional"
+      }
+    }
+  },
+  "typeFieldBinding": {
+    "@": "object",
+    "@doc": "Specifies language-specific binding.",
+    "@extends": "typeBinding",
+    "@properties": {
+      "@field": {
+        "@": "reference",
+        "@doc": "Specifies the \"field\" identifier.",
+        "@nullable": false,
+        "@type": "fieldIdentifier",
+        "@use": "optional"
+      }
+    }
+  },
+  "fieldBindings": {
+    "@": "object",
+    "@abstract": true,
+    "@properties": {
+      "\\S|\\S.*\\S": {
+        "@": "any",
+        "@nullable": false,
+        "@types": "fieldBinding"
+      }
+    }
+  },
+  "typeFieldBindings": {
+    "@": "object",
+    "@abstract": true,
+    "@properties": {
+      "\\S|\\S.*\\S": {
+        "@": "any",
+        "@nullable": false,
+        "@types": "typeFieldBinding"
+      }
+    }
+  },
+  "any": {
+    "@": "object",
+    "@extends": "fieldBindings",
+    "@properties": {
+      "@": {
+        "@": "string",
+        "@nullable": false,
+        "@pattern": "any"
+      }
+    }
+  },
+  "reference": {
+    "@": "object",
+    "@extends": "fieldBindings",
+    "@properties": {
+      "@": {
+        "@": "string",
+        "@nullable": false,
+        "@pattern": "reference"
+      }
+    }
+  },
+  "array": {
+    "@": "object",
+    "@extends": "fieldBindings",
+    "@properties": {
+      "@": {
+        "@": "string",
+        "@nullable": false,
+        "@pattern": "array"
+      }
+    }
+  },
+  "object": {
+    "@": "object",
+    "@extends": "fieldBindings",
+    "@properties": {
+      "@": {
+        "@": "string",
+        "@nullable": false,
+        "@pattern": "object"
+      }
+    }
+  },
+  "boolean": {
+    "@": "object",
+    "@extends": "typeFieldBindings",
+    "@properties": {
+      "@": {
+        "@": "string",
+        "@nullable": false,
+        "@pattern": "boolean"
+      }
+    }
+  },
+  "number": {
+    "@": "object",
+    "@extends": "typeFieldBindings",
+    "@properties": {
+      "@": {
+        "@": "string",
+        "@nullable": false,
+        "@pattern": "number"
+      }
+    }
+  },
+  "string": {
+    "@": "object",
+    "@extends": "typeFieldBindings",
+    "@properties": {
+      "@": {
+        "@": "string",
+        "@nullable": false,
+        "@pattern": "string"
+      }
+    }
+  },
+  "binding": {
+    "@": "object",
+    "@properties": {
+      "@ns": {
+        "@": "string",
+        "@nullable": false,
+        "@pattern": "http://www.jsonx.org/binding-0.5.jsd"
+      },
+      "@schemaLocation": {
+        "@": "string",
+        "@nullable": false,
+        "@pattern": "((\\S|\\S.*\\S) (\\S|\\S.*\\S))+",
+        "@use": "optional"
+      },
+      "@schema": {
+        "@": "any",
+        "@nullable": false,
+        "@types": "schema include"
+      },
+      "\\S|\\S.*\\S": {
+        "@": "any",
+        "@nullable": false,
+        "@types": "any reference array object boolean number string"
+      }
+    }
+  }
+}
