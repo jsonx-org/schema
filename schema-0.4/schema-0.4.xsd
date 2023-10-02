@@ -106,19 +106,19 @@
       <xs:pattern value="(([a-zA-Z_$][a-zA-Z\d_$]*)\.)*[a-zA-Z_$][a-zA-Z\d_$]*(\.&lt;init&gt;)?"/>
     </xs:restriction>
   </xs:simpleType>
-  
+
   <xs:simpleType name="typeIdentifier">
     <xs:restriction base="xs:string">
       <xs:pattern value="(([a-zA-Z_$][a-zA-Z\d_$]*)\.)*[a-zA-Z_$][a-zA-Z\d_$]*(\[\])?"/>
     </xs:restriction>
   </xs:simpleType>
-  
+
   <xs:simpleType name="fieldIdentifier">
     <xs:restriction base="xs:string">
       <xs:pattern value="[a-zA-Z_$][a-zA-Z\d_$]*"/>
     </xs:restriction>
   </xs:simpleType>
-  
+
   <xs:complexType name="binding">
     <xs:attribute name="lang" type="dt:NCNameNonEmpty" use="required">
       <xs:annotation>
@@ -126,7 +126,7 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  
+
   <xs:complexType name="fieldBinding">
     <xs:complexContent>
       <xs:extension base="jx:binding">
@@ -138,7 +138,7 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  
+
   <xs:complexType name="typeBinding">
     <xs:complexContent>
       <xs:extension base="jx:binding">
@@ -160,7 +160,7 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  
+
   <xs:complexType name="typeFieldBinding">
     <xs:complexContent>
       <xs:extension base="jx:typeBinding">
@@ -172,7 +172,7 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  
+
   <xs:complexType name="reference">
     <xs:complexContent>
       <xs:extension base="jx:referenceMember">
@@ -313,7 +313,7 @@
             <xs:annotation>
               <xs:documentation>Specifies language-specific bindings.</xs:documentation>
             </xs:annotation>
-          </xs:element>          
+          </xs:element>
         </xs:sequence>
         <xs:attributeGroup ref="jx:nameable"/>
         <xs:attributeGroup ref="jx:annullable"/>

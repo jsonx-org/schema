@@ -43,37 +43,37 @@
   <string name="typeIdentifier" pattern="(([a-zA-Z_$][a-zA-Z\d_$]*)\.)*[a-zA-Z_$][a-zA-Z\d_$]*(\[\])?"/>
   <string name="methodIdentifier" pattern="(([a-zA-Z_$][a-zA-Z\d_$]*)\.)*[a-zA-Z_$][a-zA-Z\d_$]*(\.&lt;init&gt;)?"/>
   <string name="fieldIdentifier" pattern="[a-zA-Z_$][a-zA-Z\d_$]*"/>
-  
+
   <object name="binding" abstract="true">
     <property name="lang" xsi:type="reference" type="nonEmptyString" nullable="false" doc="Specifies the language to which this binding applies."/>
   </object>
-  
+
   <object name="fieldBinding" extends="binding" doc="Specifies language-specific binding.">
     <property name="field" xsi:type="reference" type="fieldIdentifier" use="optional" nullable="false" doc="Specifies the &quot;field&quot; identifier."/>
   </object>
-  
+
   <object name="typeBinding" extends="binding" doc="Specifies language-specific binding.">
     <property name="type" xsi:type="reference" type="typeIdentifier" use="optional" nullable="false" doc="Specifies the &quot;type&quot; qualified identifier."/>
     <property name="decode" xsi:type="reference" type="methodIdentifier" use="optional" nullable="false" doc="Specifies the &quot;decode&quot; qualified function identifier that accepts input as a string, or as the native JSON type of this property, and returns an output of the specified &quot;type&quot; (or the default type if &quot;type&quot; is unspecified)."/>
     <property name="encode" xsi:type="reference" type="methodIdentifier" use="optional" nullable="false" doc="Specifies the &quot;encode&quot; qualified function identifier that accepts input of the type specified in &quot;type&quot; (or the default type if &quot;type&quot; is unspecified), and returns an output as a string, or as the native JSON type of this property."/>
   </object>
-  
+
   <object name="typeFieldBinding" extends="typeBinding" doc="Specifies language-specific binding.">
     <property name="field" xsi:type="reference" type="fieldIdentifier" use="optional" nullable="false" doc="Specifies the &quot;field&quot; identifier."/>
   </object>
-  
+
   <array name="fieldBindings" doc="Specifies language-specific bindings.">
     <reference type="fieldBinding" nullable="false"/>
   </array>
-  
+
   <array name="typeBindings" doc="Specifies language-specific bindings.">
     <reference type="typeBinding" nullable="false"/>
   </array>
-  
+
   <array name="typeFieldBindings" doc="Specifies language-specific bindings.">
     <reference type="typeFieldBinding" nullable="false"/>
   </array>
-  
+
   <object name="any" extends="member" abstract="true">
     <property name="jx:type" xsi:type="string" pattern="any" nullable="false"/>
     <property name="types" xsi:type="reference" type="nonEmptyString" use="optional" nullable="false"/>
@@ -200,5 +200,5 @@
     <property name="minOccurs" xsi:type="reference" type="min" use="optional" nullable="false"/>
     <property name="maxOccurs" xsi:type="reference" type="max" use="optional" nullable="false"/>
   </object>
-  
+
 </schema>
