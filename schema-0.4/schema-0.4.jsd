@@ -24,7 +24,9 @@
     "properties": {
       "doc": {
         "jx:type": "string",
-        "doc": "Defines text comments. Optional."
+        "doc": "Defines text comments. Optional.",
+        "@nullable": false,
+        "@use": "optional"
       }
     }
   },

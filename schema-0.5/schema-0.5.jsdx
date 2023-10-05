@@ -30,7 +30,7 @@
   <string name="schemaLocation" pattern="((\S|\S.*\S) (\S|\S.*\S))+"/>
 
   <object name="documented" abstract="true">
-    <property name="@doc" xsi:type="string" doc="Defines text comments. Optional."/>
+    <property name="@doc" xsi:type="string" use="optional" nullable="false" doc="Defines text comments. Optional."/>
   </object>
 
   <object name="member" abstract="true" extends="documented"/>
