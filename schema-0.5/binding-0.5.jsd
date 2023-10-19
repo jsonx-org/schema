@@ -31,9 +31,10 @@
       }
     }
   },
-  "typeBinding": {
+  "typeFieldBinding": {
     "@": "object",
     "@doc": "Specifies language-specific binding.",
+    "@extends": "fieldBinding",
     "@properties": {
       "@type": {
         "@": "reference",
@@ -41,7 +42,14 @@
         "@nullable": false,
         "@type": "typeIdentifier",
         "@use": "optional"
-      },
+      }
+    }
+  },
+  "codecTypeFieldBinding": {
+    "@": "object",
+    "@doc": "Specifies language-specific binding.",
+    "@extends": "typeFieldBinding",
+    "@properties": {
       "@decode": {
         "@": "reference",
         "@doc": "Specifies the \"decode\" qualified function identifier that accepts input as a string, or as the native JSON type of this property, and returns an output of the specified \"type\" (or the default type if \"type\" is unspecified).",
@@ -54,20 +62,6 @@
         "@doc": "Specifies the \"encode\" qualified function identifier that accepts input of the type specified in \"type\" (or the default type if \"type\" is unspecified), and returns an output as a string, or as the native JSON type of this property.",
         "@nullable": false,
         "@type": "methodIdentifier",
-        "@use": "optional"
-      }
-    }
-  },
-  "typeFieldBinding": {
-    "@": "object",
-    "@doc": "Specifies language-specific binding.",
-    "@extends": "typeBinding",
-    "@properties": {
-      "@field": {
-        "@": "reference",
-        "@doc": "Specifies the \"field\" identifier.",
-        "@nullable": false,
-        "@type": "fieldIdentifier",
         "@use": "optional"
       }
     }
@@ -91,6 +85,17 @@
         "@": "any",
         "@nullable": false,
         "@types": "typeFieldBinding"
+      }
+    }
+  },
+  "codecTypeFieldBindings": {
+    "@": "object",
+    "@abstract": true,
+    "@properties": {
+      "\\S|\\S.*\\S": {
+        "@": "any",
+        "@nullable": false,
+        "@types": "codecTypeFieldBinding"
       }
     }
   },
@@ -129,7 +134,7 @@
   },
   "object": {
     "@": "object",
-    "@extends": "fieldBindings",
+    "@extends": "typeFieldBindings",
     "@properties": {
       "@": {
         "@": "string",
@@ -140,7 +145,7 @@
   },
   "boolean": {
     "@": "object",
-    "@extends": "typeFieldBindings",
+    "@extends": "codecTypeFieldBindings",
     "@properties": {
       "@": {
         "@": "string",
@@ -151,7 +156,7 @@
   },
   "number": {
     "@": "object",
-    "@extends": "typeFieldBindings",
+    "@extends": "codecTypeFieldBindings",
     "@properties": {
       "@": {
         "@": "string",
@@ -162,7 +167,7 @@
   },
   "string": {
     "@": "object",
-    "@extends": "typeFieldBindings",
+    "@extends": "codecTypeFieldBindings",
     "@properties": {
       "@": {
         "@": "string",

@@ -37,15 +37,14 @@
     <property name="@field" xsi:type="reference" type="fieldIdentifier" use="optional" nullable="false" doc="Specifies the &quot;field&quot; identifier."/>
   </object>
 
-  <object name="typeBinding" doc="Specifies language-specific binding.">
+  <object name="typeFieldBinding" extends="fieldBinding" doc="Specifies language-specific binding.">
     <property name="@type" xsi:type="reference" type="typeIdentifier" use="optional" nullable="false" doc="Specifies the &quot;type&quot; qualified identifier."/>
-    <property name="@decode" xsi:type="reference" type="methodIdentifier" use="optional" nullable="false" doc="Specifies the &quot;decode&quot; qualified function identifier that accepts input as a string, or as the native JSON type of this property, and returns an output of the specified &quot;type&quot; (or the default type if &quot;type&quot; is unspecified)."/>
-    <property name="@encode" xsi:type="reference" type="methodIdentifier" use="optional" nullable="false" doc="Specifies the &quot;encode&quot; qualified function identifier that accepts input of the type specified in &quot;type&quot; (or the default type if &quot;type&quot; is unspecified), and returns an output as a string, or as the native JSON type of this property."/>
   </object>
 
-  <object name="typeFieldBinding" extends="typeBinding" doc="Specifies language-specific binding.">
+  <object name="codecTypeFieldBinding" extends="typeFieldBinding" doc="Specifies language-specific binding.">
+    <property name="@decode" xsi:type="reference" type="methodIdentifier" use="optional" nullable="false" doc="Specifies the &quot;decode&quot; qualified function identifier that accepts input as a string, or as the native JSON type of this property, and returns an output of the specified &quot;type&quot; (or the default type if &quot;type&quot; is unspecified)."/>
+    <property name="@encode" xsi:type="reference" type="methodIdentifier" use="optional" nullable="false" doc="Specifies the &quot;encode&quot; qualified function identifier that accepts input of the type specified in &quot;type&quot; (or the default type if &quot;type&quot; is unspecified), and returns an output as a string, or as the native JSON type of this property."/>
     <!-- FIXME: Equivalent of <xs:assert test="some $path in ../@path satisfies not(@field) or count(tokenize($path, '([^\\]|\\\\)\[')) = 1 and count(tokenize($path, '([^\\]|\\\\)\.')) > 1"/> is not yet possible in JSDx -->
-    <property name="@field" xsi:type="reference" type="fieldIdentifier" use="optional" nullable="false" doc="Specifies the &quot;field&quot; identifier."/>
   </object>
 
   <object name="fieldBindings" abstract="true">
@@ -56,6 +55,10 @@
     <property names="\S|\S.*\S" xsi:type="any" types="typeFieldBinding" nullable="false"/>
   </object>
   
+  <object name="codecTypeFieldBindings" abstract="true">
+    <property names="\S|\S.*\S" xsi:type="any" types="codecTypeFieldBinding" nullable="false"/>
+  </object>
+
   <object name="any" extends="fieldBindings">
     <property name="@" xsi:type="string" pattern="any" nullable="false"/>
   </object>
@@ -68,19 +71,19 @@
     <property name="@" xsi:type="string" pattern="array" nullable="false"/>
   </object>
   
-  <object name="object" extends="fieldBindings">
+  <object name="object" extends="typeFieldBindings">
     <property name="@" xsi:type="string" pattern="object" nullable="false"/>
   </object>
   
-  <object name="boolean" extends="typeFieldBindings">
+  <object name="boolean" extends="codecTypeFieldBindings">
     <property name="@" xsi:type="string" pattern="boolean" nullable="false"/>
   </object>
   
-  <object name="number" extends="typeFieldBindings">
+  <object name="number" extends="codecTypeFieldBindings">
     <property name="@" xsi:type="string" pattern="number" nullable="false"/>
   </object>
   
-  <object name="string" extends="typeFieldBindings">
+  <object name="string" extends="codecTypeFieldBindings">
     <property name="@" xsi:type="string" pattern="string" nullable="false"/>
   </object>
   
