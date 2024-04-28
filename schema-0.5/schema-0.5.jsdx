@@ -34,7 +34,7 @@
   </object>
 
   <object name="member" abstract="true" extends="documented"/>
-  
+
   <object name="import">
     <property name="@namespace" xsi:type="reference" type="nonEmptyString" nullable="false" use="optional"/>
     <property name="@schemaLocation" xsi:type="reference" type="schemaLocation" use="optional" nullable="false"/>
@@ -49,7 +49,7 @@
     </property>
     <property names="[a-zA-Z_][-a-zA-Z\d_]*" xsi:type="any" types="array boolean number objectType string" nullable="false"/>
   </object>
-  
+
   <object name="any" extends="member" abstract="true">
     <property name="@" xsi:type="string" pattern="any" nullable="false"/>
     <property name="@types" xsi:type="reference" type="nonEmptyString" use="optional" nullable="false"/>
@@ -164,5 +164,5 @@
     <property name="@minOccurs" xsi:type="reference" type="min" use="optional" nullable="false"/>
     <property name="@maxOccurs" xsi:type="reference" type="max" use="optional" nullable="false"/>
   </object>
-  
+
 </schema>

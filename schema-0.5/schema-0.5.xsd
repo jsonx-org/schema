@@ -103,7 +103,7 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  
+
   <xs:complexType name="reference">
     <xs:complexContent>
       <xs:extension base="jx:referenceMember">

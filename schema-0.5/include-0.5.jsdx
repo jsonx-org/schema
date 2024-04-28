@@ -20,7 +20,7 @@
   xmlns:jxns="http://www.jsonx.org/namespace"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.jsonx.org/schema-0.5.xsd schema-0.5.xsd"
-  
+
   jxns:jx="http://www.jsonx.org/schema-0.5.jsdx"
   targetNamespace="http://www.jsonx.org/include-0.5.jsdx">
 
