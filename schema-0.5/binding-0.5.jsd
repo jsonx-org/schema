@@ -8,7 +8,7 @@
   },
   "typeIdentifier": {
     "@": "string",
-    "@pattern": "(([a-zA-Z_$][a-zA-Z\\d_$]*)\\.)*[a-zA-Z_$][a-zA-Z\\d_$]*(\\[\\])?"
+    "@pattern": "(([a-zA-Z_$][a-zA-Z\\d_$]*)\\.)*[a-zA-Z_$][a-zA-Z\\d_$]*(<.*>)?(\\[\\])?"
   },
   "methodIdentifier": {
     "@": "string",
@@ -101,7 +101,7 @@
   },
   "any": {
     "@": "object",
-    "@extends": "fieldBindings",
+    "@extends": "typeFieldBindings",
     "@properties": {
       "@": {
         "@": "string",

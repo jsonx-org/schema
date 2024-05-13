@@ -29,7 +29,7 @@
   <import namespace="http://www.jsonx.org/include-0.5.jsdx" schemaLocation="http://www.jsonx.org/include-0.5.jsdx"><xi:include href="http://www.jsonx.org/include-0.5.jsdx"/></import>
 
   <string name="nonEmptyString" pattern="\S|\S.*\S"/>
-  <string name="typeIdentifier" pattern="(([a-zA-Z_$][a-zA-Z\d_$]*)\.)*[a-zA-Z_$][a-zA-Z\d_$]*(\[\])?"/>
+  <string name="typeIdentifier" pattern="(([a-zA-Z_$][a-zA-Z\d_$]*)\.)*[a-zA-Z_$][a-zA-Z\d_$]*(&lt;.*&gt;)?(\[\])?"/> <!-- FIXME: The generic section is loosely enforced -->
   <string name="methodIdentifier" pattern="(([a-zA-Z_$][a-zA-Z\d_$]*)\.)*[a-zA-Z_$][a-zA-Z\d_$]*(\.&lt;init&gt;)?"/>
   <string name="fieldIdentifier" pattern="[a-zA-Z_$][a-zA-Z\d_$]*"/>
 
@@ -59,7 +59,7 @@
     <property names="\S|\S.*\S" xsi:type="any" types="codecTypeFieldBinding" nullable="false"/>
   </object>
 
-  <object name="any" extends="fieldBindings">
+  <object name="any" extends="typeFieldBindings">
     <property name="@" xsi:type="string" pattern="any" nullable="false"/>
   </object>
 

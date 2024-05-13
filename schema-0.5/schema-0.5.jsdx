@@ -24,9 +24,6 @@
   <string name="max" pattern="\d+|unbounded"/>
   <string name="use" pattern="required|optional"/>
   <string name="nonEmptyString" pattern="\S|\S.*\S"/>
-  <string name="typeIdentifier" pattern="(([a-zA-Z_$][a-zA-Z\d_$]*)\.)*[a-zA-Z_$][a-zA-Z\d_$]*(\[\])?"/>
-  <string name="methodIdentifier" pattern="(([a-zA-Z_$][a-zA-Z\d_$]*)\.)*[a-zA-Z_$][a-zA-Z\d_$]*(\.&lt;init&gt;)?"/>
-  <string name="fieldIdentifier" pattern="[a-zA-Z_$][a-zA-Z\d_$]*"/>
   <string name="schemaLocation" pattern="((\S|\S.*\S) (\S|\S.*\S))+"/>
 
   <object name="documented" abstract="true">
