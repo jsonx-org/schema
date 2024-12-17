@@ -243,7 +243,7 @@
   <xs:complexType name="arrayMember" abstract="true">
     <xs:complexContent>
       <xs:extension base="jx:member">
-        <xs:choice minOccurs="1" maxOccurs="unbounded">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
           <xs:element name="any">
             <xs:complexType>
               <xs:complexContent>
